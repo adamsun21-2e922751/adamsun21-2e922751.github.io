@@ -1,0 +1,1410 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>五一白虎吃瓜 - 网络热门事件与讨论聚合</title>
+  <meta name="description" content="五一白虎吃瓜聚焦网络热门事件与讨论，提供事件时间线、当事人回应、网友评论、相关资讯和深度解析，适合关注网络舆情与流行话题的读者浏览。">
+  <meta name="keywords" content="五一白虎吃瓜">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f2937'/%3E%3Ccircle cx='22' cy='26' r='7' fill='%23fbbf24'/%3E%3Ccircle cx='42' cy='26' r='7' fill='%23fbbf24'/%3E%3Cpath d='M18 43 Q32 58 46 43' stroke='%23fbbf24' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --primary: #b45309;
+      --primary-light: #fef3c7;
+      --primary-dark: #78350f;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #1e293b;
+      --text-secondary: #475569;
+      --text-tertiary: #94a3b8;
+      --border: #e2e8f0;
+      --radius-card: 14px;
+      --radius-btn: 9px;
+      --radius-tag: 6px;
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --shadow-hover: 0 6px 18px rgba(0,0,0,.08);
+      --sticky-offset: 96px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding-top: var(--sticky-offset);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* 吸顶公告条 + 页头 */
+    .sticky-wrap {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+    }
+    .announce-bar {
+      background: var(--primary-dark);
+      color: #fef3c7;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 6px 20px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .announce-bar .brand-mini {
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: .5px;
+      flex-shrink: 0;
+    }
+    .announce-bar .ann-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .announce-bar .ann-date {
+      color: #fcd34d;
+      font-weight: 600;
+    }
+    .announce-bar .ann-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: #fcd34d;
+      flex-shrink: 0;
+    }
+    .site-header {
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 0 20px;
+      height: 58px;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex-shrink: 0;
+    }
+    .logo-svg { width: 32px; height: 32px; }
+    .logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      letter-spacing: -.3px;
+      white-space: nowrap;
+    }
+    .header-nav {
+      display: flex;
+      gap: 2px;
+      overflow-x: auto;
+      flex: 1;
+      scrollbar-width: none;
+    }
+    .header-nav::-webkit-scrollbar { display: none; }
+    .header-nav a {
+      padding: 6px 11px;
+      border-radius: var(--radius-btn);
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      transition: background .18s, color .18s;
+    }
+    .header-nav a:hover,
+    .header-nav a:focus-visible {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      outline: none;
+    }
+    .header-nav a:focus-visible {
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    .header-search {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-btn);
+      padding: 4px 10px;
+      flex-shrink: 0;
+    }
+    .header-search input {
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      width: 130px;
+      outline: none;
+      color: var(--text);
+    }
+    .header-search input::placeholder { color: var(--text-tertiary); }
+    .header-search button {
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 12.5px;
+      font-weight: 600;
+    }
+    .header-search button:hover { background: var(--primary-dark); }
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: var(--radius-btn);
+      padding: 6px 10px;
+      font-size: 18px;
+      line-height: 1;
+      color: var(--text);
+    }
+
+    /* 首屏 */
+    .hero {
+      background: linear-gradient(140deg, #1e293b 0%, #334155 45%, #78350f 100%);
+      color: #f1f5f9;
+      position: relative;
+      overflow: hidden;
+      padding: 44px 20px 38px;
+    }
+    .hero-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 4.2vw, 44px);
+      font-weight: 900;
+      letter-spacing: -.5px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .hero-desc {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #cbd5e1;
+      max-width: 580px;
+      margin-bottom: 20px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fbbf24;
+      color: #1e293b;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 22px;
+      border-radius: var(--radius-btn);
+      border: none;
+      transition: background .18s, transform .18s;
+    }
+    .btn-primary:hover { background: #fcd34d; transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: #e2e8f0;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 22px;
+      border-radius: var(--radius-btn);
+      border: 1px solid rgba(255,255,255,.3);
+      transition: border-color .18s, background .18s;
+    }
+    .btn-outline:hover { border-color: #fbbf24; background: rgba(251,191,36,.1); }
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      animation: float 5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-visual { animation: none; }
+    }
+
+    /* 主布局 */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 28px 20px 40px;
+      display: grid;
+      grid-template-columns: 180px minmax(0,1fr) 250px;
+      gap: 26px;
+      align-items: start;
+    }
+
+    /* 左侧频道 */
+    .channel-nav {
+      position: sticky;
+      top: var(--sticky-offset);
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow);
+      padding: 14px 0;
+      overflow: hidden;
+    }
+    .channel-nav h2 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-tertiary);
+      padding: 0 16px 8px;
+      font-weight: 700;
+    }
+    .channel-nav a {
+      display: block;
+      padding: 7px 16px;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      border-left: 3px solid transparent;
+      transition: background .15s, border-color .15s, color .15s;
+    }
+    .channel-nav a:hover,
+    .channel-nav a.active {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      border-left-color: var(--primary);
+      font-weight: 600;
+    }
+    .channel-nav a:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: -2px;
+    }
+
+    /* 中间主内容 */
+    .main-content { min-width: 0; }
+    .section {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .section h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -.3px;
+    }
+    .section-sub {
+      font-size: 13.5px;
+      color: var(--text-tertiary);
+      margin-bottom: 18px;
+    }
+
+    /* 概览 */
+    .overview-text {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .overview-text p { margin-bottom: 12px; }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      transition: box-shadow .2s, transform .2s;
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+    }
+    .card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+    .card-body {
+      padding: 12px 14px 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+      line-height: 1.35;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 7px;
+    }
+    .tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: var(--radius-tag);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      white-space: nowrap;
+    }
+    .tag-alt {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+    .card-desc {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      flex: 1;
+    }
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11.5px;
+      color: var(--text-tertiary);
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* 动态列表 */
+    .news-list { list-style: none; }
+    .news-list li {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+    .news-list li:last-child { border-bottom: none; }
+    .news-date {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      flex-shrink: 0;
+      width: 42px;
+      font-variant-numeric: tabular-nums;
+    }
+    .news-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .news-summary {
+      font-size: 12.5px;
+      color: var(--text-tertiary);
+      margin-left: auto;
+      flex-shrink: 0;
+      max-width: 200px;
+      text-align: right;
+    }
+
+    /* 分类入口 */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 10px;
+    }
+    .cat-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 8px;
+      border-radius: var(--radius-btn);
+      background: var(--bg);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      transition: background .18s, border-color .18s, color .18s;
+      text-align: center;
+    }
+    .cat-item:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary-dark);
+    }
+
+    /* 深度解析 */
+    .deep h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 20px 0 8px;
+      color: var(--primary-dark);
+    }
+    .deep h3:first-of-type { margin-top: 4px; }
+    .deep p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+    .deep ul {
+      margin: 6px 0 14px 18px;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+    .deep ul li { margin-bottom: 4px; }
+
+    /* FAQ */
+    details {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-btn);
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    details[open] { border-color: var(--primary); }
+    summary {
+      padding: 11px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--bg);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background .15s;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+";
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-tertiary);
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+    details[open] summary::after { content: "−"; }
+    summary:hover { background: var(--primary-light); }
+    summary:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+    details .faq-body {
+      padding: 10px 14px 14px;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    /* 评论 */
+    .comment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .comment-card {
+      background: var(--bg);
+      border-radius: var(--radius-btn);
+      padding: 11px 13px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .comment-author {
+      font-weight: 700;
+      color: var(--primary-dark);
+      font-size: 12.5px;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .comment-author .badge {
+      font-size: 10px;
+      font-weight: 600;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    /* 资讯 */
+    .info-item {
+      display: flex;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .info-item:last-child { border-bottom: none; }
+    .info-date {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      flex-shrink: 0;
+      width: 48px;
+      padding-top: 2px;
+    }
+    .info-content h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .info-content p {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* 相关推荐标签 */
+    .rec-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .rec-tag {
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      transition: background .18s, border-color .18s, color .18s;
+    }
+    .rec-tag:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary-dark);
+    }
+
+    /* 补充板块 */
+    .rank-list { list-style: none; counter-reset: rank; }
+    .rank-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13.5px;
+      counter-increment: rank;
+    }
+    .rank-list li:last-child { border-bottom: none; }
+    .rank-list li::before {
+      content: counter(rank);
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--text-tertiary);
+      width: 22px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+    .rank-list li:nth-child(1)::before,
+    .rank-list li:nth-child(2)::before,
+    .rank-list li:nth-child(3)::before { color: var(--primary); }
+    .rank-name { font-weight: 600; }
+    .rank-bar {
+      flex: 1;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      max-width: 120px;
+      margin-left: auto;
+    }
+    .rank-bar span {
+      display: block;
+      height: 100%;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    /* 右侧辅助栏 */
+    .sidebar {
+      position: sticky;
+      top: var(--sticky-offset);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .side-card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+    .side-card h3 {
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .side-list { list-style: none; }
+    .side-list li {
+      font-size: 12.5px;
+      padding: 5px 0;
+      color: var(--text-secondary);
+      border-bottom: 1px dashed var(--border);
+      line-height: 1.5;
+    }
+    .side-list li:last-child { border-bottom: none; }
+    .side-list .hot-num {
+      display: inline-block;
+      font-weight: 800;
+      color: var(--primary);
+      margin-right: 5px;
+      font-size: 12px;
+    }
+
+    /* 页尾 */
+    .site-footer {
+      background: #1e293b;
+      color: #94a3b8;
+      padding: 36px 20px 24px;
+      font-size: 13px;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 30px;
+    }
+    .footer-brand {
+      font-size: 18px;
+      font-weight: 800;
+      color: #f1f5f9;
+      margin-bottom: 6px;
+    }
+    .footer-desc { line-height: 1.7; margin-bottom: 10px; }
+    .footer-col h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 8px;
+    }
+    .footer-col a {
+      display: block;
+      padding: 3px 0;
+      color: #94a3b8;
+      transition: color .15s;
+    }
+    .footer-col a:hover { color: #fbbf24; }
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 20px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid #334155;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    /* 回到顶部 */
+    .back-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      font-size: 20px;
+      box-shadow: var(--shadow-hover);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 90;
+      transition: background .18s, transform .18s;
+    }
+    .back-top:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .back-top.visible { display: flex; }
+
+    /* 移动端遮罩 */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.4);
+      z-index: 99;
+    }
+    .overlay.active { display: block; }
+
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .container {
+        grid-template-columns: 1fr 240px;
+      }
+      .channel-nav {
+        display: none;
+      }
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+      .hero-visual { display: none; }
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 740px) {
+      :root { --sticky-offset: 92px; }
+      body { padding-top: var(--sticky-offset); }
+      .container {
+        grid-template-columns: 1fr;
+        padding: 16px 12px 30px;
+      }
+      .sidebar {
+        position: static;
+        order: 2;
+      }
+      .main-content { order: 1; }
+      .header-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: var(--surface);
+        flex-direction: column;
+        padding: 8px 12px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-hover);
+        z-index: 101;
+      }
+      .header-nav.open { display: flex; }
+      .menu-toggle { display: block; order: -1; }
+      .header-search { display: none; }
+      .site-header { gap: 10px; }
+      .hero { padding: 28px 16px 24px; }
+      .hero h1 { font-size: 26px; }
+      .comment-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .news-summary { display: none; }
+      .section { padding: 16px; }
+      .card img { height: 140px; }
+    }
+    @media (max-width: 420px) {
+      .card-grid { grid-template-columns: 1fr; }
+      .cat-grid { grid-template-columns: 1fr 1fr; }
+      .hero-actions { flex-direction: column; }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+  <!-- 吸顶公告条 + 页头 -->
+  <div class="sticky-wrap">
+    <div class="announce-bar">
+      <span class="brand-mini">五一白虎吃瓜</span>
+      <span class="ann-item"><span class="ann-date">2026-11-07</span><span class="ann-dot"></span>“夜航船”直播切片争议</span>
+      <span class="ann-item"><span class="ann-date">2026-11-06</span><span class="ann-dot"></span>“南坪旧改”回应全文发布</span>
+      <span class="ann-item"><span class="ann-date">2026-11-05</span><span class="ann-dot"></span>吃瓜时间线新增 3 条</span>
+      <span class="ann-item"><span class="ann-date">2026-11-04</span><span class="ann-dot"></span>“阿沁”账号恢复更新</span>
+    </div>
+    <header class="site-header">
+      <button class="menu-toggle" id="menuToggle" aria-label="打开导航菜单" aria-expanded="false">☰</button>
+      <div class="logo-area">
+        <svg class="logo-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" rx="14" fill="#78350f"/>
+          <circle cx="22" cy="26" r="7" fill="#fbbf24"/>
+          <circle cx="42" cy="26" r="7" fill="#fbbf24"/>
+          <path d="M18 43 Q32 58 46 43" stroke="#fbbf24" stroke-width="5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">五一白虎吃瓜</span>
+      </div>
+      <nav class="header-nav" id="headerNav">
+        <a href="#overview">领域概览</a>
+        <a href="#featured">精选推荐</a>
+        <a href="#updates">最新动态</a>
+        <a href="#categories">分类入口</a>
+        <a href="#deep">深度解析</a>
+        <a href="#guide">体验指南</a>
+        <a href="#faq">常见问答</a>
+        <a href="#comments">网友评论</a>
+        <a href="#infos">相关资讯</a>
+        <a href="#recommend">相关推荐</a>
+        <a href="#extras">热门榜单</a>
+      </nav>
+      <div class="header-search">
+        <input type="search" id="searchInput" placeholder="搜索条目…" aria-label="搜索站内内容">
+        <button id="searchBtn">搜索</button>
+      </div>
+    </header>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <h1>五一白虎吃瓜</h1>
+        <p class="hero-desc">追踪网络热门事件、争议话题与当事人回应，汇集吃瓜时间线、深度讨论与网友评论。从“夜航船”直播切片到“南坪旧改”官方回应，这里整理可核对的事件脉络和不同立场的说法。</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#featured">查看精选条目</a>
+          <a class="btn-outline" href="#deep">阅读深度解析</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <svg width="280" height="200" viewBox="0 0 280 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="140" cy="100" r="80" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="6 8" opacity=".5"/>
+          <circle cx="140" cy="100" r="55" stroke="#fbbf24" stroke-width="1" opacity=".3"/>
+          <rect x="50" y="60" width="180" height="80" rx="14" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+          <circle cx="100" cy="92" r="6" fill="#fbbf24"/>
+          <circle cx="180" cy="92" r="6" fill="#fbbf24"/>
+          <path d="M95 112 Q140 138 185 112" stroke="#fbbf24" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <line x1="30" y1="150" x2="250" y2="150" stroke="#fbbf24" stroke-width="1" opacity=".3"/>
+          <text x="140" y="175" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="system-ui">事件 · 讨论 · 追踪</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 主内容区：三栏门户 -->
+  <div class="container">
+
+    <!-- 左侧频道索引 -->
+    <aside class="channel-nav" aria-label="频道导航">
+      <h2>频道</h2>
+      <a href="#featured" class="active">精选事件</a>
+      <a href="#updates">动态追踪</a>
+      <a href="#categories">话题分类</a>
+      <a href="#deep">深度解读</a>
+      <a href="#guide">吃瓜指南</a>
+      <a href="#faq">问答</a>
+      <a href="#comments">网友评论</a>
+      <a href="#infos">资讯速递</a>
+      <a href="#extras">热门榜单</a>
+    </aside>
+
+    <!-- 中间主内容 -->
+    <main class="main-content">
+
+      <!-- 1. 领域概览 -->
+      <section class="section" id="overview">
+        <h2>网络热门事件与讨论领域概览</h2>
+        <div class="overview-text">
+          <p>“吃瓜”在网络语境中指关注、讨论热门事件与争议话题的行为。当前网络吃瓜内容大致分为几个方向：直播切片引发的争议、城市旧改与居民权益事件、短视频账号的运营纠纷、以及综艺节目剪辑引发的粉丝讨论。2026年10月下旬到11月初，讨论热度较高的事件包括“夜航船”主播与运营团队的切片授权争议、“南坪旧改”项目居民说明会的现场视频传播、以及“阿沁”账号停更四周后的恢复更新。</p>
+          <p>从内容形态看，吃瓜信息主要来自当事人直播录屏、平台官方公告截图、媒体采访片段和网友整理的时间线文档。不同来源的可信度差异明显：官方公告通常有明确主体和日期，直播片段容易被二次剪辑改变语境，匿名投稿的“聊天记录截图”则需要额外核对。判断一条吃瓜信息是否值得跟进，可以先看它是否具备可核实的原始出处、是否有当事人实名回应、以及时间线是否前后自洽。</p>
+          <p>近期讨论中，“夜航船”切片争议的焦点从“是否授权”转向“切片收入如何分成”，涉及主播、运营方和平台三方的说法；而“南坪旧改”事件则围绕补偿方案的具体条款展开，居民代表与项目方在11月6日的说明会上各执一词。这些事件的核心信息都可以在后续板块中找到对应的时间节点和原文措辞。</p>
+        </div>
+      </section>
+
+      <!-- 2. 精选内容推荐 -->
+      <section class="section" id="featured">
+        <h2>近期精选吃瓜条目</h2>
+        <p class="section-sub">覆盖直播争议、旧改事件、账号纠纷与综艺讨论</p>
+        <div class="card-grid" id="cardGrid">
+          <div class="card">
+            <img src="https://picsum.photos/seed/yehang1/400/300" alt="夜航船主播直播画面截图" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <div class="card-title">“夜航船”切片授权争议</div>
+              <div class="card-tags"><span class="tag">直播切片</span><span class="tag tag-alt">授权纠纷</span></div>
+              <p class="card-desc">主播“老周”10月28日直播称运营方未经同意将切片用于付费合集，运营方11月2日回应称合同含“二次创作授权”条款。双方各晒出一版合同截图。</p>
+              <div class="card-meta"><span>热度 9.2万</span><span>更新 11-07</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://picsum.photos/seed/nanping1/400/300" alt="南坪旧改说明会现场照片" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <div class="card-title">“南坪旧改”说明会现场实录</div>
+              <div class="card-tags"><span class="tag">城市旧改</span><span class="tag tag-alt">居民权益</span></div>
+              <p class="card-desc">11月6日南坪街道办举行旧改补偿方案说明会，居民代表提出“过渡安置费按季度发放”与项目方“按月发放”的方案存在出入。现场视频播放量超47万。</p>
+              <div class="card-meta"><span>热度 8.7万</span><span>更新 11-06</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://picsum.photos/seed/aqin2/400/300" alt="阿沁账号主页截图" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <div class="card-title">“阿沁”停更四周后恢复更新</div>
+              <div class="card-tags"><span class="tag">账号运营</span><span class="tag tag-alt">停更原因</span></div>
+              <p class="card-desc">美食博主“阿沁”自10月8日起停更，11月4日发布新视频解释停更原因为“团队重组与选品调整”，评论区有粉丝追问此前带货产品质量问题。</p>
+              <div class="card-meta"><span>热度 6.5万</span><span>更新 11-04</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://picsum.photos/seed/zongyi3/400/300" alt="综艺节目剪辑争议画面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <div class="card-title">《周末出发》第三期剪辑争议</div>
+              <div class="card-tags"><span class="tag">综艺剪辑</span><span class="tag tag-alt">粉丝讨论</span></div>
+              <p class="card-desc">10月30日播出的《周末出发》第三期被观众指出将嘉宾A的发言与嘉宾B的反应跨场景拼接，节目组11月1日发布未剪辑片段作为补充说明。</p>
+              <div class="card-meta"><span>热度 5.8万</span><span>更新 11-01</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://picsum.photos/seed/chat5/400/300" alt="聊天记录截图示意" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <div class="card-title">“小鹿”聊天记录外泄事件</div>
+              <div class="card-tags"><span class="tag">聊天记录</span><span class="tag tag-alt">真实性存疑</span></div>
+              <p class="card-desc">10月25日起多个群聊流传自称“小鹿”与商务合作的聊天截图，截图未显示完整时间戳，对方账号已注销。暂无当事人实名回应。</p>
+              <div class="card-meta"><span>热度 4.1万</span><span>更新 10-27</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://picsum.photos/seed/paicha6/400/300" alt="平台公告截图" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <div class="card-title">平台“清朗”专项处置公告</div>
+              <div class="card-tags"><span class="tag">平台公告</span><span class="tag tag-alt">账号处置</span></div>
+              <p class="card-desc">11月3日某平台发布专项公告，对12个账号采取禁言措施，其中3个账号涉及“夜航船”切片争议中发布未经核实的收入分成截图。</p>
+              <div class="card-meta"><span>热度 3.9万</span><span>更新 11-03</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. 最新更新 -->
+      <section class="section" id="updates">
+        <h2>最新动态追踪</h2>
+        <p class="section-sub">2026年10月25日—11月7日关键节点</p>
+        <ul class="news-list">
+          <li><span class="news-date">11-07</span><span class="news-title">“夜航船”运营方公布9月分成流水</span><span class="news-summary">显示切片收入占比38%</span></li>
+          <li><span class="news-date">11-06</span><span class="news-title">南坪旧改说明会居民代表提出三条修改意见</span><span class="news-summary">涉及过渡费与面积认定</span></li>
+          <li><span class="news-date">11-05</span><span class="news-title">“小鹿”事件首个实名回应出现</span><span class="news-summary">合作方否认截图内容</span></li>
+          <li><span class="news-date">11-04</span><span class="news-title">“阿沁”恢复更新视频播放量破80万</span><span class="news-summary">弹幕追问选品流程</span></li>
+          <li><span class="news-date">11-03</span><span class="news-title">平台专项公告处置12个账号</span><span class="news-summary">3个与切片争议相关</span></li>
+          <li><span class="news-date">11-02</span><span class="news-title">“夜航船”运营方晒合同条款截图</span><span class="news-summary">称含二次创作授权</span></li>
+          <li><span class="news-date">11-01</span><span class="news-title">《周末出发》节目组发布未剪辑片段</span><span class="news-summary">时长4分12秒</span></li>
+          <li><span class="news-date">10-30</span><span class="news-title">《周末出发》第三期播出</span><span class="news-summary">当晚弹幕量破2万条</span></li>
+          <li><span class="news-date">10-28</span><span class="news-title">主播“老周”直播提出分成质疑</span><span class="news-summary">在线观看峰值6.3万</span></li>
+          <li><span class="news-date">10-25</span><span class="news-title">“小鹿”聊天记录截图开始流传</span><span class="news-summary">首发于三个百人群聊</span></li>
+        </ul>
+      </section>
+
+      <!-- 4. 分类入口 -->
+      <section class="section" id="categories">
+        <h2>话题分类入口</h2>
+        <p class="section-sub">按事件类型定位具体条目</p>
+        <div class="cat-grid">
+          <a class="cat-item" href="#featured">直播切片争议</a>
+          <a class="cat-item" href="#featured">城市旧改事件</a>
+          <a class="cat-item" href="#featured">账号运营纠纷</a>
+          <a class="cat-item" href="#featured">综艺剪辑讨论</a>
+          <a class="cat-item" href="#updates">事件时间线</a>
+          <a class="cat-item" href="#comments">网友评论</a>
+          <a class="cat-item" href="#infos">相关资讯</a>
+          <a class="cat-item" href="#extras">热门榜单</a>
+        </div>
+      </section>
+
+      <!-- 5. 深度解析 -->
+      <section class="section deep" id="deep">
+        <h2>深度解析：切片争议中的授权边界与收入分配</h2>
+        <p>“夜航船”切片争议从10月28日主播“老周”直播质疑开始，到11月7日运营方公布分成流水，前后十天经历了多次信息反转。核心分歧点可以拆成三组可核对的事实：合同条款的具体措辞、切片收入的流向记录、以及平台规则对“二次创作授权”的定义。</p>
+
+        <h3>合同条款：两版截图的差异在哪</h3>
+        <p>10月28日直播中，“老周”展示了一份合同第7条第2款，措辞为“授权运营方在合作期间内使用直播内容进行推广传播”。11月2日运营方公布的合同截图中，同一条款后面多了一句“包括但不限于剪辑、切条、合集等形式”。两版截图的合同编号一致，但页面水印不同——主播版带有“草稿”水印，运营方版带有“签署版”水印。谁先谁后，目前双方都没有出示第三方存证。</p>
+        <p>可以核对的是：主播在10月28日直播中承认“合同签了两年，今年是第二年”，运营方在11月2日回应中称“续约时已就切片规则做过口头沟通”。口头沟通没有书面记录，这使得条款解释只能回到纸面文字。如果“草稿”水印版本确实是签署前版本，那么“包括但不限于”一句是签署时添加还是事后添加，需要查看签署页的骑缝章位置。目前公开的截图没有显示骑缝章。</p>
+
+        <h3>收入分成：9月流水里的三个数字</h3>
+        <p>11月7日运营方公布的9月流水表显示：切片合集总收入4.7万元，主播分成1.6万元，运营方留存2.1万元，平台抽成1.0万元。主播“老周”在11月7日晚直播中承认收到1.6万元，但指出“切片收入占比38%”这个口径有问题——运营方将直播打赏收入也计入了总收入，而打赏收入在另一份协议中有单独的分成比例。</p>
+        <ul>
+          <li>切片合集收入：4.7万元（运营方口径）</li>
+          <li>主播分成到账：1.6万元（主播确认）</li>
+          <li>打赏收入是否混入：双方均未公布打赏单独流水</li>
+        </ul>
+        <p>这里真正需要核对的是收入科目的拆分方式。运营方表格中的“总收入”包含了打赏、切片和品牌合作三项，但分成比例只对切片一项做了说明。把打赏和切片合并计算，会让切片分成的实际比例显得更高或更低，取决于打赏部分的多少。目前打赏流水未公开，所以“38%”这个数字无法直接验证。</p>
+
+        <h3>平台规则：二次创作授权包含什么</h3>
+        <p>平台在11月3日的专项公告中援引了《内容创作授权规则》第4.1条：“用户使用平台直播内容进行二次创作，需获得主播或授权运营方的书面同意。”规则没有明确“书面同意”是否包括合同中的概括性授权条款。11月3日公告中处置的3个账号，理由是“发布未经核实的收入分成截图”，而非“未经授权切片”。这两个理由的区分在于：前者是传播不实信息，后者是版权授权问题。</p>
+        <p>把三个层面放在一起看，授权争议的实质是合同解释问题，收入争议是财务口径问题，平台规则是传播行为问题。三件事各有各的核对路径，混在一起讨论容易得出“运营方全错”或“主播反悔”的简单结论。目前可以确认的事实是：切片合集确实存在，主播确实收到1.6万元，合同条款存在两个版本。尚未确认的是：哪个版本是签署版、打赏流水具体金额、口头沟通的具体内容。</p>
+      </section>
+
+      <!-- 6. 体验指南 -->
+      <section class="section" id="guide">
+        <h2>吃瓜信息消费路径：先看什么、怎么判断</h2>
+        <p>面对一条突然刷屏的事件，第一件事不是看评论区，而是找原始出处。直播争议类事件，先找当事人直播回放或录屏的完整版本；旧改类事件，先找街道办或项目方的官方公告原文。原始出处决定了后续讨论的基准线。</p>
+        <p>第二步看时间线是否完整。以“夜航船”事件为例，10月28日主播质疑、11月2日运营方回应、11月3日平台公告、11月7日流水公布，四个节点之间有没有缺失的环节？如果只有主播说法和平台公告，中间运营方的回应被跳过，那时间线就是断的。断点越多，后续信息越容易反转。</p>
+        <p>第三步比较不同来源对同一事实的描述。同样讲9月流水，运营方说“切片收入占比38%”，主播说“打赏收入被混进去了”。两个说法指向同一个数据，但口径不同。这时候不要急着站队，先看有没有第三方能提供打赏单独流水——比如平台后台截图、品牌合作方的付款记录。第三方证据出现之前，两个说法都只能算“当事人陈述”。</p>
+        <p>第四步判断信息层级。已公开事实（合同存在两个版本）、当事人回应（主播说没授权、运营方说有授权）、媒体转述（哪家媒体采访了谁）、网友推测（“草稿水印说明是后补的”）——这四层信息在传播中经常被压成一句话。看到“据说”“网传”开头的段落，直接跳过，去找它引用的原始帖子。原始帖子如果没有实名或可验证的账号主体，这条信息就只能作为线索，不能作为结论。</p>
+      </section>
+
+      <!-- 7. FAQ -->
+      <section class="section" id="faq">
+        <h2>常见问题</h2>
+        <details>
+          <summary>“夜航船”切片争议目前有定论了吗？</summary>
+          <div class="faq-body">截至11月7日，合同条款的两个版本仍未被第三方鉴定，打赏流水也未公开。运营方公布了9月分成表，主播确认收到1.6万元但质疑收入口径。平台11月3日处置的是传播不实截图的账号，没有对授权争议本身做出裁定。定论需要等合同签署页的骑缝章鉴定或平台介入调查。</div>
+        </details>
+        <details>
+          <summary>南坪旧改补偿方案的争议点具体是什么？</summary>
+          <div class="faq-body">11月6日说明会上，居民代表提出的核心异议是过渡安置费的发放周期。项目方方案写的是“按月发放”，居民代表拿到的前期沟通材料写的是“按季度发放”。两种口径直接影响居民在过渡期的现金流安排。另外面积认定标准中“阳台按一半面积计算”这一条，居民代表要求改为“按全面积计算”，项目方未当场回应。</div>
+        </details>
+        <details>
+          <summary>“小鹿”聊天记录截图为什么被质疑？</summary>
+          <div class="faq-body">截图没有显示完整的时间戳，只露出“下午2:37”这样的片段。对话中出现的合作方账号在10月26日已注销，无法回溯。11月5日一位自称合作方员工的用户发帖否认截图内容，但没有提供公司层面的书面声明。平台11月3日公告中未提及该事件。目前截图只能作为线索，不能作为事实依据。</div>
+        </details>
+        <details>
+          <summary>《周末出发》第三期剪辑争议，节目组怎么回应的？</summary>
+          <div class="faq-body">11月1日节目组在官方账号发布了一段4分12秒的未剪辑片段，显示嘉宾A的发言和嘉宾B的反应发生在同一场景、相隔约15秒。节目组配文称“正片因时长原因做了顺序调整”。观众对比后指出，未剪辑片段中嘉宾B的反应镜头与正片中的镜头角度不同，说明正片用了另一机位的素材。节目组未对此做进一步说明。</div>
+        </details>
+        <details>
+          <summary>“阿沁”停更四周，产品质量问题解决了吗？</summary>
+          <div class="faq-body">11月4日恢复更新的视频中，“阿沁”提到“选品流程做了调整”，但没有具体说明此前被粉丝追问的某款零食临期问题。评论区前排仍有用户贴出10月收到的产品包装日期照片。视频中未展示新的质检报告或供应商名单。停更原因表述为“团队重组”，与产品质量问题的关联性未做正面回应。</div>
+        </details>
+        <details>
+          <summary>吃瓜信息里“网传截图”怎么判断真假？</summary>
+          <div class="faq-body">先看截图有没有完整的界面元素——时间戳、账号ID、设备状态栏。只截取对话框内容的截图，可信度最低。再看截图中的账号是否可搜索到，如果账号已注销或设为私密，无法交叉验证。最后看有没有第二个人从不同角度截到同一段对话。三个条件缺两个以上，截图只能当线索用。</div>
+        </details>
+      </section>
+
+      <!-- 8. 用户评论 -->
+      <section class="section" id="comments">
+        <h2>网友评论</h2>
+        <p class="section-sub">来自不同平台的讨论摘录，保留口语表达</p>
+        <div class="comment-grid">
+          <div class="comment-card"><div class="comment-author">吃瓜不吐皮 <span class="badge">热评</span></div>夜航船那个合同截图，草稿水印和签署版水印，到底哪个是真的啊？主播说草稿是签之前给的，运营说签署版才是最终版，两边都拿不出骑缝章。</div>
+          <div class="comment-card"><div class="comment-author">南坪土著</div>说明会我看了直播，居民代表问阳台面积的时候，项目方那个人翻了两页文件才回答，明显没准备。</div>
+          <div class="comment-card"><div class="comment-author">阿沁的老粉了</div>停更四周回来就一句“团队重组”，那之前买的坚果临期怎么说？评论区问了几十条都没回。</div>
+          <div class="comment-card"><div class="comment-author">周末不出发</div>节目组放未剪辑片段反而更奇怪了，正片里B的反应镜头明显是另一个机位，放出来的片段里B根本没那个表情。</div>
+          <div class="comment-card"><div class="comment-author">路过的猹</div>小鹿那个聊天记录我第一眼就觉得假，截图连状态栏都没有，就一个对话框，这种图一天能P十张。</div>
+          <div class="comment-card"><div class="comment-author">切片观察员</div>4.7万总收入里主播拿1.6万，如果打赏不算进去，切片部分主播分成其实不止38%。运营把打赏混进去算，数字就变好看了。</div>
+          <div class="comment-card"><div class="comment-author">今天也不想上班</div>吃瓜吃到最后发现最累的是等回应，主播等运营回应，运营等平台裁定，平台说我只管不实信息。</div>
+          <div class="comment-card"><div class="comment-author">老周直播间房管</div>28号那场直播我在，老周说的是“切片收入应该有我一份”，没说不让切片。后来传成“主播反对切片”是断章取义了。</div>
+          <div class="comment-card"><div class="comment-author">阳台面积计算器</div>南坪旧改那个阳台算一半，我家阳台6平米，按一半算少3平米，按周边房价折算差好几万。居民代表要求全算不是没道理。</div>
+          <div class="comment-card"><div class="comment-author">只看不说话</div>11月3号那个公告处置了12个账号，但没说具体哪12个，只说了3个跟切片相关，剩下9个是干啥的？</div>
+          <div class="comment-card"><div class="comment-author">夜航船老观众</div>合同条款那个“包括但不限于”如果是签署时加的，那老周确实签了字。但草稿水印版本和签署版差这一句，到底谁改的，得看签署页。</div>
+          <div class="comment-card"><div class="comment-author">综艺剪辑受害者</div>《周末出发》正片里A说话的时候B在笑，未剪辑片段里B在低头看手机。节目组说“顺序调整”，这哪是顺序，是换了素材吧。</div>
+          <div class="comment-card"><div class="comment-author">阿沁选品群管理</div>新视频里展示的供应商跟之前不是同一家，但没明说换供应商，只说了“流程调整”。老粉都看得出来。</div>
+          <div class="comment-card"><div class="comment-author">吃瓜效率手册</div>现在看到“网传”两个字直接划走，等有实名或官方公告再看。时间省下来能多看两集剧。</div>
+        </div>
+      </section>
+
+      <!-- 9. 相关资讯 -->
+      <section class="section" id="infos">
+        <h2>相关资讯速递</h2>
+        <p class="section-sub">2026年11月1日—11月7日</p>
+        <div class="info-item">
+          <span class="info-date">11-07</span>
+          <div class="info-content">
+            <h4>“夜航船”运营方发布9月分成明细表</h4>
+            <p>表格显示切片合集总收入4.7万元，主播分成1.6万元，平台抽成1.0万元。运营方称“分成比例按合同执行”。</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-date">11-06</span>
+          <div class="info-content">
+            <h4>南坪旧改说明会居民代表提交书面意见</h4>
+            <p>意见书共3页，包含过渡安置费发放周期、阳台面积计算方式、评估机构选择流程三项修改建议。街道办表示“将在一周内书面答复”。</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-date">11-05</span>
+          <div class="info-content">
+            <h4>“小鹿”事件合作方员工发帖否认截图内容</h4>
+            <p>该员工在职场社交平台发帖称“截图中的对话没有发生过”，未提供公司盖章声明。原截图首发群聊之一的管理员已将相关消息撤回。</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-date">11-03</span>
+          <div class="info-content">
+            <h4>平台发布“清朗”专项处置公告</h4>
+            <p>对12个账号采取禁言措施，其中3个账号涉及发布未经核实的“夜航船”收入分成截图。公告未公示完整账号名单。</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-date">11-01</span>
+          <div class="info-content">
+            <h4>《周末出发》节目组发布未剪辑片段</h4>
+            <p>片段时长4分12秒，包含嘉宾A发言与嘉宾B反应的连续镜头。节目组配文“正片因时长做了顺序调整”，未回应机位差异问题。</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-date">10-28</span>
+          <div class="info-content">
+            <h4>主播“老周”直播提出切片收入质疑</h4>
+            <p>直播中展示合同第7条第2款“草稿”水印版本，称“切片收入应该有我一份”。在线观看峰值6.3万，录屏在多个平台传播。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. 相关推荐 -->
+      <section class="section" id="recommend">
+        <h2>相关推荐方向</h2>
+        <p class="section-sub">按具体条目与类型索引</p>
+        <div class="rec-tags">
+          <a class="rec-tag" href="#featured">直播切片收入分成案例</a>
+          <a class="rec-tag" href="#featured">南坪旧改阳台面积计算</a>
+          <a class="rec-tag" href="#featured">阿沁选品流程调整</a>
+          <a class="rec-tag" href="#featured">综艺剪辑机位差异</a>
+          <a class="rec-tag" href="#updates">合同条款草稿水印鉴别</a>
+          <a class="rec-tag" href="#comments">平台专项公告处置名单</a>
+          <a class="rec-tag" href="#faq">聊天记录截图验证方法</a>
+          <a class="rec-tag" href="#deep">二次创作授权规则解读</a>
+        </div>
+      </section>
+
+      <!-- 11. 补充板块：热门榜单 -->
+      <section class="section" id="extras">
+        <h2>近七日吃瓜热度榜</h2>
+        <p class="section-sub">按站内条目浏览量排序（截至11月7日）</p>
+        <ol class="rank-list">
+          <li><span class="rank-name">“夜航船”切片授权争议</span><span class="rank-bar"><span style="width:100%"></span></span></li>
+          <li><span class="rank-name">南坪旧改说明会现场实录</span><span class="rank-bar"><span style="width:85%"></span></span></li>
+          <li><span class="rank-name">“阿沁”停更四周后恢复更新</span><span class="rank-bar"><span style="width:72%"></span></span></li>
+          <li><span class="rank-name">《周末出发》第三期剪辑争议</span><span class="rank-bar"><span style="width:63%"></span></span></li>
+          <li><span class="rank-name">“小鹿”聊天记录外泄事件</span><span class="rank-bar"><span style="width:48%"></span></span></li>
+          <li><span class="rank-name">平台“清朗”专项处置公告</span><span class="rank-bar"><span style="width:41%"></span></span></li>
+        </ol>
+      </section>
+
+    </main>
+
+    <!-- 右侧辅助栏 -->
+    <aside class="sidebar">
+      <div class="side-card">
+        <h3>今日热词</h3>
+        <ul class="side-list">
+          <li><span class="hot-num">1</span>夜航船切片分成</li>
+          <li><span class="hot-num">2</span>南坪旧改说明会</li>
+          <li><span class="hot-num">3</span>阿沁恢复更新</li>
+          <li><span class="hot-num">4</span>周末出发剪辑</li>
+          <li><span class="hot-num">5</span>小鹿聊天记录</li>
+          <li><span class="hot-num">6</span>平台专项公告</li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <h3>事件时间线</h3>
+        <ul class="side-list">
+          <li><strong>10-25</strong> 小鹿截图流传</li>
+          <li><strong>10-28</strong> 老周直播质疑</li>
+          <li><strong>11-01</strong> 节目组发未剪辑片段</li>
+          <li><strong>11-02</strong> 运营方晒合同</li>
+          <li><strong>11-03</strong> 平台处置12账号</li>
+          <li><strong>11-06</strong> 南坪说明会</li>
+          <li><strong>11-07</strong> 运营方公布流水</li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <h3>投稿与互动</h3>
+        <ul class="side-list">
+          <li><a href="#comments">网友评论区</a></li>
+          <li><a href="#faq">提问与解答</a></li>
+          <li><a href="#featured">条目补充入口</a></li>
+          <li><a href="#extras">榜单投票</a></li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- 页尾 -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">五一白虎吃瓜</div>
+        <p class="footer-desc">追踪网络热门事件与争议话题，覆盖直播切片、城市旧改、账号运营和综艺讨论。内容时间跨度以2026年10月下旬至11月上旬为主，条目类型包括事件时间线、当事人回应、平台公告和网友评论。</p>
+      </div>
+      <div class="footer-col">
+        <h4>内容板块</h4>
+        <a href="#featured">精选事件</a>
+        <a href="#updates">动态追踪</a>
+        <a href="#deep">深度解析</a>
+        <a href="#guide">吃瓜指南</a>
+      </div>
+      <div class="footer-col">
+        <h4>互动</h4>
+        <a href="#comments">网友评论</a>
+        <a href="#faq">常见问答</a>
+        <a href="#recommend">相关推荐</a>
+        <a href="#extras">热门榜单</a>
+      </div>
+      <div class="footer-col">
+        <h4>关于</h4>
+        <a href="#overview">领域概览</a>
+        <a href="#categories">分类入口</a>
+        <a href="#infos">资讯速递</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 五一白虎吃瓜 · 内容聚合示例页</span>
+      <span>更新于 2026-11-08 · 对应条目：运营方公布流水、南坪说明会书面意见</span>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" aria-label="回到顶部">↑</button>
+
+  <script>
+    // 菜单切换
+    const menuToggle = document.getElementById('menuToggle');
+    const headerNav = document.getElementById('headerNav');
+    const overlay = document.getElementById('overlay');
+
+    function closeMenu() {
+      headerNav.classList.remove('open');
+      overlay.classList.remove('active');
+      if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = headerNav.classList.toggle('open');
+        overlay.classList.toggle('active', isOpen);
+        menuToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+
+    overlay.addEventListener('click', closeMenu);
+
+    headerNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 740) closeMenu();
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    // 回到顶部
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+      backTop.classList.toggle('visible', window.scrollY > window.innerHeight);
+    });
+    backTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 搜索过滤
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const cardGrid = document.getElementById('cardGrid');
+    const allCards = Array.from(cardGrid.querySelectorAll('.card'));
+
+    function filterCards() {
+      const q = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+      allCards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        const match = !q || text.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) visibleCount++;
+      });
+      let noResult = cardGrid.querySelector('.no-result');
+      if (visibleCount === 0 && q) {
+        if (!noResult) {
+          noResult = document.createElement('p');
+          noResult.className = 'no-result';
+          noResult.style.cssText = 'padding:20px;text-align:center;color:var(--text-tertiary);font-size:14px;';
+          noResult.textContent = '没有找到匹配的条目，换个关键词试试。';
+          cardGrid.appendChild(noResult);
+        }
+      } else if (noResult) {
+        noResult.remove();
+      }
+    }
+
+    searchBtn.addEventListener('click', filterCards);
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') filterCards();
+    });
+
+    // 侧栏导航高亮
+    const sections = document.querySelectorAll('.section[id]');
+    const channelLinks = document.querySelectorAll('.channel-nav a');
+
+    function highlightNav() {
+      let currentId = '';
+      const scrollPos = window.scrollY + 120;
+      sections.forEach(sec => {
+        if (sec.offsetTop <= scrollPos) {
+          currentId = sec.id;
+        }
+      });
+      channelLinks.forEach(link => {
+        const href = link.getAttribute('href').replace('#', '');
+        link.classList.toggle('active', href === currentId);
+      });
+    }
+
+    window.addEventListener('scroll', highlightNav);
+    highlightNav();
+  </script>
+
+  <!-- 结构化数据 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "五一白虎吃瓜",
+    "description": "网络热门事件与讨论聚合，覆盖直播切片争议、城市旧改、账号运营与综艺剪辑讨论。",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "“夜航船”切片争议目前有定论了吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "截至11月7日，合同条款的两个版本仍未被第三方鉴定，打赏流水也未公开。运营方公布了9月分成表，主播确认收到1.6万元但质疑收入口径。平台11月3日处置的是传播不实截图的账号，没有对授权争议本身做出裁定。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "南坪旧改补偿方案的争议点具体是什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "11月6日说明会上，居民代表提出的核心异议是过渡安置费的发放周期。项目方方案写的是“按月发放”，居民代表拿到的前期沟通材料写的是“按季度发放”。另外面积认定标准中“阳台按一半面积计算”这一条，居民代表要求改为“按全面积计算”。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "“小鹿”聊天记录截图为什么被质疑？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "截图没有显示完整的时间戳，只露出“下午2:37”这样的片段。对话中出现的合作方账号在10月26日已注销，无法回溯。11月5日一位自称合作方员工的用户发帖否认截图内容，但没有提供公司层面的书面声明。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "《周末出发》第三期剪辑争议，节目组怎么回应的？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "11月1日节目组在官方账号发布了一段4分12秒的未剪辑片段，显示嘉宾A的发言和嘉宾B的反应发生在同一场景、相隔约15秒。节目组配文称“正片因时长原因做了顺序调整”。观众对比后指出，未剪辑片段中嘉宾B的反应镜头与正片中的镜头角度不同。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "“阿沁”停更四周，产品质量问题解决了吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "11月4日恢复更新的视频中，“阿沁”提到“选品流程做了调整”，但没有具体说明此前被粉丝追问的某款零食临期问题。评论区前排仍有用户贴出10月收到的产品包装日期照片。视频中未展示新的质检报告或供应商名单。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "吃瓜信息里“网传截图”怎么判断真假？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "先看截图有没有完整的界面元素——时间戳、账号ID、设备状态栏。只截取对话框内容的截图，可信度最低。再看截图中的账号是否可搜索到，如果账号已注销或设为私密，无法交叉验证。最后看有没有第二个人从不同角度截到同一段对话。"
+        }
+      }
+    ]
+  }
+  </script>
+
+</body>
+        </html>
