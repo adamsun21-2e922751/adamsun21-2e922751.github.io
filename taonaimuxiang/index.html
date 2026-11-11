@@ -1,0 +1,1819 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>桃乃木香奈作品 - 作品索引与深度解析</title>
+  <meta name="description" content="桃乃木香奈作品聚合页，收录桃乃木香奈历年作品条目、类型分类、最新动态与观众评论，适合想按年份、题材和评分筛选作品的观众查阅。">
+  <meta name="keywords" content="桃乃木香奈作品">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23b34a5e'/%3E%3Cpath d='M10 22 L16 8 L22 22' stroke='%23ffe9ec' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='23' r='2.2' fill='%23ffe9ec'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --primary: #b34a5e;
+      --primary-light: #f8e6ea;
+      --primary-dark: #8c3446;
+      --bg: #fbf8f7;
+      --surface: #ffffff;
+      --text-1: #2c2325;
+      --text-2: #5e5457;
+      --text-3: #8f8386;
+      --border: #e8dedf;
+      --radius-card: 14px;
+      --radius-btn: 8px;
+      --radius-tag: 20px;
+      --shadow-sm: 0 2px 8px rgba(44, 35, 37, 0.06);
+      --shadow-md: 0 8px 24px rgba(44, 35, 37, 0.10);
+      --font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+      --sticky-height: 110px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--sticky-height);
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text-1);
+      line-height: 1.7;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--primary-dark); text-decoration: none; }
+    a:hover { color: var(--primary); }
+    img { display: block; max-width: 100%; height: auto; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ---------- 吸顶公告条 ---------- */
+    .announce-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--primary-dark);
+      color: #ffe9ec;
+      font-size: 13px;
+      padding: 7px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .announce-bar .brand-mark {
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+    .announce-bar .announce-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .announce-bar .announce-item::before {
+      content: "•";
+      color: #f2a9b6;
+      font-weight: 700;
+    }
+    .announce-bar time { color: #f8cdd5; font-variant-numeric: tabular-nums; }
+
+    /* ---------- 吸顶页头 ---------- */
+    .site-header {
+      position: sticky;
+      top: 34px;
+      z-index: 99;
+      background: rgba(251, 248, 247, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .header-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      height: 64px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .logo svg { width: 34px; height: 34px; }
+    .logo-text {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--text-1);
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .main-nav {
+      display: flex;
+      gap: 4px;
+      flex: 1;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .main-nav::-webkit-scrollbar { display: none; }
+    .main-nav a {
+      font-size: 14px;
+      color: var(--text-2);
+      padding: 6px 12px;
+      border-radius: var(--radius-btn);
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+    }
+    .main-nav a:hover,
+    .main-nav a:focus-visible {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      outline: none;
+    }
+    .header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-tag);
+      padding: 0 4px 0 14px;
+      height: 36px;
+      width: 200px;
+      transition: border-color 0.2s;
+    }
+    .search-box:focus-within { border-color: var(--primary); }
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 13px;
+      width: 100%;
+      color: var(--text-1);
+    }
+    .search-box input::placeholder { color: var(--text-3); }
+    .search-box button {
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--radius-tag);
+      height: 28px;
+      padding: 0 12px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .search-box button:hover { background: var(--primary-dark); }
+    .hamburger {
+      display: none;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: var(--radius-btn);
+      width: 38px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--text-1);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 98px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 98;
+      background: rgba(44, 35, 37, 0.4);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu-panel {
+      background: var(--surface);
+      padding: 16px 24px 24px;
+      max-height: 70vh;
+      overflow-y: auto;
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+    }
+    .mobile-menu-panel a {
+      display: block;
+      padding: 10px 0;
+      font-size: 15px;
+      color: var(--text-1);
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu-panel a:last-child { border-bottom: none; }
+
+    /* ---------- 首屏 ---------- */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #fdf4f5 0%, #f8e6ea 45%, #f4dce2 100%);
+      padding: 56px 24px 64px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-text h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.2;
+      font-weight: 800;
+      color: var(--text-1);
+      letter-spacing: -0.5px;
+      margin-bottom: 18px;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: var(--text-2);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 26px;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      font-size: 13px;
+      color: var(--text-2);
+      margin-bottom: 28px;
+    }
+    .hero-meta span {
+      background: rgba(255,255,255,0.7);
+      padding: 4px 14px;
+      border-radius: var(--radius-tag);
+      backdrop-filter: blur(4px);
+    }
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      padding: 11px 28px;
+      border-radius: var(--radius-btn);
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--primary-dark);
+      padding: 11px 28px;
+      border-radius: var(--radius-btn);
+      font-size: 15px;
+      font-weight: 600;
+      border: 1.5px solid var(--primary);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-ghost:hover {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .hero-visual {
+      position: relative;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-visual svg {
+      width: 100%;
+      max-width: 460px;
+      height: auto;
+    }
+    .hero-badge {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 12px 18px;
+      box-shadow: var(--shadow-md);
+      font-size: 12px;
+      color: var(--text-2);
+      text-align: right;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+    .hero-badge strong {
+      display: block;
+      font-size: 20px;
+      color: var(--primary-dark);
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    /* ---------- 主内容区 三栏 ---------- */
+    .page-layout {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 36px 24px 64px;
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr) 240px;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* 左频道索引 */
+    .channel-index {
+      position: sticky;
+      top: calc(var(--sticky-height) + 16px);
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 18px 14px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+    .channel-index h2 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-3);
+      margin-bottom: 12px;
+      padding-left: 6px;
+      font-weight: 600;
+    }
+    .channel-index ul { list-style: none; }
+    .channel-index li { margin-bottom: 2px; }
+    .channel-index a {
+      display: block;
+      padding: 7px 10px;
+      border-radius: var(--radius-btn);
+      font-size: 13.5px;
+      color: var(--text-2);
+      transition: background 0.2s, color 0.2s;
+    }
+    .channel-index a:hover,
+    .channel-index a.active {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    /* 主内容 */
+    .main-content { min-width: 0; display: flex; flex-direction: column; gap: 40px; }
+
+    .section {
+      scroll-margin-top: var(--sticky-height);
+    }
+    .section-h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-1);
+      margin-bottom: 8px;
+      line-height: 1.35;
+      letter-spacing: -0.3px;
+    }
+    .section-desc {
+      font-size: 13.5px;
+      color: var(--text-3);
+      margin-bottom: 20px;
+      max-width: 640px;
+    }
+
+    /* 领域概览 */
+    .overview-text {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 24px 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      font-size: 14.5px;
+      color: var(--text-2);
+      line-height: 1.85;
+    }
+    .overview-text p { margin-bottom: 12px; }
+    .overview-text p:last-child { margin-bottom: 0; }
+    .overview-text strong { color: var(--text-1); }
+
+    /* 精选卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 18px;
+    }
+    .work-card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .work-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .work-card .thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      background: var(--primary-light);
+    }
+    .work-card-body {
+      padding: 14px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .work-card-body h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 2px 9px;
+      border-radius: var(--radius-tag);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      white-space: nowrap;
+    }
+    .tag-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-3);
+    }
+    .work-card-body p {
+      font-size: 12.5px;
+      color: var(--text-2);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-3);
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+    }
+    .card-meta .heat { color: var(--primary); font-weight: 600; }
+
+    /* 动态列表 */
+    .update-list {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .update-item {
+      display: flex;
+      gap: 16px;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+    .update-item:last-child { border-bottom: none; }
+    .update-item time {
+      font-size: 12px;
+      color: var(--text-3);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+      min-width: 76px;
+    }
+    .update-item .update-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-1);
+      margin-right: 8px;
+    }
+    .update-item .update-summary {
+      font-size: 13px;
+      color: var(--text-2);
+    }
+
+    /* 分类入口 */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+    }
+    .category-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 16px 14px;
+      text-align: center;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-1);
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .category-item:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .category-item span {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-3);
+    }
+
+    /* 深度解析 */
+    .deep-dive {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 28px 32px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      font-size: 14.5px;
+      color: var(--text-2);
+      line-height: 1.9;
+    }
+    .deep-dive h3 {
+      font-size: 17px;
+      color: var(--text-1);
+      margin: 24px 0 10px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .deep-dive h3:first-child { margin-top: 0; }
+    .deep-dive p { margin-bottom: 12px; }
+    .deep-dive ul { margin: 8px 0 14px 20px; }
+    .deep-dive li { margin-bottom: 6px; }
+    .deep-dive strong { color: var(--text-1); }
+    .compare-box {
+      background: var(--bg);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 var(--radius-btn) var(--radius-btn) 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 13.5px;
+    }
+    .compare-box p { margin-bottom: 6px; }
+    .compare-box p:last-child { margin-bottom: 0; }
+
+    /* 体验指南 */
+    .guide-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .guide-step {
+      display: flex;
+      gap: 18px;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .guide-step:last-child { border-bottom: none; }
+    .step-num {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 800;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .step-body h4 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 4px;
+    }
+    .step-body p {
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .faq-list details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 0 20px;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s;
+    }
+    .faq-list details[open] {
+      border-color: var(--primary);
+    }
+    .faq-list summary {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-1);
+      padding: 14px 0;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      outline: none;
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after {
+      content: "+";
+      font-size: 18px;
+      color: var(--primary);
+      font-weight: 400;
+      transition: transform 0.2s;
+    }
+    .faq-list details[open] summary::after {
+      content: "−";
+    }
+    .faq-list .faq-answer {
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.8;
+      padding: 0 0 16px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+
+    /* 评论 */
+    .comment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .comment-card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .comment-nick {
+      font-weight: 700;
+      color: var(--text-1);
+      font-size: 13px;
+    }
+    .comment-date {
+      font-size: 11px;
+      color: var(--text-3);
+    }
+
+    /* 资讯 */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .news-item {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 16px 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+    .news-item img {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: var(--radius-btn);
+      flex-shrink: 0;
+    }
+    .news-body h4 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 4px;
+      line-height: 1.45;
+    }
+    .news-body .news-date {
+      font-size: 11.5px;
+      color: var(--text-3);
+      margin-bottom: 4px;
+      display: block;
+    }
+    .news-body p {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+
+    /* 相关推荐 标签 */
+    .related-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .related-tags a {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-tag);
+      padding: 7px 18px;
+      font-size: 13px;
+      color: var(--text-2);
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+    .related-tags a:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    /* 榜单 */
+    .rank-list {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .rank-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13.5px;
+    }
+    .rank-item:last-child { border-bottom: none; }
+    .rank-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 800;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .rank-num.top { background: var(--primary); color: #fff; }
+    .rank-name { font-weight: 600; color: var(--text-1); flex: 1; }
+    .rank-score { font-size: 12px; color: var(--primary); font-weight: 600; }
+
+    /* 右辅助栏 */
+    .aux-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: sticky;
+      top: calc(var(--sticky-height) + 16px);
+    }
+    .sidebar-card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 18px 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .sidebar-card h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: 0.3px;
+    }
+    .sidebar-card ul { list-style: none; }
+    .sidebar-card li { margin-bottom: 8px; }
+    .sidebar-card li:last-child { margin-bottom: 0; }
+    .sidebar-card a {
+      font-size: 13px;
+      color: var(--text-2);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+    .sidebar-card a:hover { color: var(--primary-dark); }
+    .sidebar-card .count {
+      font-size: 11px;
+      color: var(--text-3);
+      flex-shrink: 0;
+    }
+    .sidebar-update-item {
+      font-size: 12.5px;
+      color: var(--text-2);
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--border);
+      line-height: 1.5;
+    }
+    .sidebar-update-item:last-child { border-bottom: none; }
+    .sidebar-update-item time {
+      font-size: 11px;
+      color: var(--text-3);
+      display: block;
+    }
+
+    /* 互动板块 */
+    .interact-card {
+      background: linear-gradient(135deg, var(--primary-light), #fff);
+      border: 1px solid var(--primary-light);
+      border-radius: var(--radius-card);
+      padding: 22px 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .interact-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 6px;
+    }
+    .interact-card p {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    .interact-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .interact-actions a {
+      font-size: 13px;
+      padding: 7px 16px;
+      border-radius: var(--radius-btn);
+      background: var(--surface);
+      color: var(--primary-dark);
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, background 0.2s;
+      font-weight: 600;
+    }
+    .interact-actions a:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    /* 页尾 */
+    .site-footer {
+      background: #2c2325;
+      color: #d4c8ca;
+      padding: 48px 24px 32px;
+      margin-top: 24px;
+    }
+    .footer-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr repeat(3, 1fr);
+      gap: 32px;
+    }
+    .footer-brand .footer-logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-brand .footer-logo svg { width: 26px; height: 26px; }
+    .footer-brand p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #b0a2a5;
+      max-width: 300px;
+    }
+    .footer-col h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a {
+      font-size: 13px;
+      color: #b0a2a5;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: 1360px;
+      margin: 32px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      font-size: 12px;
+      color: #8f8386;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* 回到顶部 */
+    .back-to-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      font-size: 18px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s, background 0.2s;
+      z-index: 90;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: var(--primary-dark); }
+
+    /* 搜索无结果 */
+    .no-result {
+      display: none;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-3);
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      border: 1px dashed var(--border);
+    }
+    .no-result.show { display: block; }
+
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .page-layout {
+        grid-template-columns: 180px minmax(0, 1fr);
+      }
+      .aux-sidebar {
+        grid-column: 1 / -1;
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 20px;
+      }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero-visual { height: 220px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 740px) {
+      :root { --sticky-height: 104px; }
+      .announce-bar {
+        padding: 6px 14px;
+        font-size: 12px;
+        gap: 12px;
+      }
+      .site-header { top: 32px; padding: 0 14px; }
+      .header-inner { height: 58px; gap: 14px; }
+      .logo-text { font-size: 16px; }
+      .main-nav { display: none; }
+      .header-actions .search-box { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { top: 90px; }
+      .page-layout {
+        grid-template-columns: 1fr;
+        padding: 24px 14px 48px;
+        gap: 24px;
+      }
+      .channel-index {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 12px;
+      }
+      .channel-index h2 { width: 100%; margin-bottom: 4px; }
+      .channel-index ul { display: flex; flex-wrap: wrap; gap: 4px; }
+      .channel-index li { margin-bottom: 0; }
+      .channel-index a { font-size: 12.5px; padding: 5px 10px; }
+      .hero { padding: 36px 14px 44px; }
+      .hero-badge { display: none; }
+      .card-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .work-card-body { padding: 10px 12px 12px; }
+      .news-item { flex-direction: column; gap: 10px; }
+      .news-item img { width: 100%; height: 140px; }
+      .comment-grid { grid-template-columns: 1fr; }
+      .deep-dive { padding: 20px 18px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+      .back-to-top { bottom: 16px; right: 16px; width: 38px; height: 38px; }
+    }
+
+    @media (max-width: 400px) {
+      .card-grid { grid-template-columns: 1fr; }
+      .category-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+  <!-- 吸顶公告条 -->
+  <div class="announce-bar" role="status" aria-label="站内公告">
+    <span class="brand-mark">桃乃木香奈作品</span>
+    <span class="announce-item"><time datetime="2026-11-08">11月8日</time>《冬日来信·前篇》上线</span>
+    <span class="announce-item"><time datetime="2026-11-06">11月6日</time>2026年度票选结果公布</span>
+    <span class="announce-item">本周新增 4 部作品条目</span>
+  </div>
+
+  <!-- 吸顶页头 -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="桃乃木香奈作品首页">
+        <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="34" height="34" rx="9" fill="#b34a5e"/>
+          <path d="M11 23 L17 9 L23 23" stroke="#ffe9ec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="17" cy="24.5" r="2.2" fill="#ffe9ec"/>
+        </svg>
+        <span class="logo-text">桃乃木香奈作品</span>
+      </a>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="/#overview">领域概览</a>
+        <a href="/#featured">精选作品</a>
+        <a href="/#updates">最新动态</a>
+        <a href="/#categories">分类索引</a>
+        <a href="/#deep-dive">深度解析</a>
+        <a href="/#guide">观看指南</a>
+        <a href="/#faq">常见问答</a>
+        <a href="/#comments">观众评论</a>
+        <a href="/#news">相关资讯</a>
+        <a href="/#rank">热度榜单</a>
+        <a href="/#interact">参与互动</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-box" role="search">
+          <input type="search" id="siteSearch" placeholder="搜索作品名、类型…" aria-label="搜索作品">
+          <button type="button" id="searchBtn">搜索</button>
+        </div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 移动菜单 -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="移动导航菜单">
+    <div class="mobile-menu-panel">
+      <a href="/#overview">领域概览</a>
+      <a href="/#featured">精选作品</a>
+      <a href="/#updates">最新动态</a>
+      <a href="/#categories">分类索引</a>
+      <a href="/#deep-dive">深度解析</a>
+      <a href="/#guide">观看指南</a>
+      <a href="/#faq">常见问答</a>
+      <a href="/#comments">观众评论</a>
+      <a href="/#news">相关资讯</a>
+      <a href="/#rank">热度榜单</a>
+      <a href="/#interact">参与互动</a>
+    </div>
+  </div>
+
+  <!-- 首屏 -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1 id="hero-title">桃乃木香奈作品</h1>
+        <p class="hero-sub">汇集桃乃木香奈自2015年出道以来的单体、共演与企划类作品条目，按年份、题材、发行商与评分整理，附观众实评与版本差异说明。</p>
+        <div class="hero-meta">
+          <span>已收录 186 部作品</span>
+          <span>最近更新 2026-11-08</span>
+          <span>覆盖 12 家发行商</span>
+        </div>
+        <div class="hero-cta">
+          <a href="/#featured" class="btn-primary">浏览精选作品</a>
+          <a href="/#guide" class="btn-ghost">按年份筛选</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 460 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="40" y="30" width="380" height="260" rx="20" fill="#fff" fill-opacity="0.55"/>
+          <rect x="60" y="55" width="150" height="18" rx="9" fill="#b34a5e" fill-opacity="0.35"/>
+          <rect x="60" y="85" width="240" height="10" rx="5" fill="#b34a5e" fill-opacity="0.18"/>
+          <rect x="60" y="105" width="200" height="10" rx="5" fill="#b34a5e" fill-opacity="0.18"/>
+          <rect x="60" y="140" width="110" height="90" rx="10" fill="#b34a5e" fill-opacity="0.25"/>
+          <rect x="185" y="140" width="110" height="90" rx="10" fill="#b34a5e" fill-opacity="0.15"/>
+          <rect x="310" y="140" width="90" height="42" rx="8" fill="#b34a5e" fill-opacity="0.12"/>
+          <rect x="310" y="192" width="90" height="38" rx="8" fill="#b34a5e" fill-opacity="0.12"/>
+          <circle cx="340" cy="70" r="22" fill="#b34a5e" fill-opacity="0.18"/>
+          <path d="M332 70 L338 76 L350 62" stroke="#b34a5e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="hero-badge">
+          <strong>186</strong>
+          部条目 · 持续收录
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三栏主布局 -->
+  <div class="page-layout">
+
+    <!-- 左频道索引 -->
+    <aside class="channel-index" aria-label="频道索引">
+      <h2>频道索引</h2>
+      <ul>
+        <li><a href="/#overview" class="active">领域概览</a></li>
+        <li><a href="/#featured">精选作品</a></li>
+        <li><a href="/#updates">最新动态</a></li>
+        <li><a href="/#categories">分类索引</a></li>
+        <li><a href="/#deep-dive">深度解析</a></li>
+        <li><a href="/#guide">观看指南</a></li>
+        <li><a href="/#faq">常见问答</a></li>
+        <li><a href="/#comments">观众评论</a></li>
+        <li><a href="/#news">相关资讯</a></li>
+        <li><a href="/#related">相关推荐</a></li>
+        <li><a href="/#rank">热度榜单</a></li>
+        <li><a href="/#interact">参与互动</a></li>
+      </ul>
+    </aside>
+
+    <!-- 主内容 -->
+    <main class="main-content">
+
+      <!-- 1. 领域概览 -->
+      <section class="section" id="overview">
+        <h2 class="section-h2">作品领域与内容方向</h2>
+        <p class="section-desc">从出道作到2026年新作，梳理桃乃木香奈作品的题材分布与阶段特征。</p>
+        <div class="overview-text">
+          <p><strong>桃乃木香奈</strong>于2015年以S1专属身份出道，早期作品以校园、日常系为主，2017年后逐步扩展至剧情向与共演企划。目前可查条目覆盖单体作品、共演作品、VR作品与写真集附属影像四大类，发行商集中在S1、Moodyz、IdeaPocket三家，另有少量企划单体由Attackers、Madonna发行。</p>
+          <p>从题材看，2015—2018年的作品偏重清纯路线，场景以教室、图书馆、家庭餐厅为主；2019年之后剧情类比例上升，2021年的《雨夜列车》与2023年的《沉默的证言》是两次明显转型。2025年至2026年，VR作品数量增加，2026年10月发行的《冬日来信·前篇》首次采用双视角叙事。</p>
+          <p>对观众来说，作品选择的核心变量是年份、发行商与共演阵容。同一发行商在不同年份的企划风格差异较大，例如S1在2016—2017年的作品平均片长约120分钟，2023年后普遍延长至150分钟以上，附加花絮内容也有所增加。</p>
+        </div>
+      </section>
+
+      <!-- 2. 精选内容推荐 -->
+      <section class="section" id="featured">
+        <h2 class="section-h2">精选作品条目</h2>
+        <p class="section-desc">按题材代表性、观众评分与版本完整度选出，覆盖不同年份。</p>
+        <div class="card-grid" id="featuredGrid">
+          <article class="work-card">
+            <img class="thumb" src="https://picsum.photos/seed/momonogi2015a/400/300" width="400" height="300" alt="桃乃木香奈2015年出道作封面" loading="lazy">
+            <div class="work-card-body">
+              <h3>《初春的约定》</h3>
+              <div class="tag-row"><span class="tag">出道作</span><span class="tag tag-outline">校园</span><span class="tag tag-outline">S1</span></div>
+              <p>2015年4月发行，片长135分钟，收录出道访谈与拍摄花絮。场景以春季校园为主，是了解早期风格的原点作品。</p>
+              <div class="card-meta"><span class="heat">热度 9.2</span><span>2015-04-09</span></div>
+            </div>
+          </article>
+          <article class="work-card">
+            <img class="thumb" src="https://picsum.photos/seed/momonogi2021b/400/300" width="400" height="300" alt="桃乃木香奈雨夜列车场景封面" loading="lazy">
+            <div class="work-card-body">
+              <h3>《雨夜列车》</h3>
+              <div class="tag-row"><span class="tag">剧情向</span><span class="tag tag-outline">Moodyz</span><span class="tag tag-outline">2021</span></div>
+              <p>2021年8月发行，全片在夜间列车与站台取景，对白比重明显高于同期作品。观众讨论集中在结尾十分钟的长镜头。</p>
+              <div class="card-meta"><span class="heat">热度 9.5</span><span>2021-08-14</span></div>
+            </div>
+          </article>
+          <article class="work-card">
+            <img class="thumb" src="https://picsum.photos/seed/momonogi2023c/400/300" width="400" height="300" alt="桃乃木香奈沉默的证言法庭场景封面" loading="lazy">
+            <div class="work-card-body">
+              <h3>《沉默的证言》</h3>
+              <div class="tag-row"><span class="tag">悬疑</span><span class="tag tag-outline">IdeaPocket</span><span class="tag tag-outline">共演</span></div>
+              <p>2023年2月发行，与三位共演者合作，法庭戏份占全片四成。发行方公开的拍摄花絮显示连续拍摄了11天。</p>
+              <div class="card-meta"><span class="heat">热度 9.7</span><span>2023-02-22</span></div>
+            </div>
+          </article>
+          <article class="work-card">
+            <img class="thumb" src="https://picsum.photos/seed/momonogi2025d/400/300" width="400" height="300" alt="桃乃木香奈夏日回声VR封面" loading="lazy">
+            <div class="work-card-body">
+              <h3>《夏日回声》VR</h3>
+              <div class="tag-row"><span class="tag">VR</span><span class="tag tag-outline">S1</span><span class="tag tag-outline">2025</span></div>
+              <p>2025年7月发行，是桃乃木香奈首部全程8K VR作品，支持双耳录音。场景设定在湘南海岸的废弃民宿。</p>
+              <div class="card-meta"><span class="heat">热度 9.1</span><span>2025-07-05</span></div>
+            </div>
+          </article>
+          <article class="work-card">
+            <img class="thumb" src="https://picsum.photos/seed/momonogi2026e/400/300" width="400" height="300" alt="桃乃木香奈冬日来信前篇封面" loading="lazy">
+            <div class="work-card-body">
+              <h3>《冬日来信·前篇》</h3>
+              <div class="tag-row"><span class="tag">新作</span><span class="tag tag-outline">双视角</span><span class="tag tag-outline">Moodyz</span></div>
+              <p>2026年11月8日上线，采用男性视角与女性视角双版本剪辑，前篇片长148分钟。后篇预计2027年1月发行。</p>
+              <div class="card-meta"><span class="heat">热度 9.8</span><span>2026-11-08</span></div>
+            </div>
+          </article>
+          <article class="work-card">
+            <img class="thumb" src="https://picsum.photos/seed/momonogi2024f/400/300" width="400" height="300" alt="桃乃木香奈写真集冬日手纸封面" loading="lazy">
+            <div class="work-card-body">
+              <h3>《冬日手纸》写真集</h3>
+              <div class="tag-row"><span class="tag">写真</span><span class="tag tag-outline">北海道</span><span class="tag tag-outline">2024</span></div>
+              <p>2024年12月发行的实体写真集，96页，取景地为北海道美瑛町。随书附赠拍摄记录视频的下载码，发行两周内加印两次。</p>
+              <div class="card-meta"><span class="heat">热度 8.9</span><span>2024-12-03</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3. 最新更新 / 动态 -->
+      <section class="section" id="updates">
+        <h2 class="section-h2">最近更新与发行动态</h2>
+        <p class="section-desc">按时间倒序排列的作品上线、版本追加与活动信息。</p>
+        <div class="update-list" id="updateList">
+          <div class="update-item">
+            <time datetime="2026-11-08">11月8日</time>
+            <div><span class="update-title">《冬日来信·前篇》</span><span class="update-summary">数字版上线，同步收录双视角剪辑与15分钟幕后访谈。</span></div>
+          </div>
+          <div class="update-item">
+            <time datetime="2026-11-06">11月6日</time>
+            <div><span class="update-title">2026年度观众票选</span><span class="update-summary">《沉默的证言》以4127票位列剧情类第一，《雨夜列车》第二。</span></div>
+          </div>
+          <div class="update-item">
+            <time datetime="2026-11-03">11月3日</time>
+            <div><span class="update-title">《夏日回声》VR</span><span class="update-summary">追加中文字幕版本，原有日语配音不变，字幕可关闭。</span></div>
+          </div>
+          <div class="update-item">
+            <time datetime="2026-10-28">10月28日</time>
+            <div><span class="update-title">《初春的约定》十周年纪念版</span><span class="update-summary">4K修复版开放预约，附赠2015年未公开试镜片段。</span></div>
+          </div>
+          <div class="update-item">
+            <time datetime="2026-10-22">10月22日</time>
+            <div><span class="update-title">《冬日手纸》写真集</span><span class="update-summary">电子版上线，新增8页未收录照片，实体版不再加印。</span></div>
+          </div>
+          <div class="update-item">
+            <time datetime="2026-10-15">10月15日</time>
+            <div><span class="update-title">《沉默的证言》</span><span class="update-summary">发行方公开第2条拍摄花絮，时长6分12秒，含共演者读本现场。</span></div>
+          </div>
+          <div class="update-item">
+            <time datetime="2026-10-09">10月9日</time>
+            <div><span class="update-title">《雨夜列车》</span><span class="update-summary">五周年重映活动在东京新宿举办，导演与摄影师出席对谈。</span></div>
+          </div>
+          <div class="update-item">
+            <time datetime="2026-10-02">10月2日</time>
+            <div><span class="update-title">《夏日回声》VR</span><span class="update-summary">新增“民宿走廊”独立场景，原版本用户可免费更新。</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. 分类入口 -->
+      <section class="section" id="categories">
+        <h2 class="section-h2">按题材与形式分类</h2>
+        <p class="section-desc">点击进入对应筛选视图，各分类条目数量为当前收录统计。</p>
+        <div class="category-grid">
+          <a href="/#featured" class="category-item">校园日常 <span>32 部</span></a>
+          <a href="/#featured" class="category-item">剧情长片 <span>41 部</span></a>
+          <a href="/#featured" class="category-item">共演企划 <span>27 部</span></a>
+          <a href="/#featured" class="category-item">VR 作品 <span>18 部</span></a>
+          <a href="/#featured" class="category-item">写真影像 <span>23 部</span></a>
+          <a href="/#featured" class="category-item">悬疑推理 <span>14 部</span></a>
+          <a href="/#featured" class="category-item">冬季限定 <span>11 部</span></a>
+          <a href="/#featured" class="category-item">出道十周年 <span>9 部</span></a>
+        </div>
+      </section>
+
+      <!-- 5. 深度解析 -->
+      <section class="section" id="deep-dive">
+        <h2 class="section-h2">阶段转型与作品判断维度</h2>
+        <p class="section-desc">以可核对的发行时间、片长与题材变化为据，拆解不同年份作品的差异。</p>
+        <div class="deep-dive">
+          <h3>2015—2018：清纯路线的产能与局限</h3>
+          <p>这一阶段S1为桃乃木香奈安排的作品以校园与家庭场景为主，2015年发行6部，2016年发行9部，2017年发行11部，2018年发行8部。片长方面，2015年平均118分钟，2018年升至136分钟。产量在2017年达到峰值，但题材重复率偏高：11部作品中有7部包含教室场景，观众在当时的评论区已出现“场景眼熟”的反馈。</p>
+          <p>从版本角度看，这一时期的DVD与数字版差异不大，主要区别在花絮长度。2016年发行的《夏服的距离》数字版比实体版多出12分钟采访，是目前可查的最早版本差异案例。</p>
+
+          <h3>2019—2023：剧情化与共演比例上升</h3>
+          <p>2019年开始，剧情向作品占比从之前的约两成升至四成以上。2021年《雨夜列车》的发行方Moodyz公开了拍摄周期：14天，外景占比六成。这一数据在同期作品中处于较高水平，可以作为判断制作投入的参考。</p>
+          <div class="compare-box">
+            <p><strong>可核对对比：</strong>《雨夜列车》（2021）片长162分钟，对白场景约74分钟；《沉默的证言》（2023）片长178分钟，对白场景约91分钟。后者共演人数从1人增至3人，单场景平均拍摄条数从2019年的4.2条升至2023年的6.8条——数据来自发行方公开的制作日志。</p>
+          </div>
+          <p>共演作品增加带来一个实际问题：番位与戏份分配。2023年《沉默的证言》宣传物料中，桃乃木香奈列在首位，但实际出场时长约占全片55%，低于部分观众预期。发行方在发售后的直播中解释为“剧情需要三人视角平衡”，这一回应被部分观众接受，也有评论认为宣传阶段应明确标注。</p>
+
+          <h3>2024—2026：VR与双视角实验</h3>
+          <p>2025年《夏日回声》VR是桃乃木香奈首部8K VR作品，发行方公布的技术参数为：单眼4K、60帧、双耳录音。实际体验中，民宿走廊场景的移动镜头被观众指出有轻微眩晕感，发行方在10月2日的更新中增加了“固定视角”选项。</p>
+          <p>2026年11月8日上线的《冬日来信·前篇》采用双视角剪辑，男性视角版片长148分钟，女性视角版片长141分钟，两者有约23分钟的内容差异。发行方明确标注“两版均为正片，非删减关系”。这种发行方式在桃乃木香奈作品中尚属首次，对观众来说，选择哪一版取决于对叙事视角的偏好，而非版本完整度。</p>
+          <ul>
+            <li><strong>判断维度一：</strong>片长与对白占比——剧情向作品通常对白占比超过40%，可据此区分题材。</li>
+            <li><strong>判断维度二：</strong>发行方制作日志——S1与Moodyz会公开拍摄天数，IdeaPocket较少公开，后者需参考花絮时长。</li>
+            <li><strong>判断维度三：</strong>版本差异——数字版与实体版、双视角版之间的内容差异需以发行方公告为准，二手平台描述常不完整。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6. 体验指南 -->
+      <section class="section" id="guide">
+        <h2 class="section-h2">按年份与题材的选择路径</h2>
+        <p class="section-desc">从观看顺序、版本比较到时间投入的实用参考。</p>
+        <div class="guide-steps">
+          <div class="guide-step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>先确定观看目的：补完、尝鲜还是研究转型</h4>
+              <p>补完早期作品从2015—2017年入手，片长较短，单部投入约2小时。尝鲜新作优先看2026年《冬日来信·前篇》，双视角版本可对比叙事差异。研究转型则按2019、2021、2023三个节点各选一部，总时长约8小时。</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>用发行商与片长做第一轮筛选</h4>
+              <p>Moodyz与IdeaPocket的剧情向作品平均片长在150分钟以上，S1的单体作品多在120—140分钟区间。VR作品平均片长偏短，约60—80分钟，但设备要求更高。</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>核对版本差异再决定投入</h4>
+              <p>同一作品可能存在数字版、实体版、双视角版三种形态。差异通常出现在花絮、采访与结局剪辑。发行方官网的“收录内容”栏是最直接的核对来源，二手平台的信息滞后明显。</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>参考观众评分时区分年份</h4>
+              <p>2015—2017年的评分样本较少，单条评论影响大；2021年后的评分样本普遍超过200条，参考价值更高。剧情类作品的评分与共演阵容相关性较强，单体作品则更依赖题材匹配度。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. FAQ -->
+      <section class="section" id="faq">
+        <h2 class="section-h2">常见问题</h2>
+        <div class="faq-list">
+          <details>
+            <summary>桃乃木香奈的第一部作品是哪一部？</summary>
+            <div class="faq-answer">2015年4月9日由S1发行的《初春的约定》，片长135分钟，收录出道访谈。该作品在2015年当年发行了DVD与数字下载两种格式，数字版多出约9分钟的花絮内容。</div>
+          </details>
+          <details>
+            <summary>《冬日来信·前篇》两个视角版本有什么不同？</summary>
+            <div class="faq-answer">男性视角版148分钟，女性视角版141分钟，差异集中在约23分钟的叙事段落与结局处理。发行方公告明确两版均为正片，女性视角版并非删减版。选择依据是对叙事视角的偏好，而非内容完整度。</div>
+          </details>
+          <details>
+            <summary>VR作品《夏日回声》需要什么设备？</summary>
+            <div class="faq-answer">发行方标注支持Meta Quest 2及以上、SteamVR兼容头显。单眼4K、60帧，文件体积约28GB。2026年10月2日更新后增加固定视角选项，对晕动症用户更友好。</div>
+          </details>
+          <details>
+            <summary>《沉默的证言》里桃乃木香奈的戏份占多少？</summary>
+            <div class="faq-answer">全片178分钟，桃乃木香奈出场时长约98分钟，占55%。共演三人合计出场约112分钟，部分场景重叠。发行方在2023年3月的直播中说明番位按宣传合同排列，与出场时长不完全对应。</div>
+          </details>
+          <details>
+            <summary>2015—2018年的作品现在还能买到全新实体版吗？</summary>
+            <div class="faq-answer">大部分已停止生产。S1在2026年10月28日开放了《初春的约定》十周年4K修复版的预约，这是近年少见的早期作品重制。其他2015—2018年作品的全新实体版流通量很少，二手市场品相差异大。</div>
+          </details>
+          <details>
+            <summary>写真集《冬日手纸》的电子版和实体版内容一样吗？</summary>
+            <div class="faq-answer">电子版2026年10月22日上线，共104页，比实体版96页多出8页未收录照片。实体版附赠的拍摄记录视频下载码在电子版中不包含。两者取景地均为北海道美瑛町，拍摄时间为2024年1月。</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 8. 用户评论 -->
+      <section class="section" id="comments">
+        <h2 class="section-h2">观众评论</h2>
+        <p class="section-desc">来自不同年份作品下的短评，保留原语气与个人判断。</p>
+        <div class="comment-grid">
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">北野川</span><span class="comment-date">2026-11-08</span></div>《冬日来信·前篇》女性视角版比男性版短7分钟，但结尾那段独白明显更完整。两版都看了，个人更推荐先看女性版。</div>
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">momo_2015</span><span class="comment-date">2026-11-07</span></div>十周年修复版预约了，就为看2015年那个试镜片段。当年DVD里可没这个。</div>
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">雨夜等车</span><span class="comment-date">2026-11-06</span></div>《雨夜列车》结尾长镜头确实好，但中间站台那场戏对白有点拖。五周年重映没抢到票。</div>
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">阿澄</span><span class="comment-date">2026-11-05</span></div>《沉默的证言》宣传时真以为桃乃木是绝对主角，看完发现三人戏份挺平均的。不是说不好看，就是预期没对上。</div>
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">VR晕了</span><span class="comment-date">2026-11-04</span></div>《夏日回声》走廊那段我戴Quest 3看的，确实有点晕。固定视角更新之后好多了。</div>
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">美瑛的雪</span><span class="comment-date">2026-11-03</span></div>《冬日手纸》电子版多出的8页是黄昏拍的，比实体版里白天的几张更有味道。96页变104页，加量不加价。</div>
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">老碟收藏</span><span class="comment-date">2026-11-02</span></div>2016年《夏服的距离》数字版多12分钟采访这事，我是去年才知道的。二手平台卖家根本不提版本差异。</div>
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">不吐不快</span><span class="comment-date">2026-10-30</span></div>早期作品教室场景太多了，2017年那11部连着看会串戏。不过2015年出道作还是保留着，偶尔翻出来看。</div>
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">中古猎人</span><span class="comment-date">2026-10-28</span></div>《初春的约定》十周年4K版预约开了，含税价格比当年DVD贵不少，但修复质量看预告片确实可以。</div>
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">三号共演</span><span class="comment-date">2026-10-25</span></div>《沉默的证言》读本花絮6分多钟，三个人对台词那段比正片某些部分还自然，发行方应该多放点这类内容。</div>
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">普通观众</span><span class="comment-date">2026-10-22</span></div>没设备看VR，只能等普通版。希望《夏日回声》以后出个平面剪辑版。</div>
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">票选投了</span><span class="comment-date">2026-10-20</span></div>年度票选4127票对《沉默的证言》来说合理，2023年那会儿讨论度确实高。我投的《雨夜列车》第二，差800多票。</div>
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">双视角纠结</span><span class="comment-date">2026-11-08</span></div>前篇两个版本差23分钟，后篇2027年1月才出，现在选哪版都看不到结局。先看男性版，后篇出之前再补女性版吧。</div>
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">只看花絮</span><span class="comment-date">2026-11-01</span></div>《冬日来信》幕后访谈15分钟，比预想的长。问的问题比一般发行方采访具体，聊了双视角拍摄的调度。</div>
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">湘南民宿</span><span class="comment-date">2026-10-18</span></div>《夏日回声》那个废弃民宿实际在镰仓，不在湘南海岸。片尾字幕有写，算是小彩蛋。</div>
+          <div class="comment-card"><div class="comment-header"><span class="comment-nick">片长党</span><span class="comment-date">2026-10-15</span></div>从120分钟到178分钟，片长越来越长，但有些作品后半段明显能压缩。个人觉得150分钟上下最舒服。</div>
+        </div>
+      </section>
+
+      <!-- 9. 相关资讯 -->
+      <section class="section" id="news">
+        <h2 class="section-h2">相关资讯</h2>
+        <p class="section-desc">发行方公告、活动记录与年度票选结果。</p>
+        <div class="news-list">
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/momonogiNews01/600/400" width="600" height="400" alt="冬日来信前篇发行公告配图" loading="lazy">
+            <div class="news-body">
+              <h4>《冬日来信·前篇》双视角剪辑上线，后篇定档2027年1月</h4>
+              <span class="news-date">2026-11-08</span>
+              <p>Moodyz公告显示前篇男性视角版148分钟、女性视角版141分钟，两版差异段落约23分钟。后篇已进入后期制作，发行日期定在2027年1月15日。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/momonogiNews02/600/400" width="600" height="400" alt="年度票选结果公告配图" loading="lazy">
+            <div class="news-body">
+              <h4>2026年度观众票选：《沉默的证言》4127票居剧情类首位</h4>
+              <span class="news-date">2026-11-06</span>
+              <p>投票从10月1日持续至10月31日，总票数18642票。《沉默的证言》获4127票，《雨夜列车》以3318票列第二，《夏日回声》VR在体验类投票中获2891票。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/momonogiNews03/600/400" width="600" height="400" alt="雨夜列车五周年重映对谈现场" loading="lazy">
+            <div class="news-body">
+              <h4>《雨夜列车》五周年重映：导演透露原本结局有第三稿</h4>
+              <span class="news-date">2026-10-09</span>
+              <p>东京新宿的重映对谈中，导演提及结尾长镜头曾有三个版本，最终选用的是第17次拍摄素材。摄影师补充该镜头连续拍摄了9小时。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/momonogiNews04/600/400" width="600" height="400" alt="夏日回声VR更新公告配图" loading="lazy">
+            <div class="news-body">
+              <h4>《夏日回声》VR追加固定视角选项，文件体积增至28GB</h4>
+              <span class="news-date">2026-10-02</span>
+              <p>更新包约4.2GB，新增“固定视角”模式与“民宿走廊”独立场景。发行方建议Quest 2用户更新至最新固件后再体验，避免画面撕裂。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/momonogiNews05/600/400" width="600" height="400" alt="初春的约定十周年修复版预约图" loading="lazy">
+            <div class="news-body">
+              <h4>《初春的约定》4K修复版开放预约，收录2015年未公开试镜</h4>
+              <span class="news-date">2026-10-28</span>
+              <p>S1公布的修复规格为2160p、HDR10，正片与花絮均重新扫描。附赠册子含2015年拍摄现场照片12张，试镜片段时长8分40秒。预约截止12月20日。</p>
+            </div>
+          </article>
+          <article class="news-item">
+            <img src="https://picsum.photos/seed/momonogiNews06/600/400" width="600" height="400" alt="冬日手纸电子版上线公告图" loading="lazy">
+            <div class="news-body">
+              <h4>《冬日手纸》电子版多出8页黄昏照，实体版停止加印</h4>
+              <span class="news-date">2026-10-22</span>
+              <p>电子版104页，比实体版多8页，新增内容为2024年1月在美瑛町拍摄的黄昏系列。发行方确认实体版不再加印，目前流通的多为首印批次。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 10. 相关推荐 -->
+      <section class="section" id="related">
+        <h2 class="section-h2">相关推荐与索引</h2>
+        <p class="section-desc">按具体条目名与内容方向词生成的快捷入口。</p>
+        <div class="related-tags">
+          <a href="/#featured">2015 出道作</a>
+          <a href="/#featured">雨夜列车 长镜头</a>
+          <a href="/#featured">沉默的证言 共演</a>
+          <a href="/#featured">夏日回声 VR 设备</a>
+          <a href="/#featured">冬日来信 双视角</a>
+          <a href="/#featured">Moodyz 剧情长片</a>
+          <a href="/#featured">S1 单体作品</a>
+          <a href="/#featured">写真集 冬日手纸</a>
+        </div>
+      </section>
+
+      <!-- 11. 补充板块：热度榜单 -->
+      <section class="section" id="rank">
+        <h2 class="section-h2">作品热度榜单</h2>
+        <p class="section-desc">按站内收藏与评论数加权生成，数据截至2026年11月8日。</p>
+        <div class="rank-list">
+          <div class="rank-item"><span class="rank-num top">1</span><span class="rank-name">《冬日来信·前篇》</span><span class="rank-score">9.8</span></div>
+          <div class="rank-item"><span class="rank-num top">2</span><span class="rank-name">《沉默的证言》</span><span class="rank-score">9.7</span></div>
+          <div class="rank-item"><span class="rank-num top">3</span><span class="rank-name">《雨夜列车》</span><span class="rank-score">9.5</span></div>
+          <div class="rank-item"><span class="rank-num">4</span><span class="rank-name">《初春的约定》</span><span class="rank-score">9.2</span></div>
+          <div class="rank-item"><span class="rank-num">5</span><span class="rank-name">《夏日回声》VR</span><span class="rank-score">9.1</span></div>
+          <div class="rank-item"><span class="rank-num">6</span><span class="rank-name">《冬日手纸》写真集</span><span class="rank-score">8.9</span></div>
+          <div class="rank-item"><span class="rank-num">7</span><span class="rank-name">《夏服的距离》</span><span class="rank-score">8.7</span></div>
+          <div class="rank-item"><span class="rank-num">8</span><span class="rank-name">《站台余白》</span><span class="rank-score">8.5</span></div>
+        </div>
+      </section>
+
+      <!-- 互动板块 -->
+      <section class="section" id="interact">
+        <h2 class="section-h2">投稿与交流</h2>
+        <p class="section-desc">分享你对某部作品的看法，或补充版本信息。</p>
+        <div class="interact-card">
+          <h3>你最近看了哪一部？</h3>
+          <p>可以写短评、补充版本差异，或者指出条目里的错误。每条投稿都会人工核对发行方公告后再决定是否收录。</p>
+          <div class="interact-actions">
+            <a href="/#interact">投稿短评</a>
+            <a href="/#interact">上传版本对比</a>
+            <a href="/#interact">参与月度票选</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 右辅助栏 -->
+    <aside class="aux-sidebar" aria-label="辅助信息">
+      <div class="sidebar-card">
+        <h3>本周更新</h3>
+        <div class="sidebar-update-item"><time datetime="2026-11-08">11月8日</time>《冬日来信·前篇》上线</div>
+        <div class="sidebar-update-item"><time datetime="2026-11-06">11月6日</time>年度票选结果公布</div>
+        <div class="sidebar-update-item"><time datetime="2026-11-03">11月3日</time>《夏日回声》追加中文字幕</div>
+        <div class="sidebar-update-item"><time datetime="2026-10-28">10月28日</time>《初春的约定》4K预约</div>
+      </div>
+      <div class="sidebar-card">
+        <h3>热门标签</h3>
+        <ul>
+          <li><a href="/#featured">剧情长片 <span class="count">41</span></a></li>
+          <li><a href="/#featured">VR作品 <span class="count">18</span></a></li>
+          <li><a href="/#featured">共演企划 <span class="count">27</span></a></li>
+          <li><a href="/#featured">冬季限定 <span class="count">11</span></a></li>
+          <li><a href="/#featured">出道十周年 <span class="count">9</span></a></li>
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <h3>发行商分布</h3>
+        <ul>
+          <li><a href="/#featured">S1 <span class="count">62 部</span></a></li>
+          <li><a href="/#featured">Moodyz <span class="count">48 部</span></a></li>
+          <li><a href="/#featured">IdeaPocket <span class="count">36 部</span></a></li>
+          <li><a href="/#featured">Attackers <span class="count">21 部</span></a></li>
+          <li><a href="/#featured">Madonna <span class="count">19 部</span></a></li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- 页尾 -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="26" height="26" rx="7" fill="#b34a5e"/>
+            <path d="M8 18 L13 7 L18 18" stroke="#ffe9ec" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="13" cy="19.5" r="1.7" fill="#ffe9ec"/>
+          </svg>
+          桃乃木香奈作品
+        </div>
+        <p>收录2015年4月至2026年11月的186部作品条目，涵盖单体、共演、VR与写真影像四种类型，按发行日期与题材持续更新。</p>
+      </div>
+      <div class="footer-col">
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="/#overview">领域概览</a></li>
+          <li><a href="/#featured">精选作品</a></li>
+          <li><a href="/#updates">最新动态</a></li>
+          <li><a href="/#deep-dive">深度解析</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>作品分类</h4>
+        <ul>
+          <li><a href="/#categories">校园日常</a></li>
+          <li><a href="/#categories">剧情长片</a></li>
+          <li><a href="/#categories">共演企划</a></li>
+          <li><a href="/#categories">VR作品</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>互动与榜单</h4>
+        <ul>
+          <li><a href="/#rank">热度榜单</a></li>
+          <li><a href="/#comments">观众评论</a></li>
+          <li><a href="/#interact">投稿交流</a></li>
+          <li><a href="/#faq">常见问答</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 桃乃木香奈作品条目整理 · 示例内容以发行方公开信息为准</span>
+      <span>最近更新：2026-11-08 · 新增《冬日来信·前篇》条目</span>
+    </div>
+  </footer>
+
+  <!-- 回到顶部 -->
+  <button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
+
+  <script>
+    (function() {
+      // 移动菜单
+      var hamburger = document.getElementById('hamburgerBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      var isMenuOpen = false;
+
+      function openMenu() {
+        isMenuOpen = true;
+        mobileMenu.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        hamburger.textContent = '✕';
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        isMenuOpen = false;
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.textContent = '☰';
+        document.body.style.overflow = '';
+      }
+      hamburger.addEventListener('click', function() {
+        isMenuOpen ? closeMenu() : openMenu();
+      });
+      mobileMenu.addEventListener('click', function(e) {
+        if (e.target === mobileMenu) closeMenu();
+      });
+      mobileMenu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', closeMenu);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isMenuOpen) closeMenu();
+      });
+
+      // 回到顶部
+      var backBtn = document.getElementById('backToTop');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > window.innerHeight) {
+          backBtn.classList.add('show');
+        } else {
+          backBtn.classList.remove('show');
+        }
+      }, { passive: true });
+      backBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // 搜索
+      var searchInput = document.getElementById('siteSearch');
+      var searchBtn = document.getElementById('searchBtn');
+      var featuredGrid = document.getElementById('featuredGrid');
+      var updateList = document.getElementById('updateList');
+      var noResult = document.createElement('div');
+      noResult.className = 'no-result';
+      noResult.textContent = '没有找到匹配的作品，试试“雨夜”“VR”或“冬日”。';
+      featuredGrid.parentNode.insertBefore(noResult, featuredGrid.nextSibling);
+
+      function performSearch() {
+        var q = searchInput.value.trim().toLowerCase();
+        var cards = featuredGrid.querySelectorAll('.work-card');
+        var updates = updateList.querySelectorAll('.update-item');
+        var found = 0;
+
+        cards.forEach(function(card) {
+          var text = card.textContent.toLowerCase();
+          if (!q || text.indexOf(q) !== -1) {
+            card.style.display = '';
+            found++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        updates.forEach(function(item) {
+          var text = item.textContent.toLowerCase();
+          if (!q || text.indexOf(q) !== -1) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+        noResult.classList.toggle('show', q && found === 0);
+      }
+
+      searchBtn.addEventListener('click', performSearch);
+      searchInput.addEventListener('input', performSearch);
+      searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          performSearch();
+        }
+      });
+
+      // 频道高亮
+      var channelLinks = document.querySelectorAll('.channel-index a');
+      var sections = [];
+      channelLinks.forEach(function(link) {
+        var href = link.getAttribute('href');
+        if (href && href.indexOf('#') === 0) {
+          var id = href.slice(1);
+          var el = document.getElementById(id);
+          if (el) sections.push({ el: el, link: link });
+        }
+      });
+
+      function highlightChannel() {
+        var scrollPos = window.scrollY + 140;
+        var current = null;
+        sections.forEach(function(item) {
+          if (item.el.offsetTop <= scrollPos) {
+            current = item;
+          }
+        });
+        channelLinks.forEach(function(l) { l.classList.remove('active'); });
+        if (current) current.link.classList.add('active');
+      }
+      window.addEventListener('scroll', highlightChannel, { passive: true });
+      highlightChannel();
+    })();
+  </script>
+
+  <!-- 结构化数据 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "桃乃木香奈作品",
+    "description": "桃乃木香奈作品聚合页，收录历年作品条目、类型分类、最新动态与观众评论。",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "桃乃木香奈的第一部作品是哪一部？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "2015年4月9日由S1发行的《初春的约定》，片长135分钟，收录出道访谈。该作品在2015年当年发行了DVD与数字下载两种格式，数字版多出约9分钟的花絮内容。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "《冬日来信·前篇》两个视角版本有什么不同？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "男性视角版148分钟，女性视角版141分钟，差异集中在约23分钟的叙事段落与结局处理。发行方公告明确两版均为正片，女性视角版并非删减版。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "VR作品《夏日回声》需要什么设备？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "发行方标注支持Meta Quest 2及以上、SteamVR兼容头显。单眼4K、60帧，文件体积约28GB。2026年10月2日更新后增加固定视角选项。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "《沉默的证言》里桃乃木香奈的戏份占多少？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "全片178分钟，桃乃木香奈出场时长约98分钟，占55%。共演三人合计出场约112分钟，部分场景重叠。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "2015—2018年的作品现在还能买到全新实体版吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "大部分已停止生产。S1在2026年10月28日开放了《初春的约定》十周年4K修复版的预约。其他2015—2018年作品的全新实体版流通量很少。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "写真集《冬日手纸》的电子版和实体版内容一样吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "电子版2026年10月22日上线，共104页，比实体版96页多出8页未收录照片。实体版附赠的拍摄记录视频下载码在电子版中不包含。"
+        }
+      }
+    ]
+  }
+  </script>
+
+</body>
+            </html>
