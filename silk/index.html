@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>silk官网 铃木一彻 高清播放 - 作品聚合与深度解析</title>
+  <meta name="description" content="silk官网 铃木一彻 高清播放页面聚合铃木一彻出演作品、高清播放画质对比、导演合作片单与观众评分。适合关注日本影像作品画质与演员表现的影迷查阅具体条目。">
+  <meta name="keywords" content="silk官网 铃木一彻 高清播放">
+  <style>
+    /* ---------- 重置与变量 ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --brand: #2c3e50;
+      --brand-light: #3e5a6f;
+      --brand-dark: #1a2732;
+      --accent: #c0392b;
+      --accent-soft: #e67e22;
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --text-primary: #1e2b37;
+      --text-secondary: #4a5a68;
+      --text-tertiary: #7b8a99;
+      --divider: #dce3e9;
+      --radius-card: 12px;
+      --radius-btn: 24px;
+      --radius-tag: 16px;
+      --shadow-default: 0 2px 8px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+      --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+      --header-height: 64px;
+      --announce-height: 40px;
+      --sticky-offset: calc(var(--announce-height) + var(--header-height));
+    }
+    html {
+      scroll-padding-top: var(--sticky-offset);
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    button, input {
+      font: inherit;
+    }
+
+    /* ---------- 吸顶公告条 ---------- */
+    .announce-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--announce-height);
+      background: var(--brand-dark);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      font-size: 0.875rem;
+      gap: 1.5rem;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .announce-bar .brand-mark {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--accent-soft);
+      flex-shrink: 0;
+    }
+    .announce-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+    .announce-date {
+      color: #b0c4d9;
+      font-size: 0.8rem;
+    }
+    .announce-tag {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+    }
+
+    /* ---------- 吸顶页头 ---------- */
+    .site-header {
+      position: sticky;
+      top: var(--announce-height);
+      z-index: 99;
+      height: var(--header-height);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--divider);
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+    .header-inner {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-shrink: 0;
+    }
+    .logo-svg {
+      width: 36px;
+      height: 36px;
+    }
+    .brand-text {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--brand);
+      letter-spacing: -0.3px;
+    }
+    .main-nav {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      flex: 1;
+      justify-content: center;
+    }
+    .main-nav a {
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--radius-btn);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+    .main-nav a:hover,
+    .main-nav a:focus-visible {
+      background: var(--brand-light);
+      color: #fff;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-shrink: 0;
+    }
+    .search-mini {
+      display: flex;
+      align-items: center;
+      background: var(--bg);
+      border-radius: 20px;
+      padding: 0.2rem 0.2rem 0.2rem 1rem;
+      border: 1px solid var(--divider);
+    }
+    .search-mini input {
+      border: none;
+      background: transparent;
+      outline: none;
+      width: 150px;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      padding: 0.3rem 0;
+    }
+    .search-mini input::placeholder {
+      color: var(--text-tertiary);
+    }
+    .search-mini button {
+      background: var(--brand);
+      border: none;
+      color: #fff;
+      border-radius: 20px;
+      padding: 0.35rem 0.8rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .search-mini button:hover {
+      background: var(--brand-dark);
+    }
+    .hamburger {
+      display: none;
+      background: none;
+      border: 1px solid var(--divider);
+      border-radius: 8px;
+      padding: 0.4rem 0.6rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--text-primary);
+    }
+
+    /* ---------- 布局容器 ---------- */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ---------- 三栏门户网格 ---------- */
+    .portal-grid {
+      display: grid;
+      grid-template-columns: 190px minmax(0, 1fr) 260px;
+      gap: 2rem;
+      padding: 2rem 0 3rem;
+    }
+    .left-channel {
+      position: sticky;
+      top: calc(var(--sticky-offset) + 1rem);
+      align-self: start;
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 1.2rem 0.8rem;
+      box-shadow: var(--shadow-default);
+      max-height: calc(100vh - var(--sticky-offset) - 2rem);
+      overflow-y: auto;
+    }
+    .left-channel h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-tertiary);
+      margin-bottom: 0.8rem;
+      padding-left: 0.5rem;
+    }
+    .channel-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .channel-list a {
+      display: block;
+      padding: 0.45rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      transition: background 0.15s, color 0.15s;
+    }
+    .channel-list a:hover,
+    .channel-list a.active {
+      background: var(--brand-light);
+      color: #fff;
+    }
+
+    /* 主内容区 */
+    .main-content {
+      min-width: 0;
+    }
+
+    /* 右侧辅助栏 */
+    .right-aside {
+      position: sticky;
+      top: calc(var(--sticky-offset) + 1rem);
+      align-self: start;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .aside-card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 1.2rem;
+      box-shadow: var(--shadow-default);
+    }
+    .aside-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--brand);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+    .hot-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .hot-list li {
+      display: flex;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      align-items: baseline;
+    }
+    .hot-list .rank {
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 1.2em;
+    }
+    .hot-list .item-title {
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+    .hot-list .item-meta {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+    /* ---------- 首屏 ---------- */
+    .hero {
+      background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 60%, var(--brand-light) 100%);
+      border-radius: var(--radius-card);
+      padding: 2.5rem 2rem;
+      margin-bottom: 2rem;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -5%;
+      top: -20%;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      pointer-events: none;
+    }
+    .hero-svg {
+      position: absolute;
+      right: 1rem;
+      bottom: 0.5rem;
+      width: 180px;
+      height: 120px;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-desc {
+      font-size: 1rem;
+      max-width: 680px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+      margin-top: 0.5rem;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.8rem;
+      border-radius: var(--radius-btn);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      background: #a93226;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      padding: 0.6rem 1.8rem;
+      border-radius: var(--radius-btn);
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* ---------- 板块通用 ---------- */
+    .section {
+      margin-bottom: 2.5rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .section-header h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-header h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 1.2rem;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .section-link {
+      font-size: 0.85rem;
+      color: var(--text-tertiary);
+      transition: color 0.15s;
+    }
+    .section-link:hover {
+      color: var(--accent);
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.2rem;
+    }
+    .content-card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-default);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .content-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    .card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      background: var(--divider);
+    }
+    .card-body {
+      padding: 0.8rem 0.9rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex: 1;
+    }
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+    .tag {
+      background: var(--bg);
+      border: 1px solid var(--divider);
+      padding: 1px 8px;
+      border-radius: var(--radius-tag);
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+    .tag-accent {
+      background: #fdedec;
+      border-color: #f5b7b1;
+      color: var(--accent);
+    }
+    .card-desc {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      margin-top: auto;
+      padding-top: 0.4rem;
+    }
+
+    /* 紧凑列表 */
+    .compact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .compact-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed var(--divider);
+      font-size: 0.9rem;
+    }
+    .compact-list li:last-child {
+      border-bottom: none;
+    }
+    .compact-date {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      min-width: 70px;
+    }
+    .compact-title {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .compact-summary {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    /* 分类入口 */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.8rem;
+    }
+    .category-item {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 0.8rem 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      box-shadow: var(--shadow-default);
+      transition: background 0.15s, color 0.15s, transform 0.15s;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+    .category-item:hover,
+    .category-item:focus-visible {
+      background: var(--brand-light);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* 深度解析 */
+    .deep-dive {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 1.8rem 2rem;
+      box-shadow: var(--shadow-default);
+    }
+    .deep-dive h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--brand);
+      margin: 1.5rem 0 0.7rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--divider);
+    }
+    .deep-dive h3:first-of-type {
+      margin-top: 0;
+    }
+    .deep-dive p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.8rem;
+      line-height: 1.8;
+    }
+    .deep-dive ul {
+      margin: 0.5rem 0 1rem 1.5rem;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .deep-dive li {
+      margin-bottom: 0.3rem;
+    }
+    .deep-dive .case-note {
+      background: var(--bg);
+      border-left: 3px solid var(--accent);
+      padding: 0.8rem 1rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.9rem;
+      margin: 1rem 0;
+    }
+
+    /* 体验指南 */
+    .guide-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+    .step-card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 1.2rem;
+      box-shadow: var(--shadow-default);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .step-num {
+      display: inline-block;
+      background: var(--brand);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 28px;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .step-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .step-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    details {
+      background: var(--surface);
+      border-radius: 8px;
+      box-shadow: var(--shadow-default);
+      border: 1px solid var(--divider);
+    }
+    summary {
+      padding: 0.9rem 1.2rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    summary::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--text-tertiary);
+      transition: transform 0.2s;
+    }
+    details[open] summary::after {
+      content: '−';
+    }
+    details[open] summary {
+      border-bottom: 1px solid var(--divider);
+    }
+    .faq-answer {
+      padding: 0.9rem 1.2rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* 评论 */
+    .comment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .comment-item {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      box-shadow: var(--shadow-default);
+      display: flex;
+      gap: 0.8rem;
+    }
+    .comment-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--brand-light);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .comment-body {
+      flex: 1;
+    }
+    .comment-user {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--brand);
+      margin-bottom: 0.2rem;
+    }
+    .comment-text {
+      font-size: 0.88rem;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+    .comment-meta {
+      font-size: 0.7rem;
+      color: var(--text-tertiary);
+      margin-top: 0.3rem;
+    }
+
+    /* 资讯 */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .news-item {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      padding: 1rem 1.2rem;
+      box-shadow: var(--shadow-default);
+    }
+    .news-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+    }
+    .news-date {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      margin-right: 0.8rem;
+    }
+    .news-summary {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* 相关推荐标签 */
+    .related-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .related-tag {
+      background: var(--surface);
+      border: 1px solid var(--divider);
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-tag);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      transition: background 0.15s, color 0.15s;
+    }
+    .related-tag:hover {
+      background: var(--brand-light);
+      color: #fff;
+      border-color: var(--brand-light);
+    }
+
+    /* 补充板块：榜单 */
+    .rank-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-default);
+    }
+    .rank-table th {
+      background: var(--brand);
+      color: #fff;
+      font-weight: 500;
+      font-size: 0.8rem;
+      padding: 0.6rem 1rem;
+      text-align: left;
+    }
+    .rank-table td {
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--divider);
+    }
+    .rank-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* 页脚 */
+    .site-footer {
+      background: var(--brand-dark);
+      color: #b0c4d9;
+      padding: 2.5rem 0 1.5rem;
+      margin-top: 3rem;
+    }
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+    .footer-brand .brand-text {
+      color: #fff;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+    }
+    .footer-brand p {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      max-width: 320px;
+    }
+    .footer-col h4 {
+      color: #fff;
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .footer-col a {
+      font-size: 0.85rem;
+      transition: color 0.15s;
+    }
+    .footer-col a:hover {
+      color: #fff;
+    }
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 2rem auto 0;
+      padding: 1rem 1.5rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* 回到顶部 */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-hover);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      z-index: 90;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .back-to-top.visible {
+      display: flex;
+    }
+    .back-to-top:hover {
+      background: var(--brand-dark);
+    }
+
+    /* 移动端导航遮罩 */
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 150;
+    }
+    .nav-overlay.active {
+      display: block;
+    }
+
+    /* ---------- 响应式 ---------- */
+    @media (max-width: 1024px) {
+      .portal-grid {
+        grid-template-columns: 170px 1fr;
+      }
+      .right-aside {
+        display: none;
+      }
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 740px) {
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+      .left-channel {
+        position: static;
+        max-height: none;
+        display: none;
+      }
+      .left-channel.mobile-open {
+        display: block;
+        margin-bottom: 1rem;
+      }
+      .hamburger {
+        display: block;
+      }
+      .main-nav {
+        display: none;
+        position: fixed;
+        top: calc(var(--sticky-offset));
+        left: 0;
+        right: 0;
+        background: var(--surface);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: var(--shadow-hover);
+        z-index: 160;
+        gap: 0.3rem;
+      }
+      .main-nav.mobile-open {
+        display: flex;
+      }
+      .search-mini input {
+        width: 100px;
+      }
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding: 1.8rem 1.2rem;
+      }
+      .section-header h2 {
+        font-size: 1.1rem;
+      }
+      .deep-dive {
+        padding: 1.2rem;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+        animation: none !important;
+      }
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+  <!-- 吸顶公告条 -->
+  <div class="announce-bar" id="announceBar">
+    <span class="brand-mark">silk官网 铃木一彻 高清播放</span>
+    <div class="announce-item">
+      <span class="announce-date">2026-11-08</span>
+      <span class="announce-tag">新增</span>
+      <span>《雨夜の駅》4K修复版</span>
+    </div>
+    <div class="announce-item">
+      <span class="announce-date">2026-11-06</span>
+      <span class="announce-tag">更新</span>
+      <span>导演剪辑合集 第12卷</span>
+    </div>
+    <div class="announce-item">
+      <span class="announce-date">2026-11-03</span>
+      <span class="announce-tag">评分</span>
+      <span>《白昼夢》观众票选9.1</span>
+    </div>
+  </div>
+
+  <!-- 吸顶页头 -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="10" fill="#2c3e50"/>
+          <path d="M10 20C10 14.477 14.477 10 20 10C25.523 10 30 14.477 30 20" stroke="#e67e22" stroke-width="2.5" fill="none"/>
+          <circle cx="20" cy="24" r="3" fill="#e67e22"/>
+          <path d="M14 28L20 34L26 28" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-text">silk官网 铃木一彻 高清播放</span>
+      </div>
+      <nav class="main-nav" id="mainNav">
+        <a href="/#overview">作品概览</a>
+        <a href="/#featured">精选片单</a>
+        <a href="/#updates">最新更新</a>
+        <a href="/#categories">分类检索</a>
+        <a href="/#deep-dive">深度解析</a>
+        <a href="/#guide">观看指南</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#comments">观众评论</a>
+        <a href="/#news">相关资讯</a>
+      </nav>
+      <div class="header-actions">
+        <div class="search-mini">
+          <input type="search" id="searchInput" placeholder="搜索作品/标签" aria-label="搜索作品或标签">
+          <button type="button" id="searchBtn">搜索</button>
+        </div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="打开菜单" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- 主内容区 -->
+  <div class="container">
+    <div class="portal-grid">
+
+      <!-- 左侧频道索引 -->
+      <aside class="left-channel" id="leftChannel">
+        <h3>频道索引</h3>
+        <ul class="channel-list">
+          <li><a href="/#overview" class="active">作品概览</a></li>
+          <li><a href="/#featured">精选片单</a></li>
+          <li><a href="/#updates">最新更新</a></li>
+          <li><a href="/#categories">分类检索</a></li>
+          <li><a href="/#deep-dive">深度解析</a></li>
+          <li><a href="/#guide">观看指南</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#comments">观众评论</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#related">相关推荐</a></li>
+          <li><a href="/#rank">热度榜单</a></li>
+        </ul>
+      </aside>
+
+      <!-- 中主内容 -->
+      <main class="main-content">
+
+        <!-- 首屏 -->
+        <section class="hero">
+          <svg class="hero-svg" viewBox="0 0 200 130" fill="none">
+            <rect x="10" y="20" width="60" height="90" rx="6" fill="#fff" opacity="0.3"/>
+            <rect x="80" y="10" width="60" height="100" rx="6" fill="#fff" opacity="0.2"/>
+            <rect x="150" y="30" width="40" height="80" rx="6" fill="#fff" opacity="0.15"/>
+            <circle cx="100" cy="115" r="4" fill="#e67e22" opacity="0.6"/>
+          </svg>
+          <h1>silk官网 铃木一彻 高清播放</h1>
+          <p class="hero-desc">聚合铃木一彻出演的蓝光修复版、导演剪辑版与高清流媒体片源，覆盖剧情长片、实验短片与幕后花絮。按画质规格、发行年份与合作导演分类，提供具体条目与观众评分参考。</p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="/#featured">浏览精选片单</a>
+            <a class="btn-outline" href="/#updates">查看最新更新</a>
+          </div>
+        </section>
+
+        <!-- 1. 主题领域概览 -->
+        <section class="section" id="overview">
+          <div class="section-header">
+            <h2>铃木一彻作品领域概览</h2>
+          </div>
+          <div class="deep-dive" style="padding:1.5rem 2rem;">
+            <p>铃木一彻的影像作品大致分成三个方向。剧情长片以都市情感与悬疑题材为主，代表条目包括《白昼夢》《雨夜の駅》《カーテンコール》，片长集中在85到110分钟，多数由独立制片公司发行。实验短片多在20分钟以内，常见于联合展映与网络限定公开，例如《静かな海》《窓辺の手紙》。幕后花絮与导演评论音轨则收录在蓝光初回限定版中，单条时长约30至45分钟。</p>
+            <p>高清播放的规格差异值得留意。已发行蓝光碟的作品通常提供1080p H.264编码，码率在8—12 Mbps之间；部分早期作品仅发行过DVD，所谓高清版本实为720p拉伸，画面锐度明显不足。2026年10月，发行方对《白昼夢》进行了4K扫描修复，保留了胶片颗粒感，暗部细节比2019年蓝光版多出约两档宽容度。另一条线是流媒体限定公开的短片，码率浮动较大，平均在5—8 Mbps，移动端观看时画质降级明显。</p>
+            <p>目前可检索到的铃木一彻相关条目共47条，其中剧情长片12部、实验短片21条、花絮评论音轨14条。最近30天内新增的条目是10月18日上线的《雨夜の駅》4K修复版，以及11月2日公开的《カーテンコール》导演评论音轨完整版。评分方面，观众票选最高的是《白昼夢》9.1分（基于2140条评分），最低的是2017年的电视特别篇《帰り道》6.3分，争议集中在剧本节奏与配角塑造。</p>
+          </div>
+        </section>
+
+        <!-- 2. 精选内容推荐 -->
+        <section class="section" id="featured">
+          <div class="section-header">
+            <h2>高清片单精选</h2>
+            <a href="/#updates" class="section-link">查看全部更新 →</a>
+          </div>
+          <div class="card-grid">
+            <article class="content-card">
+              <img class="card-img" src="https://picsum.photos/seed/hakuchumu01/400/300" alt="《白昼夢》4K修复版封面，蓝紫色调" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <h3 class="card-title">《白昼夢》4K修复版</h3>
+                <div class="card-tags"><span class="tag tag-accent">剧情长片</span><span class="tag">4K修复</span><span class="tag">悬疑</span></div>
+                <p class="card-desc">2026年10月由发行方重新扫描35mm原始底片，暗部层次提升明显。铃木一彻饰演失忆的钟表修复师，全片89分钟，第37分钟的长镜头是修复重点。</p>
+                <div class="card-meta"><span>评分 9.1</span><span>2140人评</span></div>
+              </div>
+            </article>
+            <article class="content-card">
+              <img class="card-img" src="https://picsum.photos/seed/rainstation02/400/300" alt="《雨夜の駅》站台剧照，雨夜灯光" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <h3 class="card-title">《雨夜の駅》4K修复版</h3>
+                <div class="card-tags"><span class="tag tag-accent">剧情长片</span><span class="tag">4K修复</span><span class="tag">情感</span></div>
+                <p class="card-desc">2026年11月8日上线。故事发生在山形县的一个无人车站，铃木一彻与新人女演员的对手戏占全片六成。修复版补回了当年院线版删减的12分钟。</p>
+                <div class="card-meta"><span>评分 8.7</span><span>980人评</span></div>
+              </div>
+            </article>
+            <article class="content-card">
+              <img class="card-img" src="https://picsum.photos/seed/curtaincall03/400/300" alt="《カーテンコール》舞台剧照" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <h3 class="card-title">《カーテンコール》导演评论音轨</h3>
+                <div class="card-tags"><span class="tag tag-accent">幕后花絮</span><span class="tag">评论音轨</span><span class="tag">导演</span></div>
+                <p class="card-desc">2026年11月2日公开完整版，导演与铃木一彻对谈98分钟。涉及第14场戏的灯光方案调整、以及原剧本结局被推翻的经过。</p>
+                <div class="card-meta"><span>时长 98分钟</span><span>2026-11-02</span></div>
+              </div>
+            </article>
+            <article class="content-card">
+              <img class="card-img" src="https://picsum.photos/seed/silentsea04/400/300" alt="《静かな海》海边镜头" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <h3 class="card-title">《静かな海》实验短片</h3>
+                <div class="card-tags"><span class="tag tag-accent">实验短片</span><span class="tag">网络限定</span><span class="tag">默片风格</span></div>
+                <p class="card-desc">全长17分钟，无对白，靠环境音与钢琴配乐推进。2026年9月以流媒体限定方式公开，码率7.2 Mbps，建议在大屏设备上观看。</p>
+                <div class="card-meta"><span>评分 8.4</span><span>620人评</span></div>
+              </div>
+            </article>
+            <article class="content-card">
+              <img class="card-img" src="https://picsum.photos/seed/windowletter05/400/300" alt="《窓辺の手紙》窗边场景" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <h3 class="card-title">《窓辺の手紙》导演剪辑版</h3>
+                <div class="card-tags"><span class="tag tag-accent">剧情长片</span><span class="tag">导演剪辑</span><span class="tag">书信体</span></div>
+                <p class="card-desc">比公映版多出22分钟，补全了铃木一彻饰演角色在故乡的独白段落。2026年10月12日发行蓝光，附带16页拍摄笔记。</p>
+                <div class="card-meta"><span>评分 8.9</span><span>1530人评</span></div>
+              </div>
+            </article>
+            <article class="content-card">
+              <img class="card-img" src="https://picsum.photos/seed/nightbus06/400/300" alt="《夜行バス》车厢内景" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <h3 class="card-title">《夜行バス》高清版</h3>
+                <div class="card-tags"><span class="tag tag-accent">剧情长片</span><span class="tag">1080p</span><span class="tag">公路</span></div>
+                <p class="card-desc">2019年作品，2026年10月重新上线高清版。全片82分钟在夜行巴士内取景，手持摄影带来的噪点在高码率版本中被保留而非消除。</p>
+                <div class="card-meta"><span>评分 7.8</span><span>740人评</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 3. 最新更新 -->
+        <section class="section" id="updates">
+          <div class="section-header">
+            <h2>最新更新与上线动态</h2>
+          </div>
+          <ul class="compact-list">
+            <li><span class="compact-date">2026-11-08</span><span class="compact-title">《雨夜の駅》4K修复版</span><span class="compact-summary">补回院线删减12分钟，新增山形县外景地拍摄花絮</span></li>
+            <li><span class="compact-date">2026-11-06</span><span class="compact-title">导演剪辑合集 第12卷</span><span class="compact-summary">收录《窓辺の手紙》等三部作品的导演剪辑版，附评论音轨</span></li>
+            <li><span class="compact-date">2026-11-03</span><span class="compact-title">《白昼夢》观众票选</span><span class="compact-summary">以9.1分成为本月最高分条目，超过《窓辺の手紙》的8.9分</span></li>
+            <li><span class="compact-date">2026-11-02</span><span class="compact-title">《カーテンコール》评论音轨</span><span class="compact-summary">导演与铃木一彻对谈98分钟，涉及结局修改的内幕</span></li>
+            <li><span class="compact-date">2026-10-28</span><span class="compact-title">《静かな海》流媒体限定公开</span><span class="compact-summary">17分钟默片风格短片，码率7.2 Mbps，仅限高清播放</span></li>
+            <li><span class="compact-date">2026-10-25</span><span class="compact-title">《夜行バス》高清版重新上线</span><span class="compact-summary">保留手持噪点，修复了旧版第53分钟的音画不同步问题</span></li>
+            <li><span class="compact-date">2026-10-18</span><span class="compact-title">《帰り道》特别篇 评分更新</span><span class="compact-summary">评分从6.1升至6.3，新增评分者中约七成给出三星</span></li>
+            <li><span class="compact-date">2026-10-12</span><span class="compact-title">《窓辺の手紙》导演剪辑蓝光</span><span class="compact-summary">附带16页拍摄笔记与3条删除场景，片长增至112分钟</span></li>
+          </ul>
+        </section>
+
+        <!-- 4. 分类入口 -->
+        <section class="section" id="categories">
+          <div class="section-header">
+            <h2>按类型与规格检索</h2>
+          </div>
+          <div class="category-grid">
+            <a href="/#featured" class="category-item">剧情长片</a>
+            <a href="/#featured" class="category-item">实验短片</a>
+            <a href="/#featured" class="category-item">导演评论音轨</a>
+            <a href="/#featured" class="category-item">4K修复</a>
+            <a href="/#featured" class="category-item">1080p蓝光</a>
+            <a href="/#featured" class="category-item">幕后花絮</a>
+            <a href="/#featured" class="category-item">导演剪辑版</a>
+            <a href="/#featured" class="category-item">流媒体限定</a>
+          </div>
+        </section>
+
+        <!-- 5. 深度解析正文 -->
+        <section class="section" id="deep-dive">
+          <div class="section-header">
+            <h2>画质规格与版本差异解析</h2>
+          </div>
+          <div class="deep-dive">
+            <h3>蓝光修复与流媒体码率的实际差距</h3>
+            <p>《白昼夢》4K修复版的码率平均在48 Mbps，峰值突破62 Mbps。同一条目在流媒体平台的版本码率被压缩到8 Mbps左右。差距体现在暗部：修复版第22分钟的地下室场景，墙面砖块的纹理可辨；流媒体版同一帧画面中，砖块糊成色块。这不是分辨率数字能完全反映的——两者都标注“高清”，实际信息量差六倍。</p>
+            <div class="case-note">可核对的对比：2026年10月修复版蓝光碟（BD-50双层）与流媒体版同一时间码的截图对比中，修复版暗部细节多出约两档宽容度，胶片颗粒保留完整；流媒体版做了降噪处理，颗粒被抹平。</div>
+            <p>另一组值得注意的差异来自《静かな海》。这部短片只在流媒体限定公开，码率7.2 Mbps，没有实体碟发行计划。导演在10月28日的公开说明中提到，母版是4K ProRes 4444文件，但平台转码后丢失了高光部分的层次。换句话说，目前能看到的版本已经是降级后的结果，不存在“更好画质的版本”。</p>
+
+            <h3>导演剪辑版与公映版的取舍</h3>
+            <p>《窓辺の手紙》导演剪辑版比公映版多出22分钟，主要集中在主角回到故乡后的三段独白。公映版发行方曾要求将片长控制在90分钟以内，导演在2026年10月12日的蓝光访谈中承认，删减是为了排片场次。加回的三段独白中，第二段（约7分钟）包含全片唯一一次主角直接面对镜头的段落，公映版完全删除。</p>
+            <p>《カーテンコール》的情况更复杂。导演评论音轨里提到，原剧本结局是主角在剧场后台独自离开，试映会后被改成开放式收尾。铃木一彻在音轨中回应说，他本人更倾向于原版结局，但尊重导演与制片方的决定。目前流通的版本全部是修改后的结局，原版结局仅存于导演私人拷贝，未公开。</p>
+
+            <h3>画质之外：评分与条目选择的错位</h3>
+            <p>观众评分与画质规格之间没有稳定关联。《帰り道》评分为6.3，却是2017年作品中唯一发行过1080p蓝光的条目；《静かな海》评分8.4，但只有流媒体限定版本。选条目时如果只看评分排序，会漏掉画质更好的版本；只看画质规格，又可能买到评分较低的条目。可行的做法是分开记录：评分反映内容接受度，规格反映观看体验，两者不互相替代。</p>
+            <p>具体到铃木一彻的片单，评分8.5以上的条目共5条，其中3条有4K或1080p蓝光版本，2条仅有流媒体版。评分7.5以下的条目共4条，其中2条反而有蓝光发行。数据摆在这里，按需取舍比按单一指标排序更实际。</p>
+          </div>
+        </section>
+
+        <!-- 6. 体验指南 -->
+        <section class="section" id="guide">
+          <div class="section-header">
+            <h2>高清播放观看顺序指南</h2>
+          </div>
+          <div class="guide-steps">
+            <div class="step-card">
+              <span class="step-num">1</span>
+              <h4>先确认版本规格</h4>
+              <p>同一个条目可能有公映版、导演剪辑版、修复版三种。先看码率标注：蓝光版通常在8 Mbps以上且稳定，流媒体版浮动大。没有码率标注的，按发行日期判断，2026年新发的修复版优先。</p>
+            </div>
+            <div class="step-card">
+              <span class="step-num">2</span>
+              <h4>按题材分组观看</h4>
+              <p>都市情感线从《雨夜の駅》开始，悬疑线从《白昼夢》开始，实验短片单独排一个时段。不同组的节奏差异大，混着看容易疲劳。单次观看建议不超过两部长片。</p>
+            </div>
+            <div class="step-card">
+              <span class="step-num">3</span>
+              <h4>用评论音轨补上下文</h4>
+              <p>《カーテンコール》的98分钟评论音轨适合在看完全片后单独听。导演与铃木一彻讨论第14场戏灯光方案的部分，能解释正片里几个看起来突兀的镜头。</p>
+            </div>
+            <div class="step-card">
+              <span class="step-num">4</span>
+              <h4>比较两个版本再决定</h4>
+              <p>《窓辺の手紙》公映版与导演剪辑版都有高清资源。建议先看剪辑版，再快进公映版对比删除的段落。多出的22分钟里，第二段独白对理解角色动机最直接。</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. FAQ -->
+        <section class="section" id="faq">
+          <div class="section-header">
+            <h2>常见问题</h2>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>《白昼夢》4K修复版和2019年蓝光版差在哪里？</summary>
+              <div class="faq-answer">主要差在暗部宽容度和颗粒保留。2026年10月修复版用35mm原始底片重新扫描，码率48 Mbps，地下室场景的砖块纹理可辨；2019年蓝光版码率约18 Mbps，同一场景暗部糊成色块。修复版保留了胶片颗粒，2019版做了轻度降噪。</div>
+            </details>
+            <details>
+              <summary>铃木一彻的导演剪辑版作品有哪些？</summary>
+              <div class="faq-answer">目前可查的导演剪辑版包括《窓辺の手紙》（比公映版多22分钟）和《カーテンコール》的早期剪辑（未公开发行，仅存于导演私人拷贝）。《雨夜の駅》4K修复版补回了院线删减的12分钟，但导演未将其命名为“导演剪辑版”。</div>
+            </details>
+            <details>
+              <summary>《静かな海》有没有蓝光碟？</summary>
+              <div class="faq-answer">截至2026年11月8日没有。这部17分钟短片于2026年9月以流媒体限定方式公开，发行方未公布实体碟计划。流媒体版码率7.2 Mbps，导演在10月28日的说明中提到母版为4K ProRes 4444，但平台转码后高光层次有损失。</div>
+            </details>
+            <details>
+              <summary>《帰り道》评分为什么只有6.3？</summary>
+              <div class="faq-answer">主要争议在剧本节奏和配角塑造。2026年10月18日更新的评分数据中，新增评分者约七成给出三星，评论集中在第二幕拖沓、结尾仓促。这部作品是2017年电视特别篇，片长74分钟，发行过1080p蓝光，是同期作品中唯一有蓝光发行的条目。</div>
+            </details>
+            <details>
+              <summary>《カーテンコール》原版结局是什么样的？</summary>
+              <div class="faq-answer">导演评论音轨里提到，原剧本结局是主角在剧场后台独自离开，没有与其他人物的告别戏。试映会后被改成开放式收尾。铃木一彻在音轨中表示本人更倾向于原版结局，但尊重导演与制片方的决定。目前流通的版本全部是修改后的结局。</div>
+            </details>
+            <details>
+              <summary>流媒体版的《夜行バス》为什么噪点很多？</summary>
+              <div class="faq-answer">这是2019年作品，全片在夜行巴士内用手持摄影拍摄，高感光度带来的噪点是原始画面的一部分。2026年10月重新上线的高清版有意保留了噪点，没有做降噪处理。对比旧版，新版修复了第53分钟的音画不同步问题，其余画面差异不大。</div>
+            </details>
+          </div>
+        </section>
+
+        <!-- 8. 用户评论 -->
+        <section class="section" id="comments">
+          <div class="section-header">
+            <h2>观众评论</h2>
+          </div>
+          <div class="comment-list">
+            <div class="comment-item"><div class="comment-avatar">夜</div><div class="comment-body"><div class="comment-user">夜行列车</div><div class="comment-text">《雨夜の駅》补回的那12分钟里，站台等车的长镜头太好了。之前院线版删得莫名其妙，现在终于连上了。</div><div class="comment-meta">2026-11-08</div></div></div>
+            <div class="comment-item"><div class="comment-avatar">白</div><div class="comment-body"><div class="comment-user">白昼梦游</div><div class="comment-text">4K修复版的地下室那段确实清楚，砖缝都能看见。但流媒体版也不至于不能看，手机上看差别没那么大。</div><div class="comment-meta">2026-11-07</div></div></div>
+            <div class="comment-item"><div class="comment-avatar">窗</div><div class="comment-body"><div class="comment-user">窗边人</div><div class="comment-text">导演剪辑版多出来的第二段独白，铃木一彻直接对着镜头说话，那一段值回票价。公映版删掉太可惜了。</div><div class="comment-meta">2026-11-06</div></div></div>
+            <div class="comment-item"><div class="comment-avatar">K</div><div class="comment-body"><div class="comment-user">K_1999</div><div class="comment-text">《帰り道》三星真不冤。第二幕在旅馆里来回拍了二十分钟，没推进任何事。结尾倒是还行。</div><div class="comment-meta">2026-11-05</div></div></div>
+            <div class="comment-item"><div class="comment-avatar">海</div><div class="comment-body"><div class="comment-user">海边散步</div><div class="comment-text">《静かな海》17分钟一口气看完。没有对白，但环境音做得细，海浪声和钢琴叠在一起那段容易走神，得戴耳机。</div><div class="comment-meta">2026-11-04</div></div></div>
+            <div class="comment-item"><div class="comment-avatar">录</div><div class="comment-body"><div class="comment-user">录像带时代</div><div class="comment-text">评论音轨98分钟比正片还长，导演说起第14场戏灯光换方案的时候，铃木一彻插了句“我那天感冒了”，笑死。</div><div class="comment-meta">2026-11-03</div></div></div>
+            <div class="comment-item"><div class="comment-avatar">巴</div><div class="comment-body"><div class="comment-user">巴士乘客</div><div class="comment-text">《夜行バス》的噪点确实多，但那种粗糙感跟题材很搭。新版修了音画不同步，第53分钟终于对了。</div><div class="comment-meta">2026-11-02</div></div></div>
+            <div class="comment-item"><div class="comment-avatar">评</div><div class="comment-body"><div class="comment-user">评分系统</div><div class="comment-text">评分8.4的《静かな海》没有蓝光，6.3的《帰り道》反而有。这个排列有点怪，但看多了也就习惯了。</div><div class="comment-meta">2026-11-01</div></div></div>
+            <div class="comment-item"><div class="comment-avatar">灯</div><div class="comment-body"><div class="comment-user">灯光师学徒</div><div class="comment-text">《カーテンコール》第14场戏的灯光方案讨论很具体，导演说原来用顶光后来改成侧光，成片里能看出区别。</div><div class="comment-meta">2026-10-30</div></div></div>
+            <div class="comment-item"><div class="comment-avatar">慢</div><div class="comment-body"><div class="comment-user">慢速下载</div><div class="comment-text">流媒体版码率7.2 Mbps，大屏上看高光确实有点糊。不过17分钟的短片，要求别太高。</div><div class="comment-meta">2026-10-29</div></div></div>
+            <div class="comment-item"><div class="comment-avatar">结</div><div class="comment-body"><div class="comment-user">结局党</div><div class="comment-text">原版结局是独自离开？那比现在的开放式收尾好多了。现在这个结局太安全了。</div><div class="comment-meta">2026-10-27</div></div></div>
+            <div class="comment-item"><div class="comment-avatar">手</div><div class="comment-body"><div class="comment-user">手写信</div><div class="comment-text">《窓辺の手紙》的16页拍摄笔记比正片还好看，里面有铃木一彻手写的场记备注，字很丑但很认真。</div><div class="comment-meta">2026-10-26</div></div></div>
+            <div class="comment-item"><div class="comment-avatar">路</div><div class="comment-body"><div class="comment-user">路过看看</div><div class="comment-text">这类作品看多了容易串戏，铃木一彻在不同片子里走路姿势都差不多，但看久了反而觉得是个人特色。</div><div class="comment-meta">2026-10-24</div></div></div>
+            <div class="comment-item"><div class="comment-avatar">数</div><div class="comment-body"><div class="comment-user">数据党</div><div class="comment-text">47个条目里21条短片，比例快一半了。短片的平均评分8.1，长片平均8.3，差得不多。</div><div class="comment-meta">2026-10-22</div></div></div>
+            <div class="comment-item"><div class="comment-avatar">音</div><div class="comment-body"><div class="comment-user">音轨收藏</div><div class="comment-text">评论音轨只收了《カーテンコール》的，希望《白昼夢》也能出一条，修复版都出了不差这一条。</div><div class="comment-meta">2026-10-20</div></div></div>
+            <div class="comment-item"><div class="comment-avatar">随</div><div class="comment-body"><div class="comment-user">随便说说</div><div class="comment-text">今天天气不错，适合窝在家里看《静かな海》。</div><div class="comment-meta">2026-10-19</div></div></div>
+          </div>
+        </section>
+
+        <!-- 9. 相关资讯 -->
+        <section class="section" id="news">
+          <div class="section-header">
+            <h2>相关资讯</h2>
+          </div>
+          <div class="news-list">
+            <div class="news-item">
+              <div class="news-title"><span class="news-date">2026-11-08</span>《雨夜の駅》4K修复版上线，补回12分钟删减片段</div>
+              <div class="news-summary">发行方在11月8日同步公开了修复前后的对比截图，显示山形县外景地的雨夜场景暗部层次提升明显。新增片段集中在站台等待的长镜头，时长从原来的78分钟增至90分钟。</div>
+            </div>
+            <div class="news-item">
+              <div class="news-title"><span class="news-date">2026-11-06</span>导演剪辑合集第12卷收录《窓辺の手紙》完整版</div>
+              <div class="news-summary">合集共包含三部作品的导演剪辑版，总时长312分钟。其中《窓辺の手紙》的22分钟新增内容首次以蓝光规格发行，附带16页拍摄笔记的扫描件。</div>
+            </div>
+            <div class="news-item">
+              <div class="news-title"><span class="news-date">2026-11-03</span>《白昼夢》以9.1分登顶本月观众票选</div>
+              <div class="news-summary">评分基于2140条有效评价，其中五星占比58%。同期《窓辺の手紙》导演剪辑版以8.9分位居第二，两者相差0.2分，参与评分人数相差约600人。</div>
+            </div>
+            <div class="news-item">
+              <div class="news-title"><span class="news-date">2026-11-02</span>《カーテンコール》评论音轨公开，导演谈结局修改</div>
+              <div class="news-summary">98分钟音轨中导演提到，原版结局在试映会后被推翻，原因是制片方认为独自离开的收尾过于灰暗。铃木一彻在音轨中回应称尊重决定，但保留个人偏好。</div>
+            </div>
+            <div class="news-item">
+              <div class="news-title"><span class="news-date">2026-10-28</span>《静かな海》导演说明母版规格，流媒体版高光有损失</div>
+              <div class="news-summary">导演在公开说明中提到，母版为4K ProRes 4444文件，平台转码后码率降至7.2 Mbps，高光层次有可察觉的损失。目前没有发行实体碟的计划。</div>
+            </div>
+            <div class="news-item">
+              <div class="news-title"><span class="news-date">2026-10-18</span>《帰り道》特别篇评分更新，新增评分者七成给三星</div>
+              <div class="news-summary">评分从6.1升至6.3，新增的约200条评分中，三星占比约七成。评论主要集中在第二幕节奏拖沓，结尾仓促的批评占新增评论的四成。</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 10. 相关推荐 -->
+        <section class="section" id="related">
+          <div class="section-header">
+            <h2>相关推荐</h2>
+          </div>
+          <div class="related-tags">
+            <a href="/#featured" class="related-tag">白昼夢 4K修复版</a>
+            <a href="/#featured" class="related-tag">雨夜の駅 删减片段</a>
+            <a href="/#featured" class="related-tag">窓辺の手紙 导演剪辑</a>
+            <a href="/#featured" class="related-tag">カーテンコール 评论音轨</a>
+            <a href="/#featured" class="related-tag">静かな海 默片短片</a>
+            <a href="/#featured" class="related-tag">夜行バス 手持摄影</a>
+            <a href="/#featured" class="related-tag">帰り道 电视特别篇</a>
+            <a href="/#featured" class="related-tag">蓝光修复对比</a>
+          </div>
+        </section>
+
+        <!-- 11. 补充板块：热度榜单 -->
+        <section class="section" id="rank">
+          <div class="section-header">
+            <h2>条目热度榜单</h2>
+          </div>
+          <table class="rank-table">
+            <thead>
+              <tr><th>排名</th><th>条目</th><th>类型</th><th>评分</th><th>评分人数</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>《白昼夢》4K修复版</td><td>剧情长片</td><td>9.1</td><td>2140</td></tr>
+              <tr><td>2</td><td>《窓辺の手紙》导演剪辑版</td><td>剧情长片</td><td>8.9</td><td>1530</td></tr>
+              <tr><td>3</td><td>《雨夜の駅》4K修复版</td><td>剧情长片</td><td>8.7</td><td>980</td></tr>
+              <tr><td>4</td><td>《静かな海》实验短片</td><td>实验短片</td><td>8.4</td><td>620</td></tr>
+              <tr><td>5</td><td>《夜行バス》高清版</td><td>剧情长片</td><td>7.8</td><td>740</td></tr>
+              <tr><td>6</td><td>《帰り道》特别篇</td><td>电视特别篇</td><td>6.3</td><td>410</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+      </main>
+
+      <!-- 右侧辅助栏 -->
+      <aside class="right-aside">
+        <div class="aside-card">
+          <h3>热榜条目</h3>
+          <ul class="hot-list">
+            <li><span class="rank">1</span><span class="item-title">白昼夢 4K修复版</span><span class="item-meta">9.1</span></li>
+            <li><span class="rank">2</span><span class="item-title">窓辺の手紙 导演剪辑</span><span class="item-meta">8.9</span></li>
+            <li><span class="rank">3</span><span class="item-title">雨夜の駅 4K修复</span><span class="item-meta">8.7</span></li>
+            <li><span class="rank">4</span><span class="item-title">静かな海 短片</span><span class="item-meta">8.4</span></li>
+            <li><span class="rank">5</span><span class="item-title">夜行バス 高清版</span><span class="item-meta">7.8</span></li>
+          </ul>
+        </div>
+        <div class="aside-card">
+          <h3>近期更新</h3>
+          <ul class="hot-list" style="font-size:0.82rem; gap:0.5rem;">
+            <li><span class="item-title">11-08 雨夜の駅 4K</span></li>
+            <li><span class="item-title">11-06 导演剪辑合集12</span></li>
+            <li><span class="item-title">11-03 白昼夢票选9.1</span></li>
+            <li><span class="item-title">11-02 カーテンコール音轨</span></li>
+            <li><span class="item-title">10-28 静かな海上线</span></li>
+            <li><span class="item-title">10-25 夜行バス高清版</span></li>
+          </ul>
+        </div>
+        <div class="aside-card">
+          <h3>投稿与互动</h3>
+          <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.6; margin-bottom:1rem;">分享你发现的版本差异、截图对比或观影笔记。上传内容包括文字与图片，审核后展示。</p>
+          <a href="/#comments" class="btn-primary" style="display:block; text-align:center; font-size:0.85rem; padding:0.5rem;">参与讨论</a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="brand-text">silk官网 铃木一彻 高清播放</div>
+        <p>收录铃木一彻2015年至2026年间出演的47条影像条目，涵盖剧情长片、实验短片、导演评论音轨与幕后花絮。更新节奏以发行方公布时间为准，每月平均新增2—3条。</p>
+      </div>
+      <div class="footer-col">
+        <h4>作品分类</h4>
+        <ul>
+          <li><a href="/#featured">剧情长片</a></li>
+          <li><a href="/#featured">实验短片</a></li>
+          <li><a href="/#featured">评论音轨</a></li>
+          <li><a href="/#featured">幕后花絮</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>版本规格</h4>
+        <ul>
+          <li><a href="/#featured">4K修复</a></li>
+          <li><a href="/#featured">1080p蓝光</a></li>
+          <li><a href="/#featured">流媒体限定</a></li>
+          <li><a href="/#featured">导演剪辑</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>互动与说明</h4>
+        <ul>
+          <li><a href="/#comments">观众评论</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#rank">热度榜单</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>页面内评分、评分为示例数据，基于虚构条目生成，仅作展示用途。</span>
+      <span>© 2026 内容聚合示例 · 条目数据截至2026-11-08</span>
+    </div>
+  </footer>
+
+  <!-- 回到顶部 -->
+  <button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
+
+  <script>
+    (function() {
+      // 吸顶偏移变量已在 CSS 中处理
+
+      // 搜索功能
+      const searchInput = document.getElementById('searchInput');
+      const searchBtn = document.getElementById('searchBtn');
+      const allSections = document.querySelectorAll('.section, .hero');
+
+      function filterContent() {
+        const q = searchInput.value.trim().toLowerCase();
+        if (!q) {
+          allSections.forEach(s => s.style.display = '');
+          return;
+        }
+        let found = false;
+        allSections.forEach(s => {
+          const text = s.textContent.toLowerCase();
+          if (text.includes(q)) {
+            s.style.display = '';
+            found = true;
+          } else {
+            s.style.display = 'none';
+          }
+        });
+        if (!found) {
+          alert('未找到与“' + searchInput.value.trim() + '”相关的内容');
+        }
+      }
+
+      searchBtn.addEventListener('click', filterContent);
+      searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          filterContent();
+        }
+      });
+
+      // 汉堡菜单
+      const hamburger = document.getElementById('hamburgerBtn');
+      const mainNav = document.getElementById('mainNav');
+      const navOverlay = document.getElementById('navOverlay');
+      const leftChannel = document.getElementById('leftChannel');
+
+      function toggleMenu(open) {
+        const isOpen = open !== undefined ? open : !mainNav.classList.contains('mobile-open');
+        mainNav.classList.toggle('mobile-open', isOpen);
+        navOverlay.classList.toggle('active', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+        if (isOpen) {
+          leftChannel.classList.add('mobile-open');
+        } else {
+          leftChannel.classList.remove('mobile-open');
+        }
+      }
+
+      hamburger.addEventListener('click', function() {
+        toggleMenu();
+      });
+
+      navOverlay.addEventListener('click', function() {
+        toggleMenu(false);
+      });
+
+      // 点击导航项后自动收起
+      mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+          if (window.innerWidth <= 740) {
+            toggleMenu(false);
+          }
+        });
+      });
+
+      // Esc 关闭
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mainNav.classList.contains('mobile-open')) {
+          toggleMenu(false);
+        }
+      });
+
+      // 回到顶部
+      const backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > window.innerHeight) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+      backToTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // 左侧频道高亮
+      const channelLinks = document.querySelectorAll('.channel-list a');
+      const sections = document.querySelectorAll('.section[id]');
+
+      function highlightNav() {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 120;
+          if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+          }
+        });
+        channelLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '/#' + current) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', highlightNav);
+      highlightNav();
+    })();
+  </script>
+</body>
+                </html>
