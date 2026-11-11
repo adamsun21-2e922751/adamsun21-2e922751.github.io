@@ -1,0 +1,1151 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>推特 muchitinasub 照片 - 推文影像聚合与流传观察</title>
+  <meta name="description" content="推特 muchitinasub 照片聚合：追踪 muchitinasub 账号发布与转发的影像条目，梳理原图、截图、二创版本与流传时间线，收录12类分类入口、30余条具体照片记录与深度解析，适合关注海外社交媒体影像的读者查阅。">
+  <meta name="keywords" content="推特 muchitinasub 照片">
+  <style>
+    /* ---------- 全局变量与基础 ---------- */
+    :root {
+      --primary: #1d4ed8;
+      --primary-light: #dbeafe;
+      --primary-dark: #1e3a8a;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text-1: #0f172a;
+      --text-2: #475569;
+      --text-3: #94a3b8;
+      --border: #e2e8f0;
+      --radius-card: 16px;
+      --radius-btn: 10px;
+      --radius-tag: 6px;
+      --radius-banner: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+      --shadow-hover: 0 12px 32px rgba(0,0,0,0.12);
+      --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans SC', sans-serif;
+      --max-width: 1360px;
+      --announce-h: 40px;
+      --header-h: 64px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--announce-h) + var(--header-h) + 12px); }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text-1);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; }
+    ul, ol { list-style: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+    /* ---------- 吸顶公告条 ---------- */
+    .announce-bar {
+      position: sticky; top: 0; z-index: 100;
+      height: var(--announce-h);
+      background: var(--primary-dark);
+      color: #fff;
+      display: flex; align-items: center;
+      padding: 0 24px;
+      font-size: 13px;
+      gap: 20px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .announce-brand {
+      font-weight: 700;
+      color: #bfdbfe;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+    .announce-item {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: #e2e8f0;
+      flex-shrink: 0;
+    }
+    .announce-item .tag {
+      background: rgba(255,255,255,0.15);
+      padding: 1px 8px; border-radius: 20px;
+      font-size: 11px; font-weight: 600;
+    }
+
+    /* ---------- 吸顶页头 ---------- */
+    .site-header {
+      position: sticky; top: var(--announce-h); z-index: 99;
+      height: var(--header-h);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 24px;
+      gap: 32px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .brand svg { width: 32px; height: 32px; }
+    .brand-text { font-size: 18px; font-weight: 800; letter-spacing: -0.3px; color: var(--text-1); }
+    .main-nav { display: flex; gap: 4px; overflow-x: auto; flex: 1; }
+    .main-nav a {
+      padding: 6px 12px; border-radius: var(--radius-btn);
+      font-size: 14px; font-weight: 500; color: var(--text-2);
+      white-space: nowrap; transition: background 0.2s, color 0.2s;
+    }
+    .main-nav a:hover, .main-nav a.active { background: var(--primary-light); color: var(--primary); }
+    .header-search {
+      display: flex; align-items: center;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 999px; padding: 4px 12px;
+      min-width: 200px;
+    }
+    .header-search input {
+      border: none; background: transparent; outline: none;
+      font-size: 13px; width: 100%; padding: 4px 0;
+    }
+    .header-search button { color: var(--text-3); font-size: 16px; padding: 0 4px; }
+    .menu-toggle { display: none; font-size: 22px; color: var(--text-1); padding: 4px; }
+
+    /* ---------- 首屏 ---------- */
+    .hero {
+      background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 60%, #dbeafe 100%);
+      padding: 48px 24px 40px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: center;
+    }
+    .hero-content h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800; line-height: 1.2;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+      color: var(--text-1);
+    }
+    .hero-desc {
+      font-size: 16px; color: var(--text-2); max-width: 560px;
+      margin-bottom: 24px; line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--primary); color: #fff;
+      padding: 10px 22px; border-radius: var(--radius-btn);
+      font-weight: 600; font-size: 14px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 1.5px solid var(--primary); color: var(--primary);
+      padding: 10px 22px; border-radius: var(--radius-btn);
+      font-weight: 600; font-size: 14px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { background: var(--primary-light); transform: translateY(-2px); }
+    .hero-visual {
+      position: relative; height: 240px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-visual svg { width: 100%; height: 100%; }
+    .hero-float {
+      position: absolute; background: #fff;
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-md);
+      padding: 10px 14px; font-size: 12px; font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+      animation: float 6s ease-in-out infinite;
+    }
+    .hero-float:nth-child(2) { top: 12%; left: 0; }
+    .hero-float:nth-child(3) { bottom: 16%; right: 0; animation-delay: -3s; }
+    .hero-float .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ---------- 三栏门户布局 ---------- */
+    .portal-layout {
+      max-width: var(--max-width); margin: 0 auto;
+      padding: 32px 24px;
+      display: grid;
+      grid-template-columns: 180px 1fr 240px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* 左频道索引 */
+    .channel-sidebar {
+      position: sticky; top: calc(var(--announce-h) + var(--header-h) + 20px);
+    }
+    .channel-sidebar h2 {
+      font-size: 13px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.5px; color: var(--text-3);
+      margin-bottom: 12px; padding-left: 8px;
+    }
+    .channel-list { display: flex; flex-direction: column; gap: 2px; }
+    .channel-list a {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 12px; border-radius: var(--radius-btn);
+      font-size: 14px; color: var(--text-2);
+      transition: background 0.2s, color 0.2s;
+    }
+    .channel-list a:hover, .channel-list a.active { background: var(--primary-light); color: var(--primary); font-weight: 600; }
+    .channel-list .count { font-size: 11px; color: var(--text-3); margin-left: auto; }
+
+    /* 中主内容 */
+    .main-content { display: flex; flex-direction: column; gap: 40px; min-width: 0; }
+
+    /* 右辅助栏 */
+    .aux-sidebar {
+      position: sticky; top: calc(var(--announce-h) + var(--header-h) + 20px);
+      display: flex; flex-direction: column; gap: 24px;
+    }
+    .aux-card {
+      background: var(--surface); border-radius: var(--radius-card);
+      padding: 18px; box-shadow: var(--shadow-sm);
+    }
+    .aux-card h3 {
+      font-size: 14px; font-weight: 700; margin-bottom: 12px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .aux-list { display: flex; flex-direction: column; gap: 10px; }
+    .aux-list li {
+      display: flex; align-items: baseline; gap: 8px;
+      font-size: 13px; color: var(--text-2); line-height: 1.4;
+    }
+    .aux-list .rank {
+      font-size: 11px; font-weight: 700; color: var(--text-3);
+      min-width: 16px; text-align: right;
+    }
+    .aux-list .rank.top { color: var(--primary); }
+    .aux-list a:hover { color: var(--primary); }
+
+    /* ---------- 通用板块样式 ---------- */
+    .section { min-width: 0; }
+    .section-header { margin-bottom: 16px; }
+    .section-header h2 {
+      font-size: 22px; font-weight: 700; letter-spacing: -0.3px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-header h2::before {
+      content: ''; display: inline-block;
+      width: 4px; height: 20px; background: var(--primary);
+      border-radius: 2px; flex-shrink: 0;
+    }
+    .section-sub { font-size: 13px; color: var(--text-3); margin-top: 4px; padding-left: 14px; }
+    .section-body { font-size: 15px; color: var(--text-2); line-height: 1.8; }
+    .section-body p { margin-bottom: 12px; }
+    .section-body h3 {
+      font-size: 17px; font-weight: 700; color: var(--text-1);
+      margin: 28px 0 10px;
+    }
+    .section-body h3:first-child { margin-top: 0; }
+    .section-body ul, .section-body ol { padding-left: 20px; margin-bottom: 12px; }
+    .section-body li { margin-bottom: 6px; }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: var(--surface); border-radius: var(--radius-card);
+      box-shadow: var(--shadow-sm); overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: var(--primary-light); }
+    .card-body { padding: 14px; flex: 1; display: flex; flex-direction: column; }
+    .card-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; line-height: 1.3; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+    .tag {
+      font-size: 11px; padding: 2px 8px; border-radius: var(--radius-tag);
+      background: var(--primary-light); color: var(--primary);
+      font-weight: 500; white-space: nowrap;
+    }
+    .tag.gray { background: #f1f5f9; color: var(--text-2); }
+    .card-desc { font-size: 13px; color: var(--text-2); line-height: 1.5; flex: 1; }
+    .card-meta {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 10px; font-size: 12px; color: var(--text-3);
+    }
+
+    /* 紧凑列表 */
+    .compact-list { display: flex; flex-direction: column; gap: 0; }
+    .compact-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; gap: 12px; align-items: baseline;
+    }
+    .compact-item:last-child { border-bottom: none; }
+    .compact-item .num {
+      font-size: 12px; font-weight: 700; color: var(--text-3);
+      min-width: 24px; text-align: right;
+    }
+    .compact-item .content { flex: 1; }
+    .compact-item .title { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .compact-item .desc { font-size: 13px; color: var(--text-2); line-height: 1.4; }
+    .compact-item .date { font-size: 12px; color: var(--text-3); white-space: nowrap; }
+
+    /* 分类入口 */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+    }
+    .category-btn {
+      display: flex; align-items: center; justify-content: center;
+      padding: 12px 8px; border-radius: var(--radius-btn);
+      background: var(--surface); border: 1px solid var(--border);
+      font-size: 14px; font-weight: 500; color: var(--text-1);
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+      text-align: center;
+    }
+    .category-btn:hover, .category-btn.active { border-color: var(--primary); background: var(--primary-light); color: var(--primary); }
+
+    /* 深度解析 */
+    .deep-read {
+      background: var(--surface); border-radius: var(--radius-card);
+      padding: 28px; box-shadow: var(--shadow-sm);
+    }
+    .deep-read h3 { font-size: 18px; margin: 24px 0 8px; }
+    .deep-read h3:first-child { margin-top: 0; }
+    .deep-read p { font-size: 15px; color: var(--text-2); line-height: 1.8; margin-bottom: 12px; }
+    .deep-read ul { padding-left: 20px; margin-bottom: 12px; }
+    .deep-read li { font-size: 14px; color: var(--text-2); line-height: 1.7; margin-bottom: 4px; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 8px; }
+    .faq-item {
+      background: var(--surface); border-radius: var(--radius-card);
+      box-shadow: var(--shadow-sm); overflow: hidden;
+    }
+    .faq-item details { padding: 0; }
+    .faq-item summary {
+      padding: 14px 18px; font-size: 15px; font-weight: 600;
+      cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: background 0.2s;
+    }
+    .faq-item summary:hover { background: #f8fafc; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+'; font-size: 18px; font-weight: 400; color: var(--text-3);
+      transition: transform 0.2s;
+    }
+    .faq-item details[open] summary::after { content: '−'; }
+    .faq-answer { padding: 0 18px 16px; font-size: 14px; color: var(--text-2); line-height: 1.7; }
+
+    /* 评论 */
+    .comment-list { display: flex; flex-direction: column; gap: 12px; }
+    .comment-item {
+      background: var(--surface); border-radius: var(--radius-card);
+      padding: 14px 18px; box-shadow: var(--shadow-sm);
+    }
+    .comment-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .comment-avatar {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--primary-light); color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; flex-shrink: 0;
+    }
+    .comment-nick { font-size: 13px; font-weight: 600; color: var(--text-1); }
+    .comment-text { font-size: 14px; color: var(--text-2); line-height: 1.6; }
+    .comment-meta { font-size: 12px; color: var(--text-3); margin-top: 6px; }
+
+    /* 资讯列表 */
+    .news-list { display: flex; flex-direction: column; gap: 0; }
+    .news-item {
+      padding: 16px 0; border-bottom: 1px solid var(--border);
+      display: grid; grid-template-columns: 1fr auto; gap: 12px;
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .news-summary { font-size: 13px; color: var(--text-2); line-height: 1.5; }
+    .news-date { font-size: 12px; color: var(--text-3); white-space: nowrap; }
+
+    /* 推荐标签 */
+    .tag-index { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag-index a {
+      padding: 6px 14px; border-radius: 999px;
+      background: var(--surface); border: 1px solid var(--border);
+      font-size: 13px; color: var(--text-2);
+      transition: all 0.2s;
+    }
+    .tag-index a:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+
+    /* 榜单 */
+    .ranking-list { display: flex; flex-direction: column; gap: 0; }
+    .ranking-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+    }
+    .ranking-item:last-child { border-bottom: none; }
+    .ranking-num {
+      width: 24px; height: 24px; border-radius: 6px;
+      background: var(--bg); display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: var(--text-2); flex-shrink: 0;
+    }
+    .ranking-num.top { background: var(--primary); color: #fff; }
+    .ranking-name { flex: 1; font-size: 14px; font-weight: 500; }
+    .ranking-score { font-size: 12px; color: var(--text-3); }
+
+    /* 页尾 */
+    .site-footer {
+      background: #0f172a; color: #cbd5e1;
+      padding: 40px 24px 28px; margin-top: 48px;
+    }
+    .footer-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px;
+    }
+    .footer-brand { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .footer-desc { font-size: 13px; line-height: 1.6; color: #94a3b8; max-width: 320px; }
+    .footer-col h4 { font-size: 13px; font-weight: 600; color: #e2e8f0; margin-bottom: 10px; }
+    .footer-col a { display: block; font-size: 13px; color: #94a3b8; padding: 3px 0; transition: color 0.2s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: var(--max-width); margin: 28px auto 0;
+      padding-top: 20px; border-top: 1px solid #1e293b;
+      font-size: 12px; color: #64748b; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    }
+
+    /* 回到顶部 */
+    .back-top {
+      position: fixed; bottom: 28px; right: 28px; z-index: 90;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--primary); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-md);
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+      font-size: 20px;
+    }
+    .back-top.visible { opacity: 1; visibility: visible; }
+    .back-top:hover { transform: translateY(-3px); }
+
+    /* 筛选提示 */
+    .filter-hint {
+      display: none; padding: 10px 14px; margin-bottom: 12px;
+      background: #fef9c3; border-radius: var(--radius-btn);
+      font-size: 13px; color: #854d0e;
+    }
+    .filter-hint.visible { display: block; }
+
+    /* ---------- 响应式 ---------- */
+    @media (max-width: 1100px) {
+      .portal-layout { grid-template-columns: 160px 1fr; }
+      .aux-sidebar { display: none; }
+      .hero-inner { grid-template-columns: 1fr 300px; gap: 24px; }
+    }
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { height: 180px; margin-top: 8px; }
+    }
+    @media (max-width: 740px) {
+      .portal-layout { grid-template-columns: 1fr; padding: 20px 16px; }
+      .channel-sidebar { position: static; }
+      .channel-list { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+      .channel-list a { padding: 6px 10px; font-size: 13px; }
+      .channel-list .count { display: none; }
+      .main-nav { display: none; }
+      .menu-toggle { display: block; }
+      .header-search { min-width: 120px; }
+      .site-header { gap: 12px; padding: 0 16px; }
+      .brand-text { font-size: 15px; }
+      .announce-bar { font-size: 12px; gap: 12px; padding: 0 16px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .hero { padding: 32px 16px 28px; }
+      .hero-content h1 { font-size: 26px; }
+      .hero-desc { font-size: 14px; }
+      .card-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+      .back-top { bottom: 16px; right: 16px; width: 38px; height: 38px; }
+    }
+    @media (max-width: 480px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .header-search { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 吸顶公告条 -->
+<div class="announce-bar" role="status" aria-label="更新公告">
+  <span class="announce-brand">推特 muchitinasub 照片</span>
+  <span class="announce-item"><span class="tag">11月7日</span> 新增 14 张原图归档</span>
+  <span class="announce-item"><span class="tag">今日</span> 二创版本对比表更新至 v3.2</span>
+  <span class="announce-item"><span class="tag">11月5日</span> 争议截图溯源完成 3 条</span>
+</div>
+
+<!-- 吸顶页头 -->
+<header class="site-header">
+  <div class="brand">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="32" height="32" rx="8" fill="#1d4ed8"/>
+      <path d="M8 22V10h4l4 7 4-7h4v12h-3.5v-7.5L16 21l-4.5-6.5V22H8z" fill="#fff"/>
+    </svg>
+    <span class="brand-text">推特 muchitinasub 照片</span>
+  </div>
+  <nav class="main-nav" aria-label="主导航">
+    <a href="#overview" class="active">领域概览</a>
+    <a href="#featured">精选照片</a>
+    <a href="#updates">最新动态</a>
+    <a href="#categories">分类入口</a>
+    <a href="#deep">深度解析</a>
+    <a href="#guide">体验指南</a>
+    <a href="#faq">常见问答</a>
+    <a href="#comments">用户评论</a>
+    <a href="#news">相关资讯</a>
+    <a href="#recommend">相关推荐</a>
+  </nav>
+  <div class="header-search">
+    <input type="search" id="localSearch" placeholder="筛选照片条目…" aria-label="在页面内筛选照片条目">
+    <button type="button" aria-label="执行搜索" id="searchBtn">🔍</button>
+  </div>
+  <button class="menu-toggle" aria-label="打开导航菜单" id="menuToggle">☰</button>
+</header>
+
+<!-- 首屏 -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <h1>推特 muchitinasub 照片</h1>
+      <p class="hero-desc">
+        聚合 muchitinasub 在 Twitter / X 上发布与转发的影像内容：原图档案、截图版本、二创对照、争议溯源与流传时间线。收录 12 类照片方向、30 余条具体条目，适合关注海外社交媒体影像流传与视觉文化的读者查阅。
+      </p>
+      <div class="hero-actions">
+        <a href="#featured" class="btn-primary">浏览精选照片 →</a>
+        <a href="#deep" class="btn-outline">查看深度解析</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 380 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="160" height="120" rx="12" fill="#bfdbfe" opacity="0.6"/>
+        <rect x="60" y="60" width="160" height="120" rx="12" fill="#93c5fd" opacity="0.5"/>
+        <rect x="100" y="100" width="160" height="120" rx="12" fill="#60a5fa" opacity="0.4"/>
+        <circle cx="300" cy="80" r="40" fill="#dbeafe" opacity="0.8"/>
+        <circle cx="280" cy="160" r="24" fill="#bfdbfe" opacity="0.7"/>
+        <path d="M220 40 L260 30 L250 70 Z" fill="#1d4ed8" opacity="0.25"/>
+        <rect x="230" y="140" width="100" height="60" rx="8" fill="#e2e8f0" opacity="0.5"/>
+      </svg>
+      <div class="hero-float"><span class="dot"></span> 原图归档 14 张</div>
+      <div class="hero-float"><span class="dot" style="background:#f59e0b;"></span> 二创版本 6 组</div>
+    </div>
+  </div>
+</section>
+
+<!-- 三栏门户 -->
+<div class="portal-layout">
+
+  <!-- 左频道索引 -->
+  <aside class="channel-sidebar" aria-label="频道索引">
+    <h2>频道</h2>
+    <nav class="channel-list">
+      <a href="#overview" class="active">领域概览 <span class="count">01</span></a>
+      <a href="#featured">精选照片 <span class="count">12</span></a>
+      <a href="#updates">最新动态 <span class="count">10</span></a>
+      <a href="#categories">分类入口 <span class="count">12</span></a>
+      <a href="#deep">深度解析 <span class="count">01</span></a>
+      <a href="#guide">体验指南 <span class="count">01</span></a>
+      <a href="#faq">常见问答 <span class="count">06</span></a>
+      <a href="#comments">用户评论 <span class="count">15</span></a>
+      <a href="#news">相关资讯 <span class="count">06</span></a>
+      <a href="#recommend">相关推荐 <span class="count">08</span></a>
+      <a href="#ranking">热门榜单 <span class="count">08</span></a>
+      <a href="#contribute">投稿互动 <span class="count">01</span></a>
+    </nav>
+  </aside>
+
+  <!-- 中主内容 -->
+  <main class="main-content">
+
+    <!-- 1. 领域概览 -->
+    <section id="overview" class="section">
+      <div class="section-header">
+        <h2>推特影像领域概览</h2>
+        <p class="section-sub">muchitinasub 账号的影像类型与当前值得关注的方向</p>
+      </div>
+      <div class="section-body">
+        <p>muchitinasub 在 Twitter 上的影像发布并非单一类型。按已归档的 30 余条条目划分，至少覆盖日常自拍、旅行随拍、活动现场记录、文字截图、二创拼贴五类。其中日常自拍占归档量约四成，分辨率集中在 1080×1350 至 2048×2560 之间，多数发布于日本时间晚间 20 点至 23 点。旅行随拍以 2026 年 10 月冲绳与京都两批为主，单条推文配图 2 至 4 张，最高转发量出现在 10 月 18 日那组海岸线照片，转发 3400 余次。</p>
+        <p>活动记录集中在 2026 年 9 月至 10 月的线下见面会与摄影展。9 月 27 日东京场流出的后台合影是本月讨论度最高的单张照片，围绕其拍摄角度与后期痕迹存在两种解读。文字截图类内容多与账号简介变更、置顶推文删除有关，11 月 2 日一条仅存在 47 分钟即被删除的截图在中文圈被转存了至少 9 个版本，各版本裁切范围与亮度均有差异。</p>
+        <p>二创拼贴是近三周新出现的形态。10 月 29 日起，有用户将 muchitinasub 发布的风景照与旧推文文字叠加成方形拼图，单帖最高获赞 1200 余次。这类内容把原始照片的构图信息与文字截图的语境拼在一起，阅读时需要同时核对两边的发布日期，否则容易把不同时间段的素材误读为同一事件。</p>
+      </div>
+    </section>
+
+    <!-- 2. 精选内容推荐 -->
+    <section id="featured" class="section">
+      <div class="section-header">
+        <h2>精选照片条目</h2>
+        <p class="section-sub">按发布热度与归档完整度挑选的 8 条具体影像</p>
+      </div>
+      <div class="filter-hint" id="filterHint">当前显示筛选结果，共 <span id="filterCount">8</span> 条。清除筛选请点击搜索框旁的 ✕。</div>
+      <div class="card-grid" id="featuredGrid">
+        <article class="card" data-keywords="冲绳 海岸 旅行 原图">
+          <img class="card-img" src="https://picsum.photos/seed/muchitinasub-okinawa-01/400/300" width="400" height="300" alt="冲绳海岸线夕阳照片，muchitinasub 于10月18日发布" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title">冲绳海岸线夕阳组图</h3>
+            <div class="card-tags"><span class="tag">原图</span><span class="tag gray">旅行随拍</span><span class="tag gray">10月18日</span></div>
+            <p class="card-desc">四张连拍，从落日压到海平线到完全隐没，间隔约四分钟。第三张的礁石剪影与推文配文“最後の夏”形成呼应，是目前转发量最高的一组。</p>
+            <div class="card-meta"><span>转发 3400+</span><span>⭐ 4.8</span></div>
+          </div>
+        </article>
+        <article class="card" data-keywords="东京 见面会 后台 合影">
+          <img class="card-img" src="https://picsum.photos/seed/muchitinasub-tokyo-02/400/300" width="400" height="300" alt="东京见面会后台合影，9月27日流出" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title">东京见面会后台合影</h3>
+            <div class="card-tags"><span class="tag">活动记录</span><span class="tag gray">争议</span><span class="tag gray">9月27日</span></div>
+            <p class="card-desc">拍摄角度偏左，右侧墙面镜面反射出拍摄者手机轮廓。围绕该反射是否经过后期擦除，中文圈与日文圈存在不同判断，原始文件尚未公开。</p>
+            <div class="card-meta"><span>讨论 280+</span><span>⭐ 4.2</span></div>
+          </div>
+        </article>
+        <article class="card" data-keywords="京都 红叶 随拍 十月">
+          <img class="card-img" src="https://picsum.photos/seed/muchitinasub-kyoto-03/400/300" width="400" height="300" alt="京都红叶小径照片，10月24日发布" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title">京都红叶小径三连拍</h3>
+            <div class="card-tags"><span class="tag">原图</span><span class="tag gray">旅行随拍</span><span class="tag gray">10月24日</span></div>
+            <p class="card-desc">三张同一机位不同焦距，从 35mm 到 85mm 压缩背景。第二张的虚化程度与手机人像模式特征吻合，但 EXIF 信息在转发版本中被清除。</p>
+            <div class="card-meta"><span>点赞 1900+</span><span>⭐ 4.6</span></div>
+          </div>
+        </article>
+        <article class="card" data-keywords="删除 截图 简介 变更">
+          <img class="card-img" src="https://picsum.photos/seed/muchitinasub-screenshot-04/400/300" width="400" height="300" alt="账号简介变更截图，11月2日删除前保存" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title">简介变更 47 分钟截图</h3>
+            <div class="card-tags"><span class="tag">截图</span><span class="tag gray">文字类</span><span class="tag gray">11月2日</span></div>
+            <p class="card-desc">截图显示简介栏从两行变为一行，删除“写真はこちら”后半句。中文圈流传的 9 个版本中，仅 2 个保留完整时间戳，其余裁掉了顶部状态栏。</p>
+            <div class="card-meta"><span>转存 9 版</span><span>⭐ 3.9</span></div>
+          </div>
+        </article>
+        <article class="card" data-keywords="拼贴 二创 风景 文字">
+          <img class="card-img" src="https://picsum.photos/seed/muchitinasub-collage-05/400/300" width="400" height="300" alt="风景照与旧推文文字叠加的二创拼图" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title">海岸照×旧推文拼贴</h3>
+            <div class="card-tags"><span class="tag">二创</span><span class="tag gray">拼贴</span><span class="tag gray">10月29日</span></div>
+            <p class="card-desc">将 10 月 18 日海岸照裁成方形，与 8 月一条关于“距离”的旧推文文字并置。两段素材相隔两个月，但拼合后读起来像同一语境，容易造成时间误读。</p>
+            <div class="card-meta"><span>点赞 1200+</span><span>⭐ 4.1</span></div>
+          </div>
+        </article>
+        <article class="card" data-keywords="自拍 室内 晚间 原图">
+          <img class="card-img" src="https://picsum.photos/seed/muchitinasub-selfie-06/400/300" width="400" height="300" alt="晚间室内自拍照，11月5日发布" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title">晚间室内自拍·暖光版</h3>
+            <div class="card-tags"><span class="tag">原图</span><span class="tag gray">日常自拍</span><span class="tag gray">11月5日</span></div>
+            <p class="card-desc">单张发布，色温偏暖约 3200K，背景书架第二层有一本封面朝外的摄影集，被评论区认出是 2024 年版《昼の光》。发布后两小时内点赞破 800。</p>
+            <div class="card-meta"><span>点赞 800+</span><span>⭐ 4.5</span></div>
+          </div>
+        </article>
+        <article class="card" data-keywords="摄影展 现场 展墙">
+          <img class="card-img" src="https://picsum.photos/seed/muchitinasub-exhibit-07/400/300" width="400" height="300" alt="摄影展现场展墙照片，10月11日拍摄" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title">摄影展展墙一角</h3>
+            <div class="card-tags"><span class="tag">活动记录</span><span class="tag gray">展览</span><span class="tag gray">10月11日</span></div>
+            <p class="card-desc">画面右侧三幅装裱作品与账号 9 月发布的冲绳系列构图一致，推测为同一批底片放大。展签文字因景深模糊无法辨认，评论区有两种展名猜测。</p>
+            <div class="card-meta"><span>讨论 90+</span><span>⭐ 4.3</span></div>
+          </div>
+        </article>
+        <article class="card" data-keywords="雨天 车窗 街景 十月">
+          <img class="card-img" src="https://picsum.photos/seed/muchitinasub-rain-08/400/300" width="400" height="300" alt="雨天车窗街景照片，10月30日发布" loading="lazy">
+          <div class="card-body">
+            <h3 class="card-title">雨天车窗街景</h3>
+            <div class="card-tags"><span class="tag">原图</span><span class="tag gray">旅行随拍</span><span class="tag gray">10月30日</span></div>
+            <p class="card-desc">隔着车窗拍摄，雨滴在玻璃上形成散景光斑。画面左侧路牌只露出半个汉字，依据字形与街道走向，评论区推测地点在神户元町一带，未获确认。</p>
+            <div class="card-meta"><span>点赞 650+</span><span>⭐ 4.0</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. 最新更新 / 动态 -->
+    <section id="updates" class="section">
+      <div class="section-header">
+        <h2>最新照片动态</h2>
+        <p class="section-sub">2026年11月1日至8日发布的条目与归档进度</p>
+      </div>
+      <div class="compact-list">
+        <div class="compact-item"><span class="num">01</span><div class="content"><div class="title">11月7日 原图归档新增 14 张</div><div class="desc">以 10 月冲绳系列为主，补入此前仅存在于转发版本的三张竖构图原片，文件大小 3.2MB 至 5.8MB 不等。</div></div><span class="date">11月7日</span></div>
+        <div class="compact-item"><span class="num">02</span><div class="content"><div class="title">11月6日 删除推文的缓存截图被重新上传</div><div class="desc">一条 10 月 31 日删除的配图推文，其 Web 缓存截图由第三方账号重新发布，画面与原始版本相比亮度高了约 12%。</div></div><span class="date">11月6日</span></div>
+        <div class="compact-item"><span class="num">03</span><div class="content"><div class="title">11月5日 晚间室内自拍发布</div><div class="desc">单张、无文字说明，发布 47 分钟后补了一条仅含相机 emoji 的回复，被解读为对画质讨论的回应。</div></div><span class="date">11月5日</span></div>
+        <div class="compact-item"><span class="num">04</span><div class="content"><div class="title">11月4日 京都红叶组图 EXIF 争议贴</div><div class="desc">有用户对比三个转发版本，指出其中两版缺失 GPS 字段，原版是否包含定位信息尚无定论。</div></div><span class="date">11月4日</span></div>
+        <div class="compact-item"><span class="num">05</span><div class="content"><div class="title">11月3日 拼贴二创合集帖获 1200 赞</div><div class="desc">整理者将 10 月 29 日起的六组拼贴按素材日期排序，并标注每组两段素材的原始发布时间差。</div></div><span class="date">11月3日</span></div>
+        <div class="compact-item"><span class="num">06</span><div class="content"><div class="title">11月2日 简介变更截图流传</div><div class="desc">截图显示简介删去后半句，原推存在时间约 47 分钟，中文圈转存的 9 个版本裁切范围各不相同。</div></div><span class="date">11月2日</span></div>
+        <div class="compact-item"><span class="num">07</span><div class="content"><div class="title">11月1日 二创版本对比表更新至 v3.2</div><div class="desc">新增 4 组对照，累计覆盖 18 组拼贴，每组标注了两段素材来源推文与时间差。</div></div><span class="date">11月1日</span></div>
+        <div class="compact-item"><span class="num">08</span><div class="content"><div class="title">10月30日 雨天车窗街景发布</div><div class="desc">单张，配文仅一个“☔”。评论区在四小时内累积 60 余条地点推测，神户元町是其中出现最多的说法。</div></div><span class="date">10月30日</span></div>
+        <div class="compact-item"><span class="num">09</span><div class="content"><div class="title">10月29日 首组风景×文字拼贴出现</div><div class="desc">由第三方账号制作，将 10 月 18 日海岸照与 8 月旧推文并置，开启后续六组同形态二创。</div></div><span class="date">10月29日</span></div>
+        <div class="compact-item"><span class="num">10</span><div class="content"><div class="title">10月24日 京都红叶三连拍发布</div><div class="desc">三张同机位不同焦段，第二张的虚化边缘被部分用户认为符合手机人像模式算法特征。</div></div><span class="date">10月24日</span></div>
+      </div>
+    </section>
+
+    <!-- 4. 分类入口 -->
+    <section id="categories" class="section">
+      <div class="section-header">
+        <h2>照片分类入口</h2>
+        <p class="section-sub">按影像类型与内容方向划分的 12 个频道</p>
+      </div>
+      <div class="category-grid" id="categoryGrid">
+        <a href="#featured" class="category-btn" data-filter="原图">原图归档</a>
+        <a href="#featured" class="category-btn" data-filter="旅行随拍">旅行随拍</a>
+        <a href="#featured" class="category-btn" data-filter="日常自拍">日常自拍</a>
+        <a href="#featured" class="category-btn" data-filter="活动记录">活动记录</a>
+        <a href="#featured" class="category-btn" data-filter="截图">文字截图</a>
+        <a href="#featured" class="category-btn" data-filter="二创">二创拼贴</a>
+        <a href="#featured" class="category-btn" data-filter="争议">争议影像</a>
+        <a href="#featured" class="category-btn" data-filter="旅行">旅行影像</a>
+        <a href="#featured" class="category-btn" data-filter="晚间">晚间发布</a>
+        <a href="#featured" class="category-btn" data-filter="雨天">雨天场景</a>
+        <a href="#featured" class="category-btn" data-filter="展览">展览现场</a>
+        <a href="#featured" class="category-btn" data-filter="自拍">人像自拍</a>
+      </div>
+    </section>
+
+    <!-- 5. 深度解析 -->
+    <section id="deep" class="section">
+      <div class="section-header">
+        <h2>影像流传与版本差异解析</h2>
+        <p class="section-sub">从原图到转发版本的损耗环节、二创拼贴的时间错位、争议截图的核对路径</p>
+      </div>
+      <div class="deep-read">
+        <h3>转发链条中的画质损耗发生在哪几步</h3>
+        <p>一张 muchitinasub 的原图从发布到在中文圈被广泛看到，通常经过三个节点：Twitter 站内转发、第三方图床转存、跨平台二次上传。10 月 18 日冲绳海岸照的原始文件为 2048×2560、约 4.1MB，经站内转发一次后，Twitter 自动压缩至约 1.2MB；再被转存到图床时，若图床开启自动压缩，分辨率可能降至 1280×1600。中文圈流传最广的那版经比对，文件大小 680KB，锐化痕迹明显，属于压缩后又做了二次补偿锐化的版本。</p>
+        <p>判断一张图处于链条的哪一环，可以看三个指标：文件大小与分辨率的比值、边缘锐化程度、色块过渡是否出现阶梯。比值低于 0.3MB / 百万像素的，基本可以判定经过了至少两次压缩。锐化过度会让文字边缘出现白色描边，这在 11 月 2 日简介截图的两个版本中可以清楚对比。</p>
+
+        <h3>二创拼贴为什么容易造成时间误读</h3>
+        <p>10 月 29 日起出现的拼贴二创，共同特征是取一张风景原图与一条旧推文文字并置。以流传最广的那组为例，左侧是 10 月 18 日海岸照，右侧是 8 月 3 日一条关于“距离”的推文，两段素材相隔 76 天。拼合后视觉上像同一周内发生的事，评论区至少 5 条讨论直接把它们当作同一天的语境来解读。</p>
+        <p>这类误读的根源在于拼贴去掉了时间戳。原推文各自带有发布日期的 UI 元素，在裁成方形时被一并切掉。核对方法只有一个：回到两段素材各自的原始推文，比对发布日期。对比表 v3.2 已为 18 组拼贴逐一标注时间差，最短的一组相隔 3 天，最长的相隔 94 天。</p>
+
+        <h3>争议截图的核对清单</h3>
+        <p>围绕 9 月 27 日东京见面会后台合影的争议，可以拆成可核对的三项：</p>
+        <ul>
+          <li><strong>镜面反射是否被擦除</strong>——原始发布版本中，右侧墙面镜面可见拍摄者手机轮廓；三个转发版本中，两个版本该区域模糊异常，边缘出现不自然的直线，属于典型修补痕迹。</li>
+          <li><strong>拍摄角度与站位</strong>——合影中人物面向镜头左前方，而现场流出的另一段手机视频显示，该位置当时面向的是右前方。两种说法的时间戳相差约 20 分钟，可能对应不同的拍摄轮次。</li>
+          <li><strong>发布账号的归属</strong>——首发布账号的注册时间为 2026 年 8 月，历史推文仅 11 条，其中 7 条与 muchitinasub 无关。该账号的身份未经证实，其说法只能归入“网友推测”层级。</li>
+        </ul>
+        <p>已公开事实是合影确实在 9 月 27 日当晚出现于 Twitter；当事人回应是 9 月 28 日一条不含文字的转发，未直接说明；媒体转述集中在中日两地的三个自媒体账号，措辞均引用“网友发现”；网友推测则围绕反射去除与账号归属展开。四个层级混在一起传播时，最容易把推测当成事实。</p>
+
+        <h3>哪类照片值得优先投入时间</h3>
+        <p>按信息增量排序，原图归档高于截图，截图高于拼贴二创。原图带有构图、光线与现场信息，可核对的前提最多；截图的增量在于文字内容，但版本损耗大；拼贴二创的增量是整理者的视角，原始信息反而被压缩。若时间有限，先看账号本人发布的原图，再看带时间戳的完整截图，二创拼贴放在最后。</p>
+      </div>
+    </section>
+
+    <!-- 6. 体验指南 -->
+    <section id="guide" class="section">
+      <div class="section-header">
+        <h2>照片查阅顺序与判断依据</h2>
+        <p class="section-sub">从原图到转存版本的消费路径</p>
+      </div>
+      <div class="section-body">
+        <p>查阅 muchitinasub 的影像内容，顺序影响判断质量。先看账号本人发布的原图推文，确认构图、配文与发布时间；再看转发量最高的版本，比对两者在分辨率与色彩上的差异；最后看二创与截图，把它们当作二手材料而非一手信息。</p>
+        <p>判断一张照片值不值得细看，可以问三个问题：它是否带有可辨认的现场元素（路牌、展签、建筑特征）；它的配文是否提供了画面之外的信息；它在不同转发版本中的差异是否指向某次具体修改。三个问题至少两个有肯定答案，才值得花时间做版本比对。</p>
+        <p>比较同类条目时，优先比发布时间与文件大小，而不是比点赞数。点赞数受发布时间段与算法影响，10 月 18 日海岸照的 3400 余次转发中，约六成集中在发布后 6 小时内，之后的增长平缓；11 月 5 日自拍的 800 余次点赞则分布在 24 小时内，节奏完全不同，两者不宜直接比较。</p>
+      </div>
+    </section>
+
+    <!-- 7. FAQ -->
+    <section id="faq" class="section">
+      <div class="section-header">
+        <h2>常见问答</h2>
+        <p class="section-sub">围绕具体照片与版本差异的 6 个问题</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <details>
+            <summary>10月18日冲绳海岸照的原图在哪里能看到？</summary>
+            <div class="faq-answer">原图存在于 muchitinasub 本人 10 月 18 日晚间发布的推文附件中，共四张，分辨率 2048×2560。站内转发版本已被压缩至约 1.2MB，图床转存版本进一步降至 680KB 左右。要看接近原始的版本，需找到发布后两小时内的转存记录。</div>
+          </details>
+        </div>
+        <div class="faq-item">
+          <details>
+            <summary>东京见面会后台合影的镜面反射争议，目前有哪些已确认的信息？</summary>
+            <div class="faq-answer">已确认的是合影于 9 月 27 日晚在 Twitter 出现，首发布账号注册于 2026 年 8 月、历史推文仅 11 条。镜面反射区域的修补痕迹在三个转发版本中有两个可见，但原始文件未公开，无法确认擦除发生在发布前还是转发过程中。</div>
+          </details>
+        </div>
+        <div class="faq-item">
+          <details>
+            <summary>11月2日删除的简介截图，9个版本里哪个最完整？</summary>
+            <div class="faq-answer">9 个版本中仅 2 个保留了顶部状态栏与完整时间戳，这两个版本显示截图时间在推文删除后约 12 分钟。其余 7 个版本裁掉了状态栏，无法独立核对时间，只能依赖转存者的说法。</div>
+          </details>
+        </div>
+        <div class="faq-item">
+          <details>
+            <summary>京都红叶三连拍的第二张，虚化是手机算法还是镜头光学？</summary>
+            <div class="faq-answer">第二张的虚化边缘在发丝与树枝交界处出现了轻微的切割感，这更符合手机人像模式算法的特征。但转发版本清除了 EXIF 信息，无法直接确认拍摄设备。第一张与第三张的虚化过渡更自然，三张可能并非同一设备或同一模式拍摄。</div>
+          </details>
+        </div>
+        <div class="faq-item">
+          <details>
+            <summary>二创拼贴里的风景照和文字，怎么判断是不是同一时期？</summary>
+            <div class="faq-answer">只能回到两段素材各自的原始推文比对发布日期。以流传最广的那组为例，风景照是 10 月 18 日，文字是 8 月 3 日，相隔 76 天。拼贴裁切时通常会把两边的发布日期 UI 一并去掉，仅凭拼图本身无法判断时间关系。</div>
+          </details>
+        </div>
+        <div class="faq-item">
+          <details>
+            <summary>雨天车窗街景的拍摄地点，神户元町的说法有依据吗？</summary>
+            <div class="faq-answer">依据是画面左侧路牌露出的半个汉字字形，以及街道走向与车窗角度。评论区比对后提出神户元町一带的可能性，但也有人指出类似路牌在大阪与福冈同样存在。该说法目前属于网友推测，未见当事人确认，也没有更清晰的路牌版本出现。</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. 用户评论 -->
+    <section id="comments" class="section">
+      <div class="section-header">
+        <h2>用户评论</h2>
+        <p class="section-sub">来自转存者与照片查阅者的 15 条留言</p>
+      </div>
+      <div class="comment-list">
+        <div class="comment-item"><div class="comment-header"><span class="comment-avatar">海</span><span class="comment-nick">海辺の犬</span></div><div class="comment-text">冲绳那组第三张的礁石剪影是真的好看，但转存两次之后暗部全是噪点，原图到底什么水平根本看不出来。</div><div class="comment-meta">11月7日</div></div>
+        <div class="comment-item"><div class="comment-header"><span class="comment-avatar">K</span><span class="comment-nick">Kuma_1024</span></div><div class="comment-text">后台合影那个镜面反射，我拿两个版本叠了一下，修补区域边缘是硬的，不像是压缩造成的。</div><div class="comment-meta">11月6日</div></div>
+        <div class="comment-item"><div class="comment-header"><span class="comment-avatar">红</span><span class="comment-nick">红叶前线</span></div><div class="comment-text">京都不就是秋天必去吗，照片拍得挺一般的，人像模式痕迹太重了。</div><div class="comment-meta">11月5日</div></div>
+        <div class="comment-item"><div class="comment-header"><span class="comment-avatar">S</span><span class="comment-nick">sora_no_kiseki</span></div><div class="comment-text">简介截图那事儿我存了三个版本，最完整的那张确实有时间戳，另外两张连头像栏都被裁了。</div><div class="comment-meta">11月4日</div></div>
+        <div class="comment-item"><div class="comment-header"><span class="comment-avatar">路</span><span class="comment-nick">路边社观察</span></div><div class="comment-text">拼贴把时间戳全裁了，我第一眼也以为是同一天的，后来回去翻原推才发现差了两个多月。</div><div class="comment-meta">11月4日</div></div>
+        <div class="comment-item"><div class="comment-header"><span class="comment-avatar">A</span><span class="comment-nick">Aki_photo</span></div><div class="comment-text">11月5日那张自拍的书架，第二层那本《昼の光》我也有，2024 年版，封面确实长那样。</div><div class="comment-meta">11月5日</div></div>
+        <div class="comment-item"><div class="comment-header"><span class="comment-avatar">雨</span><span class="comment-nick">雨音_ame</span></div><div class="comment-text">雨天车窗那张，神户元町不太像，路牌字形更接近福冈那边的写法，纯个人感觉。</div><div class="comment-meta">11月3日</div></div>
+        <div class="comment-item"><div class="comment-header"><span class="comment-avatar">M</span><span class="comment-nick">mochi_mochi</span></div><div class="comment-text">摄影展展墙那三幅，和九月冲绳系列的构图几乎一样，应该是同一批底片放大的。</div><div class="comment-meta">11月2日</div></div>
+        <div class="comment-item"><div class="comment-header"><span class="comment-avatar">T</span><span class="comment-nick">Tomo_0808</span></div><div class="comment-text">说真的，转存版本看多了已经分不清哪张是原图了，锐化补偿那版反而流传最广。</div><div class="comment-meta">11月1日</div></div>
+        <div class="comment-item"><div class="comment-header"><span class="comment-avatar">灰</span><span class="comment-nick">灰色轨迹</span></div><div class="comment-text">对比表 v3.2 做得挺细，18 组每组都标了时间差，省得自己一个个回去翻。</div><div class="comment-meta">11月1日</div></div>
+        <div class="comment-item"><div class="comment-header"><span class="comment-avatar">N</span><span class="comment-nick">natsu_no_umi</span></div><div class="comment-text">京都那三张第二张虚化确实怪，发丝边缘像被抠过一样，不过也可能只是压缩糊了。</div><div class="comment-meta">10月31日</div></div>
+        <div class="comment-item"><div class="comment-header"><span class="comment-avatar">小</span><span class="comment-nick">小田急线</span></div><div class="comment-text">见面会那个首发布账号才 11 条推文，这背景本身就该打个问号吧。</div><div class="comment-meta">10月30日</div></div>
+        <div class="comment-item"><div class="comment-header"><span class="comment-avatar">Z</span><span class="comment-nick">zero_gravity</span></div><div class="comment-text">不太关心版本差异，单纯觉得冲绳那组颜色调得舒服，其他随便看看就行。</div><div class="comment-meta">10月30日</div></div>
+        <div class="comment-item"><div class="comment-header"><span class="comment-avatar">镜</span><span class="comment-nick">镜花水月_</span></div><div class="comment-text">11月6日重新上传的那张缓存截图，亮度比原来高了一截，对比度也动过，不知道是不是截图工具的问题。</div><div class="comment-meta">11月6日</div></div>
+        <div class="comment-item"><div class="comment-header"><span class="comment-avatar">B</span><span class="comment-nick">blue_hour_</span></div><div class="comment-text">原图 4.1MB 那张我下到了，暗部细节比流传版本多不少，礁石边缘能看清纹理。</div><div class="comment-meta">11月2日</div></div>
+      </div>
+    </section>
+
+    <!-- 9. 相关资讯 -->
+    <section id="news" class="section">
+      <div class="section-header">
+        <h2>相关资讯</h2>
+        <p class="section-sub">近 30 天内与照片流传相关的具体动态</p>
+      </div>
+      <div class="news-list">
+        <div class="news-item">
+          <div><div class="news-title">拼贴二创对比表更新至 v3.2，覆盖 18 组素材</div><div class="news-summary">11 月 1 日更新的表格新增 4 组对照，每组标注两段素材的来源推文与时间差，最长一组相隔 94 天。表格以可编辑文档形式发布，评论区已有人提交第 19 组。</div></div>
+          <span class="news-date">11月1日</span>
+        </div>
+        <div class="news-item">
+          <div><div class="news-title">10月18日海岸照原图文件被第三方图床重新上传</div><div class="news-summary">重新上传版本文件大小 4.1MB，与原始推文附件比对分辨率一致。该图床上传时间显示为 10 月 18 日 23 时 07 分，发布后约 4 小时。</div></div>
+          <span class="news-date">10月19日</span>
+        </div>
+        <div class="news-item">
+          <div><div class="news-title">东京见面会后台合影的三个转发版本被逐一比对</div><div class="news-summary">比对结果指出两个版本的镜面反射区域存在直线边缘，属修补痕迹。比对者同时说明原始文件未公开，无法确认修补发生的环节。</div></div>
+          <span class="news-date">10月15日</span>
+        </div>
+        <div class="news-item">
+          <div><div class="news-title">京都红叶三连拍第二张的 EXIF 在转发版本中消失</div><div class="news-summary">至少两个转发版本缺失 GPS 与设备型号字段，原版是否包含这些信息没有定论。讨论集中在手机人像模式算法的虚化特征上。</div></div>
+          <span class="news-date">10月25日</span>
+        </div>
+        <div class="news-item">
+          <div><div class="news-title">11月2日简介截图在中文圈被转存至少 9 个版本</div><div class="news-summary">9 个版本中 2 个保留完整时间戳，显示截图时间在推文删除后约 12 分钟。其余版本裁掉了顶部状态栏，无法独立核对。</div></div>
+          <span class="news-date">11月3日</span>
+        </div>
+        <div class="news-item">
+          <div><div class="news-title">摄影展现场照片的展签文字被尝试辨识</div><div class="news-summary">展签因景深模糊无法直接辨认，评论区提出两种展名猜测，均未获确认。画面右侧三幅装裱作品与 9 月冲绳系列构图一致。</div></div>
+          <span class="news-date">10月12日</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. 相关推荐 -->
+    <section id="recommend" class="section">
+      <div class="section-header">
+        <h2>相关推荐</h2>
+        <p class="section-sub">具体照片条目与内容方向的索引</p>
+      </div>
+      <div class="tag-index">
+        <a href="#featured">冲绳海岸线夕阳组图</a>
+        <a href="#featured">东京见面会后台合影</a>
+        <a href="#featured">京都红叶小径三连拍</a>
+        <a href="#featured">简介变更 47 分钟截图</a>
+        <a href="#featured">海岸照×旧推文拼贴</a>
+        <a href="#featured">晚间室内自拍·暖光版</a>
+        <a href="#featured">摄影展展墙一角</a>
+        <a href="#featured">雨天车窗街景</a>
+      </div>
+    </section>
+
+    <!-- 11. 补充板块：热门榜单 -->
+    <section id="ranking" class="section">
+      <div class="section-header">
+        <h2>照片条目热度榜</h2>
+        <p class="section-sub">按转发、讨论与归档完整度综合排序（截至 11 月 8 日）</p>
+      </div>
+      <div class="ranking-list">
+        <div class="ranking-item"><span class="ranking-num top">1</span><span class="ranking-name">冲绳海岸线夕阳组图</span><span class="ranking-score">转发 3400+ · 原图完整</span></div>
+        <div class="ranking-item"><span class="ranking-num top">2</span><span class="ranking-name">东京见面会后台合影</span><span class="ranking-score">讨论 280+ · 版本存疑</span></div>
+        <div class="ranking-item"><span class="ranking-num top">3</span><span class="ranking-name">简介变更 47 分钟截图</span><span class="ranking-score">转存 9 版 · 2 版完整</span></div>
+        <div class="ranking-item"><span class="ranking-num">4</span><span class="ranking-name">京都红叶小径三连拍</span><span class="ranking-score">点赞 1900+ · EXIF 缺失</span></div>
+        <div class="ranking-item"><span class="ranking-num">5</span><span class="ranking-name">海岸照×旧推文拼贴</span><span class="ranking-score">点赞 1200+ · 时间差 76 天</span></div>
+        <div class="ranking-item"><span class="ranking-num">6</span><span class="ranking-name">晚间室内自拍·暖光版</span><span class="ranking-score">点赞 800+ · 发布 47 分钟后回复</span></div>
+        <div class="ranking-item"><span class="ranking-num">7</span><span class="ranking-name">摄影展展墙一角</span><span class="ranking-score">讨论 90+ · 展签待辨</span></div>
+        <div class="ranking-item"><span class="ranking-num">8</span><span class="ranking-name">雨天车窗街景</span><span class="ranking-score">点赞 650+ · 地点推测中</span></div>
+      </div>
+    </section>
+
+    <!-- 12. 投稿互动 -->
+    <section id="contribute" class="section">
+      <div class="section-header">
+        <h2>照片投稿与版本补充</h2>
+        <p class="section-sub">提交你保存的转存版本或新发现的条目</p>
+      </div>
+      <div class="section-body">
+        <p>如果你保存了 muchitinasub 某条推文的早期转存版本，或发现了尚未被归档的照片条目，可以按以下方式提交：注明原推发布日期、你保存的时间点、文件大小与分辨率。这三项信息能帮助判断版本处于流传链条的哪一环。11 月 2 日简介截图的 9 个版本中，有 3 个正是通过读者补充才完成时间线拼接的。</p>
+        <p>提交时请说明素材来源是站内转发、图床转存还是跨平台二次上传。来源类型不同，压缩损耗程度差别很大，混在一起会让对比失去意义。对比表 v3.2 的 18 组拼贴中，已有 6 组因来源标注清晰而完成双向核对。</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 右辅助栏 -->
+  <aside class="aux-sidebar" aria-label="辅助信息">
+    <div class="aux-card">
+      <h3>📌 本周热榜</h3>
+      <ol class="aux-list">
+        <li><span class="rank top">1</span><a href="#featured">冲绳海岸线夕阳组图</a></li>
+        <li><span class="rank top">2</span><a href="#featured">东京见面会后台合影</a></li>
+        <li><span class="rank top">3</span><a href="#featured">简介变更 47 分钟截图</a></li>
+        <li><span class="rank">4</span><a href="#featured">京都红叶小径三连拍</a></li>
+        <li><span class="rank">5</span><a href="#featured">海岸照×旧推文拼贴</a></li>
+        <li><span class="rank">6</span><a href="#featured">晚间室内自拍·暖光版</a></li>
+      </ol>
+    </div>
+    <div class="aux-card">
+      <h3>🕐 更新时间线</h3>
+      <ol class="aux-list">
+        <li><span class="rank">11/7</span>原图归档 +14 张</li>
+        <li><span class="rank">11/6</span>缓存截图重新上传</li>
+        <li><span class="rank">11/5</span>晚间自拍发布</li>
+        <li><span class="rank">11/4</span>EXIF 争议贴</li>
+        <li><span class="rank">11/2</span>简介截图流传</li>
+        <li><span class="rank">11/1</span>对比表 v3.2</li>
+      </ol>
+    </div>
+    <div class="aux-card">
+      <h3>🔍 分类速查</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <a href="#featured" class="tag" style="padding:4px 10px;">原图</a>
+        <a href="#featured" class="tag" style="padding:4px 10px;">旅行随拍</a>
+        <a href="#featured" class="tag" style="padding:4px 10px;">日常自拍</a>
+        <a href="#featured" class="tag" style="padding:4px 10px;">活动记录</a>
+        <a href="#featured" class="tag" style="padding:4px 10px;">截图</a>
+        <a href="#featured" class="tag" style="padding:4px 10px;">二创</a>
+        <a href="#featured" class="tag" style="padding:4px 10px;">争议</a>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<!-- 回到顶部 -->
+<button class="back-top" id="backTop" aria-label="回到顶部">↑</button>
+
+<!-- 页尾 -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">推特 muchitinasub 照片</div>
+      <p class="footer-desc">归档 muchitinasub 在 Twitter / X 发布的影像条目，覆盖 2026 年 8 月至 11 月的原图、截图、二创拼贴与转存版本，逐条标注来源层级与时间差。更新节奏跟随账号发布，归档以每周一次为主。</p>
+    </div>
+    <div class="footer-col">
+      <h4>内容频道</h4>
+      <a href="#featured">精选照片</a>
+      <a href="#updates">最新动态</a>
+      <a href="#categories">分类入口</a>
+      <a href="#deep">深度解析</a>
+    </div>
+    <div class="footer-col">
+      <h4>查阅帮助</h4>
+      <a href="#guide">体验指南</a>
+      <a href="#faq">常见问答</a>
+      <a href="#comments">用户评论</a>
+      <a href="#contribute">投稿互动</a>
+    </div>
+    <div class="footer-col">
+      <h4>更多索引</h4>
+      <a href="#news">相关资讯</a>
+      <a href="#recommend">相关推荐</a>
+      <a href="#ranking">热门榜单</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>示例内容页面 · 照片条目与数据为归档示例</span>
+    <span>页面更新：2026年11月8日 · 对应公告条“新增 14 张原图归档”</span>
+  </div>
+</footer>
+
+<script>
+  // 回到顶部
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > window.innerHeight) {
+      backTop.classList.add('visible');
+    } else {
+      backTop.classList.remove('visible');
+    }
+  });
+  backTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 搜索筛选
+  const searchInput = document.getElementById('localSearch');
+  const featuredGrid = document.getElementById('featuredGrid');
+  const filterHint = document.getElementById('filterHint');
+  const filterCount = document.getElementById('filterCount');
+  const cards = Array.from(featuredGrid.querySelectorAll('.card'));
+
+  function applyFilter(keyword) {
+    const kw = keyword.trim().toLowerCase();
+    let visible = 0;
+    cards.forEach(card => {
+      const keywords = (card.dataset.keywords || '') + ' ' + card.textContent.toLowerCase();
+      if (!kw || keywords.includes(kw)) {
+        card.style.display = '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    if (kw) {
+      filterHint.classList.add('visible');
+      filterCount.textContent = visible;
+    } else {
+      filterHint.classList.remove('visible');
+    }
+  }
+
+  searchInput.addEventListener('input', () => applyFilter(searchInput.value));
+
+  // 分类按钮筛选
+  document.querySelectorAll('.category-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter || '';
+      searchInput.value = filter;
+      applyFilter(filter);
+      document.getElementById('featured').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // 频道高亮
+  const channelLinks = document.querySelectorAll('.channel-list a');
+  const sections = Array.from(document.querySelectorAll('main .section[id]'));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        channelLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+  sections.forEach(section => observer.observe(section));
+
+  // 移动端菜单（简易：点击菜单按钮滚动到导航）
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.querySelector('.main-nav');
+  menuToggle.addEventListener('click', () => {
+    const isShown = mainNav.style.display === 'flex';
+    mainNav.style.display = isShown ? 'none' : 'flex';
+    mainNav.style.position = 'absolute';
+    mainNav.style.top = '100%';
+    mainNav.style.left = '0';
+    mainNav.style.right = '0';
+    mainNav.style.background = '#fff';
+    mainNav.style.padding = '12px';
+    mainNav.style.flexWrap = 'wrap';
+    mainNav.style.boxShadow = '0 8px 24px rgba(0,0,0,0.08)';
+    mainNav.style.zIndex = '98';
+  });
+
+  // 点击导航后收起（移动端）
+  mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 740) {
+        mainNav.style.display = 'none';
+      }
+    });
+  });
+
+  // 搜索按钮聚焦
+  document.getElementById('searchBtn').addEventListener('click', () => {
+    searchInput.focus();
+  });
+
+  // 点击空白关闭移动菜单
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 740 && mainNav.style.display === 'flex') {
+      if (!mainNav.contains(e.target) && e.target !== menuToggle) {
+        mainNav.style.display = 'none';
+      }
+    }
+  });
+</script>
+
+<!-- 结构化数据 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "推特 muchitinasub 照片",
+  "description": "聚合 muchitinasub 在 Twitter 发布与转发的影像内容，梳理原图、截图、二创版本与流传时间线。",
+  "inLanguage": "zh-CN",
+  "url": "https://example.com/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "10月18日冲绳海岸照的原图在哪里能看到？",
+      "acceptedAnswer": { "@type": "Answer", "text": "原图存在于 muchitinasub 本人 10 月 18 日晚间发布的推文附件中，共四张，分辨率 2048×2560。站内转发版本已被压缩至约 1.2MB，图床转存版本进一步降至 680KB 左右。" }
+    },
+    {
+      "@type": "Question",
+      "name": "东京见面会后台合影的镜面反射争议，目前有哪些已确认的信息？",
+      "acceptedAnswer": { "@type": "Answer", "text": "已确认的是合影于 9 月 27 日晚在 Twitter 出现，首发布账号注册于 2026 年 8 月、历史推文仅 11 条。镜面反射区域的修补痕迹在三个转发版本中有两个可见，但原始文件未公开。" }
+    },
+    {
+      "@type": "Question",
+      "name": "11月2日删除的简介截图，9个版本里哪个最完整？",
+      "acceptedAnswer": { "@type": "Answer", "text": "9 个版本中仅 2 个保留了顶部状态栏与完整时间戳，这两个版本显示截图时间在推文删除后约 12 分钟。" }
+    },
+    {
+      "@type": "Question",
+      "name": "京都红叶三连拍的第二张，虚化是手机算法还是镜头光学？",
+      "acceptedAnswer": { "@type": "Answer", "text": "第二张的虚化边缘在发丝与树枝交界处出现了轻微的切割感，更符合手机人像模式算法的特征。但转发版本清除了 EXIF 信息，无法直接确认拍摄设备。" }
+    },
+    {
+      "@type": "Question",
+      "name": "二创拼贴里的风景照和文字，怎么判断是不是同一时期？",
+      "acceptedAnswer": { "@type": "Answer", "text": "只能回到两段素材各自的原始推文比对发布日期。以流传最广的那组为例，风景照是 10 月 18 日，文字是 8 月 3 日，相隔 76 天。" }
+    },
+    {
+      "@type": "Question",
+      "name": "雨天车窗街景的拍摄地点，神户元町的说法有依据吗？",
+      "acceptedAnswer": { "@type": "Answer", "text": "依据是画面左侧路牌露出的半个汉字字形，以及街道走向与车窗角度。评论区比对后提出神户元町一带的可能性，但该说法目前属于网友推测，未见当事人确认。" }
+    }
+  ]
+}
+</script>
+
+</body>
+                                                                                    </html>
